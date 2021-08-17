@@ -10,10 +10,9 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-<!--[![MIT License][license-shield]][license-url] -->
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
+<!--[![MIT License][license-shield]][license-url] -->
 
 <!-- PROJECT LOGO -->
 <br />
@@ -21,7 +20,7 @@
   <h3 align="center">Applying Deep Learning for Mass Regression of Boosted Top Quarks Particles at the CMS Experiment at CERN</h3>
 
   <p align="center">
-This project is part of my work as a Deep Learning Intern at the Machine Learning For Science Group (ML4SCI) part of Google Summer of Code 2021.
+My summer project as a Deep Learning Intern at the Machine Learning For Science Group (ML4SCI) part of Google Summer of Code 2021.
     <br />
     <a href="https://github.com/ML4SCI/E2E/tree/main/E2E_Regression_Anis_Ismail"><strong>Explore the docs »</strong></a>
     <br />
@@ -56,7 +55,7 @@ This project is part of my work as a Deep Learning Intern at the Machine Learnin
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
+   <!-- <li><a href="#license">License</a></li> -->
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
@@ -66,16 +65,16 @@ This project is part of my work as a Deep Learning Intern at the Machine Learnin
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+This project is part of my work as a Deep Learning Intern at the Machine Learning For Science Group (ML4SCI) part of Google Summer of Code 2021.
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 
 ### Built With
 
-* []()
-* []()
-* []()
-
+* [Pytorch](https://pytorch.org/)
+* [NumPy](https://numpy.org/)
+* [matplotlib](https://matplotlib.org/)
 
 
 <!-- GETTING STARTED -->
@@ -85,23 +84,21 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-* npm
+* All required packages can be installed as follows:
   ```sh
-  npm install npm@latest -g
+  pip install -r requirements.txt
   ```
 
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/ML4SCI/E2E.git
    ```
-2. Install NPM packages
+2. Install required packages
    ```sh
-   npm install
+   pip install -r requirements.txt
    ```
-
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -132,28 +129,28 @@ Contributions are what make the open source community such an amazing place to b
 
 
 
-<!-- LICENSE -->
+<!-- LICENSE 
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
+-->
 
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Your Name - [Anis Ismail](https://linkedin.com/in/anisdimail) - anis[dot]ismail[at]lau[dot]edu
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/ML4SCI/E2E/tree/main/E2E_Regression_Anis_Ismail](https://github.com/ML4SCI/E2E/tree/main/E2E_Regression_Anis_Ismail)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
-* []()
-* []()
+* [Davide Di Croce](https://ch.linkedin.com/in/davide-di-croce-2840961a3)
+* [Sergei Gleyzer](https://www.linkedin.com/in/sergei-v-gleyzer-a72b772)
+* [Darya Dyachkova](https://www.linkedin.com/in/darya-dyachkova)
 
 
 
@@ -161,13 +158,13 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/ML4SCI/E2E.svg?style=for-the-badge
 [contributors-url]: https://github.com/ML4SCI/E2E/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/ML4SCI/E2E.svg?style=for-the-badge
 [forks-url]: https://github.com/ML4SCI/E2E/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/ML4SCI/E2E.svg?style=for-the-badge
 [stars-url]: https://github.com/ML4SCI/E2E/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/ML4SCI/E2E.svg?style=for-the-badge
 [issues-url]: https://github.com/ML4SCI/E2E/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/anisdimail
