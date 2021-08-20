@@ -15,12 +15,13 @@
 <!--[![MIT License][license-shield]][license-url] -->
 
 <!-- PROJECT LOGO -->
+[![GSOC logo][images/gsoc.png]](https://summerofcode.withgoogle.com/)
 <br />
 <p align="center">
   <h3 align="center">Applying Deep Learning for Mass Regression of Boosted Top Quarks Particles at the CMS Experiment at CERN</h3>
 
   <p align="center">
-My summer project as a Deep Learning Intern at the Machine Learning For Science Group (ML4SCI) part of Google Summer of Code 2021.
+My summer project as a Deep Learning Intern at the Machine Learning For Science Group (ML4SCI) part of Google Summer of Code 2021. To learn more about the project, kindly check <a href="https://summerofcode.withgoogle.com/dashboard/project/4649838060240896/overview/">here</a>.
     <br />
     <a href="https://github.com/ML4SCI/E2E/tree/main/E2E_Regression_Anis_Ismail"><strong>Explore the docs »</strong></a>
     <br />
