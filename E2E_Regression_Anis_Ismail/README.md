@@ -15,9 +15,9 @@
 <!--[![MIT License][license-shield]][license-url] -->
 
 <!-- PROJECT LOGO -->
-[![GSOC logo][images/gsoc.png]](https://summerofcode.withgoogle.com/)
 <br />
 <p align="center">
+  <img src="images/gsoc.png" alt="GSOC logo" align="center">
   <h3 align="center">Applying Deep Learning for Mass Regression of Boosted Top Quarks Particles at the CMS Experiment at CERN</h3>
 
   <p align="center">
