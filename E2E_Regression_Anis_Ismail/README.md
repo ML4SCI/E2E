@@ -90,7 +90,7 @@ To get a local copy up and running follow these simple steps.
   ```sh
   pip install -r requirements.txt
   ```
-
+* Please note that this project requires a GPU for training
 ### Installation
 
 1. Clone the repo
