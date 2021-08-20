@@ -67,8 +67,10 @@ My summer project as a Deep Learning Intern at the Machine Learning For Science 
 ## About The Project
 This project is part of my work as a Deep Learning Intern at the Machine Learning For Science Group (ML4SCI) part of Google Summer of Code 2021.
 
+add logo gsoc and cms and ml4sci
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
+You can learn more about the project [here]().
 
 ### Built With
 
@@ -84,7 +86,7 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-* All required packages can be installed as follows:
+* All required packages can be installed as follow:
   ```sh
   pip install -r requirements.txt
   ```
@@ -95,7 +97,13 @@ To get a local copy up and running follow these simple steps.
    ```sh
    git clone https://github.com/ML4SCI/E2E.git
    ```
-2. Install required packages
+2. Change to the project repositry:
+ ```sh
+ cd E2E_Regression_Anis_Ismail/
+ 
+ ```
+
+3. Install required packages
    ```sh
    pip install -r requirements.txt
    ```
@@ -103,14 +111,18 @@ To get a local copy up and running follow these simple steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
+To start training the model, run the following command:
+   ```sh
+   python train.py
+   ```
+You can modify the experiment parameters in the experiment.json file:
+   ```sh
+   python train.py
+   ```
 
 <!-- ROADMAP -->
 ## Roadmap
+
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
 
