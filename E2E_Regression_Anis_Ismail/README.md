@@ -98,10 +98,10 @@ To get a local copy up and running follow these simple steps.
    git clone https://github.com/ML4SCI/E2E.git
    ```
 2. Change to the project repositry:
- ```sh
- cd E2E_Regression_Anis_Ismail/
- 
- ```
+   ```sh
+   cd E2E_Regression_Anis_Ismail/
+
+   ```
 
 3. Install required packages
    ```sh
