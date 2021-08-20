@@ -113,11 +113,31 @@ To get a local copy up and running follow these simple steps.
 
 To start training the model, run the following command:
    ```sh
-   python train.py
+   python main.py
    ```
 You can modify the experiment parameters in the experiment.json file:
-   ```sh
-   python train.py
+   ```json
+{
+  "batch_size": 1024,
+  "epochs": 50,
+  "load_epoch": 0,
+  "lr": 1e-3,
+  "resblocks": 3,
+  "input_channels": 3,
+  "fmaps": [
+    16,
+    32
+  ],
+  "is_cuda": 1,
+  "run_logger": 1,
+  "expt_name": "TopGun_scaled-target&input-500-0.02-0.2-1_lr_scheduled-1e-3",
+  "save_path": ".",
+  "data_path": ".",
+  "channel1_scale": 0.02,
+  "channel2_scale": 0.2,
+  "channel3_scale": 1.0,
+  "seed": 0
+}
    ```
 
 <!-- ROADMAP -->
