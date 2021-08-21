@@ -1,10 +1,3 @@
-<!--
-*** To avoid retyping too much info. Do a search and replace for the following:
-*** github_username, repo_name, twitter_handle, email, project_title, project_description
--->
-
-
-
 <!-- PROJECT SHIELDS -->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -33,7 +26,6 @@ My summer project as a Deep Learning Intern at the Machine Learning For Science 
     <a href="https://github.com/ML4SCI/E2E/issues">Request Feature</a>
   </p>
 </p>
-
 
 
 <!-- TABLE OF CONTENTS -->
@@ -68,10 +60,7 @@ My summer project as a Deep Learning Intern at the Machine Learning For Science 
 ## About The Project
 This project is part of my work as a Deep Learning Intern at the Machine Learning For Science Group (ML4SCI) part of Google Summer of Code 2021.
 
-add logo gsoc and cms and ml4sci
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-You can learn more about the project [here]().
+You can learn more about the project in my article [here]().
 
 ### Built With
 
