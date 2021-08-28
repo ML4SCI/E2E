@@ -89,7 +89,7 @@ To get a local copy up and running follow these simple steps.
    ```
 2. Change to the project repositry:
    ```sh
-   cd E2E_Regression_Anis_Ismail/
+   cd E2E/E2E_Regression_Anis_Ismail
 
    ```
 
