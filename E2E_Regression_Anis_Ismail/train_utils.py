@@ -78,7 +78,7 @@ def do_eval(resnet, val_loader, epoch):
     plt.xlabel(r'$\mathrm{m}$', size=16)
     plt.legend(loc='upper right')
     plt.savefig(
-        os.path.join(params["save_path"], "PLOTS") + '/%s/test_mpred_%s.png ' % (params["expt_name"], score_str),
+        os.path.join(params["save_path"], "PLOTS") + '/%s/test_mpred_%s.png' % (params["expt_name"], score_str),
         bbox_inches='tight')
     plt.close()
     return mre_, m_pred_, m_true_, np.mean(mae_)
