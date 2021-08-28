@@ -9,7 +9,7 @@ import os
 from utils import transform_y, inv_transform, logger
 from metrics import mae_loss_wgtd
 
-params = json.load(open("experiment.json",'r'))
+params = json.load(open("./E2E/E2E_Regression_Anis_Ismail/experiment.json",'r'))
 
 
 def load_model(model_name, resnet, optimizer, lr_scheduler):
