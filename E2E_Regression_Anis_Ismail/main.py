@@ -13,7 +13,7 @@ from train_utils import train
 plt.rcParams["figure.figsize"] = (5, 5)
 plt.switch_backend('agg')
 
-params = json.load(open("experiment.json",'r'))
+params = json.load(open("./E2E/E2E_Regression_Anis_Ismail/experiment.json",'r'))
 np.random.seed(params["seed"])
 torch.manual_seed(params["seed"])
 random.seed(params["seed"])
