@@ -6,7 +6,7 @@ import json
 import numpy as np
 from utils import transform_y
 
-params = json.load(open("experiment.json",'r'))
+params = json.load(open("./E2E/E2E_Regression_Anis_Ismail/experiment.json",'r'))
 
 class ParquetDataset(Dataset):
     def __init__(self, filename, label):
