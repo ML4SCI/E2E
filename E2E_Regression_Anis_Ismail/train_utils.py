@@ -84,7 +84,7 @@ def do_eval(resnet, val_loader, epoch):
     return mre_, m_pred_, m_true_, np.mean(mae_)
 
 
-def train(resnet, optimizer, lr_scheduler, epochs, train_loader, val_loader, run_logger=True):
+def train(resnet, optimizer, lr_scheduler, epochs, train_loader, val_loader):
     if params["load_epoch"] != 0:
         model_name = 'Tops_ResNet_blocks_3_model_epoch_%d ' % (params["load_epoch"])
         resnet, optimizer, lr_scheduler = load_model(model_name, resnet, optimizer, lr_scheduler)
