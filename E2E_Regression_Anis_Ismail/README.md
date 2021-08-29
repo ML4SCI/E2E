@@ -60,7 +60,7 @@ My summer project as a Deep Learning Intern at the Machine Learning For Science 
 ## About The Project
 This project is part of my work as a Deep Learning Intern at the Machine Learning For Science Group (ML4SCI) part of Google Summer of Code 2021.
 
-You can learn more about the project in my article [here]().
+You can also check the article summarizing my GSOC experience on <a href="https://anisismail09.medium.com/fantastic-google-summer-of-code-experiences-and-how-i-found-them-dd1c5b09a364">Towards Data Science</a> and on my <a href="https://anisdismail.com/gsoc-experience-2021.html">personal blog</a>.
 
 ### Built With
 
@@ -89,7 +89,7 @@ To get a local copy up and running follow these simple steps.
    ```
 2. Change to the project repositry:
    ```sh
-   cd E2E_Regression_Anis_Ismail/
+   cd E2E/E2E_Regression_Anis_Ismail
 
    ```
 
@@ -129,7 +129,7 @@ You can modify the experiment parameters in the experiment.json file:
   "seed": 0
 }
    ```
-
+You can also run the code in jupyter notebook in [E2E_Mass_Regression.ipynb](https://github.com/anisdismail/E2E/blob/main/E2E_Regression_Anis_Ismail/E2E_Mass_Regression.ipynb). 
 <!-- ROADMAP -->
 ## Roadmap
 

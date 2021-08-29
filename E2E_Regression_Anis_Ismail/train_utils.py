@@ -9,7 +9,7 @@ import os
 from utils import transform_y, inv_transform, logger
 from metrics import mae_loss_wgtd
 
-params = json.load(open("experiment.json",'r'))
+params = json.load(open("./E2E/E2E_Regression_Anis_Ismail/experiment.json",'r'))
 
 
 def load_model(model_name, resnet, optimizer, lr_scheduler):
@@ -78,13 +78,13 @@ def do_eval(resnet, val_loader, epoch):
     plt.xlabel(r'$\mathrm{m}$', size=16)
     plt.legend(loc='upper right')
     plt.savefig(
-        os.path.join(params["save_path"], "PLOTS") + '/%s/test_mpred_%s.png ' % (params["expt_name"], score_str),
+        os.path.join(params["save_path"], "PLOTS") + '/%s/test_mpred_%s.png' % (params["expt_name"], score_str),
         bbox_inches='tight')
     plt.close()
     return mre_, m_pred_, m_true_, np.mean(mae_)
 
 
-def train(resnet, optimizer, lr_scheduler, epochs, train_loader, val_loader, run_logger=True):
+def train(resnet, optimizer, lr_scheduler, epochs, train_loader, val_loader):
     if params["load_epoch"] != 0:
         model_name = 'Tops_ResNet_blocks_3_model_epoch_%d ' % (params["load_epoch"])
         resnet, optimizer, lr_scheduler = load_model(model_name, resnet, optimizer, lr_scheduler)
