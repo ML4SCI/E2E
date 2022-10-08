@@ -1,0 +1,1 @@
+#### The following model is trained in two parts as training in single session on the TPU was difficult. Hence both stage-1 and stage-2 were trained using trainer_stage1.py and trainer_stage2.py. The model checkpoint was saved after the trainer_stage1.py completed and was used by trainer_stage2.py.
