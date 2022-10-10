@@ -123,7 +123,7 @@ def runner(source, target):
     j = 0
 
     for i in tqdm(range(len(files))):
-        if i%multiple==0:
+        if i%MULTIPLE==0:
             j = j+1
             writer = tf.io.TFRecordWriter(os.path.join(target,f"Top_TFRecords_shard_{j}_of_{no_tfr}.tfrecords"))
         ab = generate(pq.ParquetFile(files[i]), writer, ab)
