@@ -2,6 +2,11 @@
 Vision Transformers for End-to-End Particle Reconstruction for the CMS Experiment</br>
 </h1>
 <div align="center">
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
+[![Open Source Love](https://firstcontributions.github.io/open-source-badges/badges/open-source-v2/open-source.svg)](https://github.com/firstcontributions/open-source-badges)
+[![Python](https://img.shields.io/pypi/pyversions/tensorflow.svg?style=plastic)](https://badge.fury.io/py/quple)
+
 Official Repository for Google Summer of Code 2022.</br>
 The main purpose of this project
 is to explore the use of Vision Transformers in the domain of particle physics.</br>.</div>
@@ -21,14 +26,16 @@ is to explore the use of Vision Transformers in the domain of particle physics.<
   * [Inference](#inference)
 - [Notebooks and Docs](#notebooks-and-docs)
 - [References](#references)
+- [Acknowledgement](#acknowledgement)
 - [Contributing and Reporting](#contributing-and-reporting)
 
 
 ## Installation
 
 ```shell
-git clone https://github.com/dc250601/GSOC.git
-cd GSOC
+!git clone https://github.com/dc250601/GSOC.git
+%mv GSOC Transformers
+%cd Transformers
 ```
 ## Abstract
 If the reader knows what they are dealing with, I would advise proceeding further.
@@ -75,8 +82,10 @@ We employ the following steps to ensure that the smaples or our datapoints are p
 Although the pre-processing is same for both the datasets but the input pipelines are vastly difference due to the training environment and computational challenges.
 
 The following tutorials will help the reader to generate the processed data for training.
-* Quark-Gluon(.png type dataset)
-* Boosted Top-Quark(TFRecord dataset)
+- Quark-Gluon(.png type dataset)
+  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1baX8Xk1vY6sD9_RaTSLwRq_lHZEHeS60?usp=sharing)
+- Boosted Top-Quark(TFRecord dataset)
+  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1TuF7G06Tx9GpR4Sbou8hsSj9lXYPSCgk?usp=sharing)
 
 ## Training
 The Quark Gluon models are trained on a 2080Ti using Pytorch and the input data is in form of .png . While for the Top-Quark dataset we have used TPU-V3s for training. The models for Top-Quark dataset is written in Tensorflow and the input data is in form of TFRecords. The following diagrams best describe the input pipelines for both the types of datasets.
@@ -138,10 +147,14 @@ F--Train for 30-50 epochs--> G[Trained Hybrid EffSwin]
 end
 ```
 The following Tutorial will help the reader to Train the models if they want
-* Tutorial to train CoAt-Net(Torch-GPU)
-* Tutorial to train CoAt-Net(Tensorflow-TPU)
-* Tutorial to train Hybrid EffSwin(Torch-GPU)
-* Tutorial to train Hybrid EFFSwin(Tensorrflow-TPU)
+- Tutorial to train CoAt-Net(Torch-GPU)
+  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xqHt1HvcpmrKyQDm5Dh4VYAdA8AiLyBN?usp=sharing)
+- Tutorial to train CoAt-Net(Tensorflow-TPU)
+  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/156iFYun9HkdOHABVKDYiZ0lT5HmBAcpW?usp=sharing)
+- Tutorial to train Hybrid EffSwin(Torch-GPU)
+  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1XSIBSoA-Kc5fm4y_ixcXT1m4oAA2VA6T?usp=sharing)
+- Tutorial to train Hybrid EFFSwin(Tensorrflow-TPU)
+  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1nuRAeiFltoWtVIPZN8JWJmEUI9GqnWVj?usp=sharing)
 
 ## Results
 
@@ -155,13 +168,23 @@ We get the following results. All scores are ROC-AUC scores
 
 ### Inference
 All the model weights are saved and stored in the following Google Drive
-* Google Drive Link
-For inference or use the following tutuorial can be followed -
-* Pytorch Inference(Quark-Gluon)
-* Tensorflow Inference(Top-Quark)
+* [Google Drive Link](https://drive.google.com/drive/folders/1cyQhZ_UcdVrHoB1LEB97PHRcd4uqls9h?usp=sharing)
 
 ## Notebooks and Docs
-Work to be done...
+All the relevant notebooks are listed below
+- Tutorial for Dataset creation Quark-Gluon(.png type dataset)
+  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1baX8Xk1vY6sD9_RaTSLwRq_lHZEHeS60?usp=sharing)
+- Tutorial for Dataset creation Boosted Top-Quark(TFRecord dataset)
+  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1TuF7G06Tx9GpR4Sbou8hsSj9lXYPSCgk?usp=sharing)
+- Tutorial to train CoAt-Net(Torch-GPU)
+  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xqHt1HvcpmrKyQDm5Dh4VYAdA8AiLyBN?usp=sharing)
+- Tutorial to train CoAt-Net(Tensorflow-TPU)
+  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/156iFYun9HkdOHABVKDYiZ0lT5HmBAcpW?usp=sharing)
+- Tutorial to train Hybrid EffSwin(Torch-GPU)
+  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1XSIBSoA-Kc5fm4y_ixcXT1m4oAA2VA6T?usp=sharing)
+- Tutorial to train Hybrid EFFSwin(Tensorrflow-TPU)
+  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1nuRAeiFltoWtVIPZN8JWJmEUI9GqnWVj?usp=sharing)
+
 
 ## References
 * [End-to-End Jet Classification of Quarks and Gluons with the CMS Open Data](https://arxiv.org/abs/1902.08276)
@@ -172,6 +195,8 @@ Work to be done...
 * [MaxViT: Multi-Axis Vision Transformer](https://arxiv.org/abs/2204.01697)
 * [DaViT: Dual Attention Vision Transformers](https://arxiv.org/abs/2204.03645)
 * [EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks](https://arxiv.org/abs/1905.11946)
+## Acknowledgement
+A big thanks to Dr Sergei Gleyzer, for his guidance and support during the entire project period. Also special thanks to the entire ML4Sci community for their combined support and the meaningful discussions.
 
 ## Contributing and Reporting
 The above package is written keeping a research oriented mindset. Further interest in this field is very appreciated. To contribute to this repository feel free to make a pull request. If there are any bugs please feel free to raise an issue.
