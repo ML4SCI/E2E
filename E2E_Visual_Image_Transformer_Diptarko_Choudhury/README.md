@@ -5,7 +5,7 @@ Vision Transformers for End-to-End Particle Reconstruction for the CMS Experimen
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
 [![Open Source Love](https://firstcontributions.github.io/open-source-badges/badges/open-source-v2/open-source.svg)](https://github.com/firstcontributions/open-source-badges)
-[![Python](https://img.shields.io/pypi/pyversions/tensorflow.svg?style=plastic)](https://badge.fury.io/py/quple)
+
 
 Official Repository for Google Summer of Code 2022.</br>
 The main purpose of this project
