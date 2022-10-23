@@ -1,0 +1,14 @@
+pandas
+numpy
+pyarrow
+tqdm
+seaborn
+wandb
+torch
+torchvision
+torch-scatter -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
+torch-sparse -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
+torch-cluster -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
+torch-spline-conv -f https://data.pyg.org/whl/torch-1.12.0+cu102.html
+torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cu102.html 
+performer-pytorch
