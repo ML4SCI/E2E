@@ -134,7 +134,7 @@ You can also run the code in jupyter notebook in [E2E_Mass_Regression.ipynb](htt
 ## Roadmap
 
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
+See the [open issues]([https://github.com/ML4SCI/E2E/issues) for a list of proposed features (and known issues).
 
 
 
@@ -161,7 +161,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [Anis Ismail](https://linkedin.com/in/anisdimail) - anis[dot]ismail[at]lau[dot]edu
+[Anis Ismail](https://linkedin.com/in/anisdimail) - anisismail09[at]gmail[dot]com
 
 Project Link: [https://github.com/ML4SCI/E2E/tree/main/E2E_Regression_Anis_Ismail](https://github.com/ML4SCI/E2E/tree/main/E2E_Regression_Anis_Ismail)
 
