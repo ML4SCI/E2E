@@ -1,3 +1,6 @@
 [submodule "E2E_GNN_CMS_Anthony_Song"]
 	path = E2E_GNN_CMS_Anthony_Song
 	url = https://github.com/AnthonySong98/GNN_CMS.git
+[submodule "E2E_Visual_Image_Transformer_Ka_Wa_Ho"]
+	path = E2E_Visual_Image_Transformer_Ka_Wa_Ho
+	url = git@github.com:kawaho/ViT_E2E.git
