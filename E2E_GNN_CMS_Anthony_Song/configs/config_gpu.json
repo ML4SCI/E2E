@@ -1,0 +1,212 @@
+{   
+    "name": "graph_regression",
+    "n_gpu": 1,
+
+    "arch": {
+        "type": "GNNModel",
+        "args": {}
+    },
+
+    "preprocessor":{
+        "type": "TopGunPreprocessor",
+        "args":{
+            "use": true,
+            "data_dir": "data/top_gun",
+            "num_files":7,
+            "test_ratio":0.2,
+            "val_ratio":0.2,
+            "transform_flags":{
+                "LapPE": false,                                                       
+                "LapPEnorm": "sym",                                                                            
+                "LapPEmax_freq": 10,                                                                           
+                "LapPEeig_norm": "L2",                                                                         
+                "RWSE": false,          
+                "RWSEkernel_times": [2, 3, 5, 7, 10]
+            },
+            "mode": "regression",
+            "scale_histogram":true,
+            "predict_bins":false,
+            "min_mass":0.0,
+            "max_mass":1.0,
+            "num_bins":10,
+            "point_fn":"total",
+            "use_pe":false,
+            "num_pe_scales":10,
+            "min_threshold":1e-3,
+            "output_mean_scaling":false,
+            "output_mean_value":293.2899,
+            "output_norm_scaling":false,
+            "output_norm_value":119.904,
+            "construction": "knn",
+            "k": 20
+        }
+    },
+
+    "data_loader": {
+        "type": "TopGunDataLoader",
+        "args":{
+            "data_dir": "data/top_gun/",
+            "batch_size": 128,
+            "shuffle": true,
+            "validation_split": 0.2,
+            "num_workers": 2,
+            "train_batch_size": 16,
+            "val_batch_size": 16,
+            "test_batch_size": 16,
+            "multi_gpu": false
+        }
+    },
+
+    "model_loader":{
+        "type":"GNNModelLoader",
+        "args":{
+            "device":"cuda",
+            "model":"gps",
+            "edge_feat":"R",
+            "point_fn": "total",
+            "multi_gpu": false,
+            "mode": "regression",
+            "pretrained": false,
+            "use_pe": false,
+            "num_pe_scales": 10,  
+            "predict_bins":false,
+            "num_bins":10,
+            "LapPE": false,                                                       
+            "LapPEnorm": "sym",                                                                            
+            "LapPEmax_freq": 10,                                                                           
+            "LapPEeig_norm": "L2",                                                                         
+            "RWSE": false,          
+            "RWSEkernel_times": [2, 3, 5, 7, 10],
+            "gps_mpnn_type": "gatedgcn",                                                                         
+            "gps_global_type": "performer",                                                                     
+            "gps_num_heads": 4,                                                                            
+            "gps_dim_h":128,                                                                               
+            "num_gps_layers": 5
+        }
+    },
+
+    "optimizer": {
+        "type": "Adam",
+        "args":{
+            "lr": 0.001,
+            "weight_decay": 0,
+            "amsgrad": true
+        }
+    },
+
+    "loss_loader": {
+        "type": "LossLoader",
+        "args":{
+            "criterion_type":"mse",
+            "criterion_beta": 20,
+            "predict_bins":false
+        }
+    },
+
+    "metric_loader": {
+        "type": "MetricLoader",
+        "args":{
+        }
+    },
+
+    "metrics": [
+        "accuracy", "top_k_acc"
+    ],
+
+    "optimizer_loader":{
+        "type": "OptimizerLoader",
+        "args":{
+            "optim":"adamw",
+            "lr": 5e-4,
+            "sched_type": "ca_wm",                                                                            
+            "lr_step": 5,                                                                                  
+            "lr_gamma": 0.1,
+            "min_lr": 1e-7,                                                                                
+            "T_0": 5
+        }
+    },
+
+    "lr_scheduler": {
+        "type": "StepLR",
+        "args": {
+            "step_size": 50,
+            "gamma": 0.1
+        }
+    },
+
+    "trainer": {
+        "type": "GNNTrainer",
+        "args":{
+            "num_epochs": 50, 
+            "mode": "regression",
+            "train_batch_size": 16, 
+            "val_batch_size": 16,
+            "device": "cuda", 
+            "multi_gpu": false,                                                                      
+            "output_mean_scaling": false,                                                    
+            "output_mean_value": 293.2899,                                                                 
+            "output_norm_scaling": false,                                                    
+            "output_norm_value": 119.904,                                                                                                                                           
+            "scale_histogram": true,                                                        
+            "predict_bins": false,                                                                                                                                    
+            "debug": false
+        },
+        "epochs": 5,
+        "save_dir": "saved/",
+        "save_period": 1,
+        "verbosity": 2,
+        "monitor": "min val_loss",
+        "early_stop": 10,
+        "tensorboard": true
+    },
+
+    "num_epochs": 50,                                                                               
+    "device": "cuda",                                                                                                                                                        
+    "save_path": "./ckpt",                                                                         
+    "data_dir": "data/top_gun",             
+    "train_batch_size": 16,                                                                        
+    "val_batch_size": 16,                                                                          
+    "test_batch_size": 16,                                                                         
+    "num_files": 7,                                                                                
+    "val_ratio": 0.2,                                                                              
+    "test_ratio": 0.2,                                                                             
+    "pretrained": false,                                                             
+    "lr": 5e-4,                                                                            
+    "lr_step": 5,                                                                                  
+    "lr_gamma": 0.1,                                                                               
+    "criterion_type": "mse",                                                                       
+    "criterion_beta": 20,                                                                          
+    "use_pe": false,                                                                 
+    "num_pe_scales": 10,                                                                            
+    "min_threshold": 1e-3,                                                                        
+    "output_mean_scaling": false,                                                    
+    "output_mean_value": 293.2899,                                                                 
+    "output_norm_scaling": false,                                                   
+    "output_norm_value": 119.904,                                                                 
+    "model": "gps",                                                                               
+    "point_fn": "total",                                                                          
+    "plot": false,                                                                  
+    "edge_feat": "R",                                                                           
+    "scale_histogram": true,                                                        
+    "predict_bins": false,                                                        
+    "min_mass": 0.0,                                                                               
+    "max_mass": 1.0,                                                                               
+    "num_bins": 10,                                                                                
+    "debug": false,
+    "sched_type": "ca_wm",                                                                           
+    "min_lr": 1e-7,                                                                                
+    "T_0": 5,                                                                                      
+    "optim": "adamw",                                                                              
+    "LapPE": false,                                                       
+    "LapPEnorm": "sym",                                                                            
+    "LapPEmax_freq": 10,                                                                           
+    "LapPEeig_norm": "L2",                                                                         
+    "RWSE": false,                                                                                                   
+    "save_data": false,                                                        
+    "gps_mpnn_type": "gatedgcn",                                                                         
+    "gps_global_type": "performer",                                                                     
+    "gps_num_heads": 4,                                                                            
+    "gps_dim_h":128,                                                                               
+    "num_gps_layers": 5,                                                                           
+    "multi_gpu": false
+}
