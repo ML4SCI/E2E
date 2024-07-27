@@ -15,3 +15,11 @@ To linear probe ViT-MAE:
 ```bash
 python3 linearprobe.py -r <runname> -w <weights_file>
 ```
+
+
+To create conda environment:
+```
+module load python
+conda create --n lokesh 
+```
+
