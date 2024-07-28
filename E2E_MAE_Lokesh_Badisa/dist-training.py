@@ -1,17 +1,19 @@
 #Torch imports
 import torch
 from torch import nn
+from einops import rearrange    
 from torch.utils.data import DataLoader
 from torchvision import transforms
 from model import ViTMAE
 from timm.optim.optim_factory import param_groups_weight_decay
 
 # Miscellanous imports
+import time
 import mlflow
 from pathlib import Path   
 from argparse import ArgumentParser 
 import configs.model_cfg as cfg
-from tqdm import tqdm   
+from tqdm import tqdm, trange
 from utils.optim import *
 from utils.misc import *
 from utils.dataset import prepare_dataloader
@@ -104,7 +106,7 @@ class Trainer:
     ) -> None:
         self.local_rank = int(os.environ['SLURM_LOCALID'])
         self.global_rank = int(os.environ["SLURM_PROCID"])  
-        self.model = model.to(self.local_rank)  # equivalent to `output_device` in DDP
+        self.model = model.to(self.local_rank)  
         self.train_dataloader = train_dataloader
         self.valid_dataloader = valid_dataloader
         self.loss_scaler = loss_scaler  
@@ -115,13 +117,15 @@ class Trainer:
         self.global_min_loss = float("inf")
         self.transform = get_transform(args)
         
-        if self.local_rank == 0:
+        if self.global_rank == 0:
             Path(self.base_dir).mkdir(parents=True, exist_ok=True)
             mlflow.set_experiment('Pretraining')
             mlflow.start_run(run_name=args.runname)
             mlflow.log_params(vars(args))   
 
-        self.model = DDP(self.model, device_ids=[self.local_rank])
+        
+
+        self.model = DDP(self.model, device_ids=[self.local_rank], output_device=self.local_rank)
 
         param_groups = param_groups_weight_decay(self.model.module, args.weight_decay)
         if args.optim.lower() != 'sgd':
@@ -132,6 +136,14 @@ class Trainer:
         if Path(f"{self.base_dir}/snapshot.ckpt").exists():
             print("Loading snapshot")   
             self._load_snapshot()
+
+    def _extra_transform(self,data):
+        min = torch.min(data.view(data.size(0),-1), dim=1)[0]
+        max = torch.max(data.view(data.size(0),-1), dim=1)[0]
+        data = (data - min.view(-1, 1, 1, 1)) / (max.view(-1, 1, 1, 1) - min.view(-1, 1, 1, 1)) 
+        data = rearrange(data, 'b h w c-> b c h w')
+        data = self.transform(data)
+        return data        
 
     def _load_snapshot(self):
         snapshot = torch.load(f'{self.base_dir}/snapshot.ckpt', map_location='cpu')
@@ -153,13 +165,18 @@ class Trainer:
         loss = 0.
         dsize = 0
         self.model.train()  
-        for batch, (data, _) in enumerate(tqdm(self.train_dataloader)):
+        iterator = tqdm(self.train_dataloader) if self.global_rank == 0 else self.train_dataloader
+        for batch, (data, _) in enumerate(iterator):
             if batch % self.accum_iter == 0:     
                 self.optimizer.zero_grad()           
                 adjust_learning_rate(self.optimizer, batch / len(self.train_dataloader) + epoch, self.args)
-            data = self.transform(data)
-            data = data.to(self.local_rank)
+            
+            data = data.to(self.global_rank)
+            data = self._extra_transform(data) 
+            begin = time.time()
             loss += self._run_batch(data, (batch+1)%self.accum_iter==0)
+            end = time.time()
+            print(f"Time taken for batch {batch} is {end-begin}s")
             dsize += data.shape[0]
         return loss, dsize
 
@@ -180,25 +197,27 @@ class Trainer:
         print(f"Epoch {epoch} | Training snapshot saved at {self.base_dir}/snapshot.ckpt")
 
     def train(self, max_epochs: int):
-        with tqdm(range(self.epochs_run, max_epochs), desc="Epochs") as pbar:
-            for epoch in range(self.epochs_run, max_epochs):
-                print(epoch)
-                loss, dsize = self._run_epoch(epoch)
+        if self.global_rank == 0:
+            pbar = trange(self.epochs_run, max_epochs)
 
-                total_loss_tensor = torch.tensor(loss).to(self.local_rank)
-                total_dsize_tensor = torch.tensor(dsize).to(self.local_rank)
-                dist.reduce(total_loss_tensor, dst=0, op=dist.ReduceOp.SUM)
-                dist.reduce(total_dsize_tensor, dst=0, op=dist.ReduceOp.SUM)
+        for epoch in range(self.epochs_run, max_epochs):
+            
+            loss, dsize = self._run_epoch(epoch)
 
-                if self.local_rank == 0:
-                    average_loss = total_loss_tensor.item() / total_dsize_tensor.item()
-                    self._save_snapshot(epoch)
-                    self._log(epoch, average_loss)
-                    pbar.update(1)
-            if self.local_rank == 0:    
-                torch.save(self.model.module.state_dict(), f"{self.base_dir}/last.pt")
-                Path(f"{self.base_dir}/snapshot.ckpt").unlink()
-                mlflow.end_run()
+            total_loss_tensor = torch.tensor(loss).to(self.global_rank)
+            total_dsize_tensor = torch.tensor(dsize).to(self.global_rank)
+            dist.reduce(total_loss_tensor, dst=0, op=dist.ReduceOp.SUM)
+            dist.reduce(total_dsize_tensor, dst=0, op=dist.ReduceOp.SUM)
+
+            if self.global_rank == 0:
+                average_loss = total_loss_tensor.item() / total_dsize_tensor.item()
+                self._save_snapshot(epoch)
+                self._log(epoch, average_loss)
+                pbar.update(1)
+        if self.global_rank == 0:    
+            torch.save(self.model.module.state_dict(), f"{self.base_dir}/last.pt")
+            Path(f"{self.base_dir}/snapshot.ckpt").unlink()
+            mlflow.end_run()
 
 
 def load_train_objs(args):

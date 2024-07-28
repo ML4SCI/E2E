@@ -46,7 +46,10 @@ sync_file = _get_sync_file()
 def ddp_setup():
     WORLD_SIZE = int(os.environ['SLURM_NTASKS'])  # number of nodes
     GLOBAL_RANK = int(os.environ['SLURM_PROCID'])
+    LOCAL_RANK = int(os.environ['SLURM_LOCALID'])
     init_process_group(backend="nccl", world_size=WORLD_SIZE, rank=GLOBAL_RANK, init_method=sync_file)
+    # torch.cuda.set_device(LOCAL_RANK)
+
 
 def get_transform(args, mode):
     list_of_transforms = []
