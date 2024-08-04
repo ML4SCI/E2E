@@ -1,0 +1,195 @@
+Node IP: 128.55.65.141
+srun: Step created for StepId=28981680.1
+W0803 23:00:02.418000 140303493725056 torch/distributed/run.py:749] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+W0803 23:00:02.419000 140303493725056 torch/distributed/run.py:757] 
+W0803 23:00:02.419000 140303493725056 torch/distributed/run.py:757] *****************************************
+W0803 23:00:02.419000 140303493725056 torch/distributed/run.py:757] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0803 23:00:02.419000 140303493725056 torch/distributed/run.py:757] *****************************************
+I0803 23:00:02.419000 140303493725056 torch/distributed/launcher/api.py:188] Starting elastic_operator with launch configs:
+I0803 23:00:02.419000 140303493725056 torch/distributed/launcher/api.py:188]   entrypoint       : 128.55.65.141:29500
+I0803 23:00:02.419000 140303493725056 torch/distributed/launcher/api.py:188]   min_nodes        : 4
+I0803 23:00:02.419000 140303493725056 torch/distributed/launcher/api.py:188]   max_nodes        : 4
+I0803 23:00:02.419000 140303493725056 torch/distributed/launcher/api.py:188]   nproc_per_node   : 4
+I0803 23:00:02.419000 140303493725056 torch/distributed/launcher/api.py:188]   run_id           : 17742
+I0803 23:00:02.419000 140303493725056 torch/distributed/launcher/api.py:188]   rdzv_backend     : c10d--rdzv_endpoint
+I0803 23:00:02.419000 140303493725056 torch/distributed/launcher/api.py:188]   rdzv_endpoint    : 
+I0803 23:00:02.419000 140303493725056 torch/distributed/launcher/api.py:188]   rdzv_configs     : {'timeout': 900}
+I0803 23:00:02.419000 140303493725056 torch/distributed/launcher/api.py:188]   max_restarts     : 0
+I0803 23:00:02.419000 140303493725056 torch/distributed/launcher/api.py:188]   monitor_interval : 5
+I0803 23:00:02.419000 140303493725056 torch/distributed/launcher/api.py:188]   log_dir          : /tmp/torchelastic_nd8xvzjr
+I0803 23:00:02.419000 140303493725056 torch/distributed/launcher/api.py:188]   metrics_cfg      : {}
+I0803 23:00:02.419000 140303493725056 torch/distributed/launcher/api.py:188] 
+Traceback (most recent call last):
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/rendezvous/api.py", line 256, in create_handler
+    creator = self._registry[params.backend]
+KeyError: 'c10d--rdzv_endpoint'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 235, in launch_agent
+    rdzv_handler=rdzv_registry.get_rendezvous_handler(rdzv_parameters),
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/rendezvous/registry.py", line 66, in get_rendezvous_handler
+    return handler_registry.create_handler(params)
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/rendezvous/api.py", line 258, in create_handler
+    raise ValueError(
+ValueError: The rendezvous backend 'c10d--rdzv_endpoint' is not registered. Did you forget to call `register`?
+W0803 23:00:02.619000 140391161203584 torch/distributed/run.py:749] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+W0803 23:00:02.619000 140391161203584 torch/distributed/run.py:757] 
+W0803 23:00:02.619000 140391161203584 torch/distributed/run.py:757] *****************************************
+W0803 23:00:02.619000 140391161203584 torch/distributed/run.py:757] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0803 23:00:02.619000 140391161203584 torch/distributed/run.py:757] *****************************************
+I0803 23:00:02.619000 140391161203584 torch/distributed/launcher/api.py:188] Starting elastic_operator with launch configs:
+I0803 23:00:02.619000 140391161203584 torch/distributed/launcher/api.py:188]   entrypoint       : 128.55.65.141:29500
+I0803 23:00:02.619000 140391161203584 torch/distributed/launcher/api.py:188]   min_nodes        : 4
+I0803 23:00:02.619000 140391161203584 torch/distributed/launcher/api.py:188]   max_nodes        : 4
+I0803 23:00:02.619000 140391161203584 torch/distributed/launcher/api.py:188]   nproc_per_node   : 4
+I0803 23:00:02.619000 140391161203584 torch/distributed/launcher/api.py:188]   run_id           : 17742
+I0803 23:00:02.619000 140391161203584 torch/distributed/launcher/api.py:188]   rdzv_backend     : c10d--rdzv_endpoint
+I0803 23:00:02.619000 140391161203584 torch/distributed/launcher/api.py:188]   rdzv_endpoint    : 
+I0803 23:00:02.619000 140391161203584 torch/distributed/launcher/api.py:188]   rdzv_configs     : {'timeout': 900}
+I0803 23:00:02.619000 140391161203584 torch/distributed/launcher/api.py:188]   max_restarts     : 0
+I0803 23:00:02.619000 140391161203584 torch/distributed/launcher/api.py:188]   monitor_interval : 5
+I0803 23:00:02.619000 140391161203584 torch/distributed/launcher/api.py:188]   log_dir          : /tmp/torchelastic_j6zdzrjb
+I0803 23:00:02.619000 140391161203584 torch/distributed/launcher/api.py:188]   metrics_cfg      : {}
+I0803 23:00:02.619000 140391161203584 torch/distributed/launcher/api.py:188] 
+Traceback (most recent call last):
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/rendezvous/api.py", line 256, in create_handler
+    creator = self._registry[params.backend]
+KeyError: 'c10d--rdzv_endpoint'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 235, in launch_agent
+    rdzv_handler=rdzv_registry.get_rendezvous_handler(rdzv_parameters),
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/rendezvous/registry.py", line 66, in get_rendezvous_handler
+    return handler_registry.create_handler(params)
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/rendezvous/api.py", line 258, in create_handler
+    raise ValueError(
+ValueError: The rendezvous backend 'c10d--rdzv_endpoint' is not registered. Did you forget to call `register`?
+W0803 23:00:02.956000 140169955773312 torch/distributed/run.py:749] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+W0803 23:00:02.956000 140169955773312 torch/distributed/run.py:757] 
+W0803 23:00:02.956000 140169955773312 torch/distributed/run.py:757] *****************************************
+W0803 23:00:02.956000 140169955773312 torch/distributed/run.py:757] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0803 23:00:02.956000 140169955773312 torch/distributed/run.py:757] *****************************************
+I0803 23:00:02.956000 140169955773312 torch/distributed/launcher/api.py:188] Starting elastic_operator with launch configs:
+I0803 23:00:02.956000 140169955773312 torch/distributed/launcher/api.py:188]   entrypoint       : 128.55.65.141:29500
+I0803 23:00:02.956000 140169955773312 torch/distributed/launcher/api.py:188]   min_nodes        : 4
+I0803 23:00:02.956000 140169955773312 torch/distributed/launcher/api.py:188]   max_nodes        : 4
+I0803 23:00:02.956000 140169955773312 torch/distributed/launcher/api.py:188]   nproc_per_node   : 4
+I0803 23:00:02.956000 140169955773312 torch/distributed/launcher/api.py:188]   run_id           : 17742
+I0803 23:00:02.956000 140169955773312 torch/distributed/launcher/api.py:188]   rdzv_backend     : c10d--rdzv_endpoint
+I0803 23:00:02.956000 140169955773312 torch/distributed/launcher/api.py:188]   rdzv_endpoint    : 
+I0803 23:00:02.956000 140169955773312 torch/distributed/launcher/api.py:188]   rdzv_configs     : {'timeout': 900}
+I0803 23:00:02.956000 140169955773312 torch/distributed/launcher/api.py:188]   max_restarts     : 0
+I0803 23:00:02.956000 140169955773312 torch/distributed/launcher/api.py:188]   monitor_interval : 5
+I0803 23:00:02.956000 140169955773312 torch/distributed/launcher/api.py:188]   log_dir          : /tmp/torchelastic_q_0c39rw
+I0803 23:00:02.956000 140169955773312 torch/distributed/launcher/api.py:188]   metrics_cfg      : {}
+I0803 23:00:02.956000 140169955773312 torch/distributed/launcher/api.py:188] 
+Traceback (most recent call last):
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/rendezvous/api.py", line 256, in create_handler
+    creator = self._registry[params.backend]
+KeyError: 'c10d--rdzv_endpoint'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 235, in launch_agent
+srun: error: nid001729: task 0: Exited with exit code 1
+srun: Terminating StepId=28981680.1
+    rdzv_handler=rdzv_registry.get_rendezvous_handler(rdzv_parameters),
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/rendezvous/registry.py", line 66, in get_rendezvous_handler
+    return handler_registry.create_handler(params)
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/rendezvous/api.py", line 258, in create_handler
+    raise ValueError(
+ValueError: The rendezvous backend 'c10d--rdzv_endpoint' is not registered. Did you forget to call `register`?
+W0803 23:00:03.080000 139837045738368 torch/distributed/run.py:749] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+W0803 23:00:03.080000 139837045738368 torch/distributed/run.py:757] 
+W0803 23:00:03.080000 139837045738368 torch/distributed/run.py:757] *****************************************
+W0803 23:00:03.080000 139837045738368 torch/distributed/run.py:757] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0803 23:00:03.080000 139837045738368 torch/distributed/run.py:757] *****************************************
+I0803 23:00:03.081000 139837045738368 torch/distributed/launcher/api.py:188] Starting elastic_operator with launch configs:
+I0803 23:00:03.081000 139837045738368 torch/distributed/launcher/api.py:188]   entrypoint       : 128.55.65.141:29500
+I0803 23:00:03.081000 139837045738368 torch/distributed/launcher/api.py:188]   min_nodes        : 4
+I0803 23:00:03.081000 139837045738368 torch/distributed/launcher/api.py:188]   max_nodes        : 4
+I0803 23:00:03.081000 139837045738368 torch/distributed/launcher/api.py:188]   nproc_per_node   : 4
+I0803 23:00:03.081000 139837045738368 torch/distributed/launcher/api.py:188]   run_id           : 17742
+I0803 23:00:03.081000 139837045738368 torch/distributed/launcher/api.py:188]   rdzv_backend     : c10d--rdzv_endpoint
+I0803 23:00:03.081000 139837045738368 torch/distributed/launcher/api.py:188]   rdzv_endpoint    : 
+I0803 23:00:03.081000 139837045738368 torch/distributed/launcher/api.py:188]   rdzv_configs     : {'timeout': 900}
+I0803 23:00:03.081000 139837045738368 torch/distributed/launcher/api.py:188]   max_restarts     : 0
+I0803 23:00:03.081000 139837045738368 torch/distributed/launcher/api.py:188]   monitor_interval : 5
+I0803 23:00:03.081000 139837045738368 torch/distributed/launcher/api.py:188]   log_dir          : /tmp/torchelastic_qla9jrvh
+I0803 23:00:03.081000 139837045738368 torch/distributed/launcher/api.py:188]   metrics_cfg      : {}
+I0803 23:00:03.081000 139837045738368 torch/distributed/launcher/api.py:188] 
+Traceback (most recent call last):
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/rendezvous/api.py", line 256, in create_handler
+    creator = self._registry[params.backend]
+KeyError: 'c10d--rdzv_endpoint'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 235, in launch_agent
+    rdzv_handler=rdzv_registry.get_rendezvous_handler(rdzv_parameters),
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/rendezvous/registry.py", line 66, in get_rendezvous_handler
+    return handler_registry.create_handler(params)
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/rendezvous/api.py", line 258, in create_handler
+    raise ValueError(
+ValueError: The rendezvous backend 'c10d--rdzv_endpoint' is not registered. Did you forget to call `register`?
+srun: error: nid002068: task 1: Exited with exit code 1
+srun: error: nid004069: task 3: Exited with exit code 1
+srun: error: nid003793: task 2: Exited with exit code 1
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/testing/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 7, in <module>
+    from model import ViTMAE
+  File "/global/u1/l/lokeshb/testing/E2E/E2E_MAE_Lokesh_Badisa/model.py", line 9, in <module>
+    from utils.misc import get_gauss
+  File "/global/u1/l/lokeshb/testing/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 44, in <module>
+    sync_file = _get_sync_file()
+  File "/global/u1/l/lokeshb/testing/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 41, in _get_sync_file
+    sync_file_dir, os.environ['SLURM_JOB_ID'], os.environ['SLURM_STEP_ID'])
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/os.py", line 680, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'SLURM_STEP_ID'
