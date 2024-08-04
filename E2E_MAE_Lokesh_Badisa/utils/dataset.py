@@ -189,7 +189,8 @@ def prepare_dataloader(data_dir: str, batch_size: int):
         pin_memory=True,
         shuffle=False,
         num_workers=4,
-        sampler=DistributedSampler(trainset, num_replicas=WORLD_SIZE, rank=GLOBAL_RANK)
+        # sampler=DistributedSampler(trainset, num_replicas=WORLD_SIZE, rank=GLOBAL_RANK)
+        sampler = DistributedSampler(trainset)
     )
     val_loader = DataLoader(
         valset,
@@ -197,6 +198,7 @@ def prepare_dataloader(data_dir: str, batch_size: int):
         pin_memory=True,
         shuffle=False,
         num_workers=4,
-        sampler=DistributedSampler(valset, num_replicas=WORLD_SIZE, rank=GLOBAL_RANK, shuffle=False)
+        # sampler=DistributedSampler(valset, num_replicas=WORLD_SIZE, rank=GLOBAL_RANK, shuffle=False)
+        sampler = DistributedSampler(valset)
     )
     return train_loader, val_loader

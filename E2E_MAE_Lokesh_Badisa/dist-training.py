@@ -20,6 +20,7 @@ from utils.dataset import prepare_dataloader
 
 
 # Distributed training imports
+import torch.multiprocessing as mp
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.distributed import destroy_process_group, get_world_size
 import torch.distributed as dist    
@@ -102,11 +103,21 @@ class Trainer:
         train_dataloader: DataLoader,
         valid_dataloader: DataLoader,
         loss_scaler: torch.cuda.amp.GradScaler,
+        optimizer: torch.optim.Optimizer,   
         args: dict
     ) -> None:
-        self.local_rank = int(os.environ['SLURM_LOCALID'])
+        # self.local_rank = int(os.environ['SLURM_LOCALID'])
         self.global_rank = int(os.environ["SLURM_PROCID"])  
-        self.model = model.to(self.local_rank)  
+        
+        # self.model = model.to(self.local_rank)  
+        # self.model = DDP(self.model, device_ids=[self.local_rank])
+        
+        self.local_rank = int(os.environ['SLURM_LOCALID'])
+        self.model = model.to(self.local_rank)
+        self.model = DDP(self.model, device_ids=[self.local_rank])
+        
+        self.optimizer = optimizer
+        
         self.train_dataloader = train_dataloader
         self.valid_dataloader = valid_dataloader
         self.loss_scaler = loss_scaler  
@@ -125,13 +136,13 @@ class Trainer:
 
         
 
-        self.model = DDP(self.model, device_ids=[self.local_rank], output_device=self.local_rank)
+        # self.model = DDP(self.model)
 
-        param_groups = param_groups_weight_decay(self.model.module, args.weight_decay)
-        if args.optim.lower() != 'sgd':
-            self.optimizer = optimizers_map[args.optim.lower()](param_groups, lr=args.lr, betas=(0.9, 0.95), weight_decay=args.weight_decay)
-        else:
-            self.optimizer = optimizers_map[args.optim.lower()](param_groups, lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
+        # param_groups = param_groups_weight_decay(self.model.module, args.weight_decay)
+        # if args.optim.lower() != 'sgd':
+        #     self.optimizer = optimizers_map[args.optim.lower()](param_groups, lr=args.lr, betas=(0.9, 0.95), weight_decay=args.weight_decay)
+        # else:
+        #     self.optimizer = optimizers_map[args.optim.lower()](param_groups, lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
 
         if Path(f"{self.base_dir}/snapshot.ckpt").exists():
             print("Loading snapshot")   
@@ -209,12 +220,12 @@ class Trainer:
             dist.reduce(total_loss_tensor, dst=0, op=dist.ReduceOp.SUM)
             dist.reduce(total_dsize_tensor, dst=0, op=dist.ReduceOp.SUM)
 
-            if self.global_rank == 0:
+            if self.gpu_id == 0:
                 average_loss = total_loss_tensor.item() / total_dsize_tensor.item()
                 self._save_snapshot(epoch)
                 self._log(epoch, average_loss)
                 pbar.update(1)
-        if self.global_rank == 0:    
+        if self.gpu_id == 0:    
             torch.save(self.model.module.state_dict(), f"{self.base_dir}/last.pt")
             Path(f"{self.base_dir}/snapshot.ckpt").unlink()
             mlflow.end_run()
@@ -241,21 +252,29 @@ def load_train_objs(args):
                 list_of_layers.append(nn.Conv2d(in_channels=model.in_chans*k_factor, out_channels=args.encoder_embed_dim, kernel_size=1))
             model.patch_embed.proj = nn.Sequential(*list_of_layers)
     loss_scaler = NativeScaler()
-    return model, loss_scaler
+    param_groups = param_groups_weight_decay(model, args.weight_decay)
+    if args.optim.lower() != 'sgd':
+        optimizer = optimizers_map[args.optim.lower()](param_groups, lr=args.lr, betas=(0.9, 0.95), weight_decay=args.weight_decay)
+    else:
+        optimizer = optimizers_map[args.optim.lower()](param_groups, lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
+    return model, loss_scaler, optimizer
 
 
-def main():
-    args = get_args_parser()
+def main(args):
+    
     set_seed(args.seed)
     ddp_setup()
-    eff_batch_size = args.batch_size * get_world_size()
-    args.lr = args.blr * eff_batch_size / 256
-    model, loss_scaler = load_train_objs(args)
+    
+    model, loss_scaler, optimizer = load_train_objs(args)
     train_loader, val_loader = prepare_dataloader(args.data_dir, args.batch_size)
-    trainer = Trainer(model, train_loader, val_loader, loss_scaler, args)
+    trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
     trainer.train(args.epochs)
     destroy_process_group()
 
 
 if __name__ == "__main__":
-    main()
+    args = get_args_parser()
+    eff_batch_size = args.batch_size * get_world_size()
+    args.lr = args.blr * eff_batch_size / 256
+    world_size = torch.cuda.device_count()  
+    main(args)

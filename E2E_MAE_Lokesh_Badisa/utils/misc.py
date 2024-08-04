@@ -2,9 +2,9 @@ import numpy as np
 import torch
 import random
 import os
+from torch.distributed import init_process_group
 from pathlib import Path
 from torchvision import transforms
-from torch.distributed import init_process_group
 from timm.data.transforms_factory import create_transform
 
 QUARK_GLUON_MEAN = [0.00036276, 0.00050321, 0.00560932]
@@ -44,11 +44,10 @@ def _get_sync_file():
 sync_file = _get_sync_file()
 
 def ddp_setup():
-    WORLD_SIZE = int(os.environ['SLURM_NTASKS'])  # number of nodes
-    GLOBAL_RANK = int(os.environ['SLURM_PROCID'])
-    LOCAL_RANK = int(os.environ['SLURM_LOCALID'])
-    init_process_group(backend="nccl", world_size=WORLD_SIZE, rank=GLOBAL_RANK, init_method=sync_file)
-    # torch.cuda.set_device(LOCAL_RANK)
+    # WORLD_SIZE = int(os.environ['SLURM_NTASKS'])  # number of nodes
+    # GLOBAL_RANK = int(os.environ['SLURM_PROCID'])
+    # LOCAL_RANK = int(os.environ['SLURM_LOCALID'])
+    init_process_group(backend="nccl")
 
 
 def get_transform(args, mode):

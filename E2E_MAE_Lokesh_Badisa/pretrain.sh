@@ -6,23 +6,27 @@
 
 #SBATCH -A m4392
 #SBATCH -C gpu
-#SBATCH -q preempt
-#SBATCH -t 24:00:00
-#SBATCH -N 4
+#SBATCH -q debug
+#SBATCH -t 00:30:00
+#SBATCH -N 2
 #SBATCH --ntasks-per-node=1
 #SBATCH -c 4
-#SBATCH --mem=0
 #SBATCH --gpus-per-task=4
 #SBATCH --requeue
 #SBATCH --mem=60G
 
-# export FI_MR_CACHE_MONITOR=userfaultfd
-# export HDF5_USE_FILE_LOCKING=FALSE
-# export NCCL_NET_GDR_LEVEL=PHB
-# export SLURM_CPU_BIND="cores"
+nodes=( $( scontrol show hostnames $SLURM_JOB_NODELIST ) )
+nodes_array=($nodes)
+head_node=${nodes_array[0]}
+head_node_ip=$(srun --nodes=1 --ntasks=1 -w "$head_node" hostname --ip-address)
+
+echo Node IP: $head_node_ip
+export LOGLEVEL=INFO
 
 module load python
 conda activate lokesh    
 
-srun python3 dist-training.py --runname vit_base --blr 1.5e-4 --mask 0.75 --config base
-
+srun torchrun --nnodes 2 --nproc_per_node 4 \
+--rdzv_id $RANDOM --rdzv_backend c10d \
+--rdzv_endpoint $head_node_ip:29500 \ 
+python3 dist-training.py --runname vit_base --blr 1.5e-4 --mask 0.75 --config base

@@ -3,3 +3,5 @@
 *.pt
 *.zip
 *.rar
+mlruns/
+logs/
