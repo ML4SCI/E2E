@@ -274,6 +274,7 @@ def main(args):
 
 if __name__ == "__main__":
     args = get_args_parser()
+    ddp_setup()
     eff_batch_size = args.batch_size * get_world_size()
     args.lr = args.blr * eff_batch_size / 256
     world_size = torch.cuda.device_count()  

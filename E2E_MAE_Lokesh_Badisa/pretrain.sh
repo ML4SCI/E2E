@@ -20,13 +20,14 @@ nodes_array=($nodes)
 head_node=${nodes_array[0]}
 head_node_ip=$(srun --nodes=1 --ntasks=1 -w "$head_node" hostname --ip-address)
 
-echo Node IP: $head_node_ip
 export LOGLEVEL=INFO
+export HEAD_NODE_IP=$head_node_ip
+echo Node IP: $HEAD_NODE_IP
 
 module load python
 conda activate lokesh    
 
 srun torchrun --nnodes 2 --nproc_per_node 4 \
 --rdzv_id $RANDOM --rdzv_backend c10d \
---rdzv_endpoint $head_node_ip:29500 \ 
+--rdzv_endpoint $HEAD_NODE_IP:29500 \ 
 python3 dist-training.py --runname vit_base --blr 1.5e-4 --mask 0.75 --config base
