@@ -1,0 +1,53 @@
+WORLD_SIZE: 1, GLOBAL_RANK: 0
+Local Rank: 0
+  0%|          | 0/800 [00:00<?, ?it/s]
+  0%|          | 0/3102 [00:00<?, ?it/s][A  0%|          | 0/3102 [00:10<?, ?it/s]
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 278, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 270, in main
+[rank0]:     trainer.train(args.epochs)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 213, in train
+[rank0]:     loss, dsize = self._run_epoch(epoch)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 185, in _run_epoch
+[rank0]:     loss += self._run_batch(data, (batch+1)%self.accum_iter==0)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 167, in _run_batch
+[rank0]:     loss,_,_ = self.model(data,mask_ratio=float(self.args.mask_ratio))
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1593, in forward
+[rank0]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1411, in _run_ddp_forward
+[rank0]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/model.py", line 325, in forward
+[rank0]:     pred = self.forward_decoder(latent, ids_restore)  # [N, L, p*p*3]
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/model.py", line 294, in forward_decoder
+[rank0]:     x = blk(x)
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/model.py", line 81, in forward
+[rank0]:     x = x + self.drop_path2(self.ls2(self.mlp(self.norm2(x))))
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/timm/layers/mlp.py", line 43, in forward
+[rank0]:     x = self.act(x)
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/activation.py", line 696, in forward
+[rank0]:     return F.gelu(input, approximate=self.approximate)
+[rank0]: torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 626.00 MiB. GPU 
+  0%|          | 0/800 [00:10<?, ?it/s]
+srun: error: nid001109: task 0: Exited with exit code 1
+srun: Terminating StepId=29379202.0

@@ -33,23 +33,21 @@ def set_seed(seed):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 
-# def _get_sync_file():
-#         """Logic for naming sync file using slurm env variables"""
-#         sync_file_dir = '%s/pytorch-sync-files' % os.environ['SCRATCH']
-#         os.makedirs(sync_file_dir,exist_ok=True)
-#         sync_file = 'file://%s/pytorch_sync.%s.%s' % (
-#                 sync_file_dir, os.environ['SLURM_JOB_ID'], os.environ['SLURM_STEP_ID'])
-#         return sync_file
+def _get_sync_file():
+        """Logic for naming sync file using slurm env variables"""
+        sync_file_dir = '%s/pytorch-sync-files' % os.environ['SCRATCH']
+        os.makedirs(sync_file_dir,exist_ok=True)
+        sync_file = 'file://%s/pytorch_sync.%s.%s' % (
+                sync_file_dir, os.environ['SLURM_JOB_ID'], os.environ['SLURM_STEP_ID'])
+        return sync_file
 
 # sync_file = _get_sync_file()
 
 def ddp_setup():
-    WORLD_SIZE = int(os.environ['SLURM_NTASKS'])  # number of nodes
+    WORLD_SIZE = int(os.environ['SLURM_NTASKS']) 
     GLOBAL_RANK = int(os.environ['SLURM_PROCID'])
-    # LOCAL_RANK = int(os.environ['SLURM_LOCALID'])
-    os.environ['MASTER_ADDR'] = os.environ['HEAD_NODE_IP']
-    os.environ['MASTER_PORT'] = '29500'
-    init_process_group(backend="nccl",rank=GLOBAL_RANK,world_size=WORLD_SIZE)
+    print(f'WORLD_SIZE: {WORLD_SIZE}, GLOBAL_RANK: {GLOBAL_RANK}')
+    init_process_group(backend="nccl",init_method=sync_file,world_size=WORLD_SIZE,rank=GLOBAL_RANK)
 
 
 def get_transform(args, mode):

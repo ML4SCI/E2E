@@ -1,0 +1,2 @@
+FROM nersc/pytorch:ngc-24.05-v1
+RUN pip install mlflow timm tqdm h5py==3.10.0

@@ -36,7 +36,7 @@ def get_args_parser():
 
     # GPU Hyperparameters
     parser.add_argument('--epochs', type=int, default=800)
-    parser.add_argument('--batch_size', type=int, default=256)
+    parser.add_argument('--batch_size', type=int, default=64)
     parser.add_argument('--blr', type=float, default=1.5e-4)
     parser.add_argument('--lr', type=float)
     parser.add_argument('--min_lr', type=float, default=0.0)
@@ -106,15 +106,12 @@ class Trainer:
         optimizer: torch.optim.Optimizer,   
         args: dict
     ) -> None:
-        # self.local_rank = int(os.environ['SLURM_LOCALID'])
+        self.local_rank = int(os.environ['SLURM_LOCALID'])
         self.global_rank = int(os.environ["SLURM_PROCID"])  
         
-        # self.model = model.to(self.local_rank)  
-        # self.model = DDP(self.model, device_ids=[self.local_rank])
-        
-        self.local_rank = int(os.environ['SLURM_LOCALID'])
-        self.model = model.to(self.local_rank)
-        self.model = DDP(self.model, device_ids=[self.local_rank])
+        print(f"Local Rank: {self.local_rank}")
+        self.model = model.to(torch.cuda.current_device())
+        self.model = DDP(model, device_ids=[torch.cuda.current_device()])
         
         self.optimizer = optimizer
         
@@ -264,7 +261,9 @@ def main(args):
     
     set_seed(args.seed)
     ddp_setup()
-    
+    eff_batch_size = args.batch_size * get_world_size()
+    args.lr = args.blr * eff_batch_size / 256
+    # world_size = torch.cuda.device_count()
     model, loss_scaler, optimizer = load_train_objs(args)
     train_loader, val_loader = prepare_dataloader(args.data_dir, args.batch_size)
     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
@@ -273,9 +272,7 @@ def main(args):
 
 
 if __name__ == "__main__":
+    os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
     args = get_args_parser()
-    ddp_setup()
-    eff_batch_size = args.batch_size * get_world_size()
-    args.lr = args.blr * eff_batch_size / 256
-    world_size = torch.cuda.device_count()  
+      
     main(args)

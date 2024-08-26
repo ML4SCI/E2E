@@ -1,0 +1,9 @@
+FROM nersc/pytorch:ngc-24.05-v1
+
+RUN pip install mlflow
+
+podman-hpc build -t pytorch:ngc-24.05-v1 
+
+podman-hpc migrate nersc/pytorch:ngc-24.05-v1
+
+Replace srun with podman-hpc run
