@@ -37,17 +37,19 @@ def _get_sync_file():
         """Logic for naming sync file using slurm env variables"""
         sync_file_dir = '%s/pytorch-sync-files' % os.environ['SCRATCH']
         os.makedirs(sync_file_dir,exist_ok=True)
-        sync_file = 'file://%s/pytorch_sync.%s.%s' % (
-                sync_file_dir, os.environ['SLURM_JOB_ID'], os.environ['SLURM_STEP_ID'])
+        sync_file = 'file://%s/pytorch_sync.%s' % (
+                sync_file_dir, os.environ['SLURM_JOB_ID'])
         return sync_file
 
-# sync_file = _get_sync_file()
+
 
 def ddp_setup():
     WORLD_SIZE = int(os.environ['SLURM_NTASKS']) 
     GLOBAL_RANK = int(os.environ['SLURM_PROCID'])
     print(f'WORLD_SIZE: {WORLD_SIZE}, GLOBAL_RANK: {GLOBAL_RANK}')
-    init_process_group(backend="nccl",init_method=sync_file,world_size=WORLD_SIZE,rank=GLOBAL_RANK)
+    sync_file = _get_sync_file()
+    init_process_group(backend="nccl",init_method=sync_file,
+                       world_size=WORLD_SIZE,rank=GLOBAL_RANK)
 
 
 def get_transform(args, mode):

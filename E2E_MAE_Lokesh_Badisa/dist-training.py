@@ -265,8 +265,11 @@ def main(args):
     args.lr = args.blr * eff_batch_size / 256
     # world_size = torch.cuda.device_count()
     model, loss_scaler, optimizer = load_train_objs(args)
+    print("model initialized")
     train_loader, val_loader = prepare_dataloader(args.data_dir, args.batch_size)
+    print("Dataloaders created")
     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+    print("Training starts")
     trainer.train(args.epochs)
     destroy_process_group()
 

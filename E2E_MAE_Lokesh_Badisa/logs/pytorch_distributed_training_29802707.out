@@ -1,0 +1,173 @@
+time="2024-08-26T08:13:01-07:00" level=error msg="Failed to create temp directory for user: mkdir /tmp/containers-user-105785: file exists"
+
+=============
+== PyTorch ==
+=============
+
+=============
+== PyTorch ==
+
+=============
+== PyTorch ==
+=============
+=============
+
+=============
+== PyTorch ==
+=============
+
+NVIDIA Release 24.05 (build 91431255)
+PyTorch Version 2.4.0a0+07cecf4
+
+NVIDIA Release 24.05 (build 91431255)
+PyTorch Version 2.4.0a0+07cecf4
+
+NVIDIA Release 24.05 (build 91431255)
+PyTorch Version 2.4.0a0+07cecf4
+
+NVIDIA Release 24.05 (build 91431255)
+PyTorch Version 2.4.0a0+07cecf4
+Container image Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Container image Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Container image Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Container image Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+
+
+
+environ({'NPP_VERSION': '12.2.5.30', 'SHELL': '/bin/bash', 'NVIDIA_VISIBLE_DEVICES': 'all', 'DALI_BUILD': '14636516', 'CUSOLVER_VERSION': '11.6.1.9', 'CUBLAS_VERSION': '12.4.5.8', 'HOSTNAME': '11a4bd581552', 'NVIDIA_REQUIRE_CUDA': 'cuda>=9.0', 'CUFFT_VERSION': '11.2.1.3', 'CUDA_CACHE_DISABLE': '1', 'TENSORBOARD_PORT': '6006', 'TORCH_CUDA_ARCH_LIST': '5.2 6.0 6.1 7.0 7.2 7.5 8.0 8.6 8.7 9.0+PTX', 'NCCL_VERSION': '2.21.5', 'CUSPARSE_VERSION': '12.3.1.170', 'ENV': '/etc/shinit_v2', 'PWD': '/workspace', 'OPENUCX_VERSION': '1.17.0', 'NSIGHT_SYSTEMS_VERSION': '2024.2.1.106', 'NVIDIA_DRIVER_CAPABILITIES': 'compute,utility,video', 'POLYGRAPHY_VERSION': '0.49.10', 'UCC_CL_BASIC_TLS': '^sharp', 'TRT_VERSION': '10.0.1.6', 'NVIDIA_PRODUCT_NAME': 'PyTorch', 'container': 'podman', 'RDMACORE_VERSION': '39.0', 'NVIDIA_CPU_ONLY': '1', 'HOME': '/root', 'COCOAPI_VERSION': '2.0+nv0.8.0', 'CUDA_VERSION': '12.4.1.003', 'PYTORCH_VERSION': '2.4.0a0+07cecf4', 'CURAND_VERSION': '10.3.5.147', 'PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION': 'python', 'PYTORCH_BUILD_NUMBER': '0', 'PODMANHPC_MODULES_DIR': '/etc/podman_hpc/modules.d', 'USE_EXPERIMENTAL_CUDNN_V8_API': '1', 'CUTENSOR_VERSION': '2.0.1.2', 'PIP_DEFAULT_TIMEOUT': '100', 'NVFUSER_BUILD_VERSION': '0ff5802', 'HPCX_VERSION': '2.19', 'NVM_DIR': '/usr/local/nvm', 'TORCH_CUDNN_V8_API_ENABLED': '1', 'GDRCOPY_VERSION': '2.3.1-1', 'NVFUSER_VERSION': '0ff5802', 'OPENMPI_VERSION': '4.1.7', 'NVJPEG_VERSION': '12.3.1.117', 'LIBRARY_PATH': '/usr/local/cuda/lib64/stubs:', 'PYTHONIOENCODING': 'utf-8', 'SHLVL': '0', 'BASH_ENV': '/etc/bash.bashrc', 'CUDNN_VERSION': '9.1.0.70', 'NSIGHT_COMPUTE_VERSION': '2024.1.1.4', 'DALI_VERSION': '1.37.1', 'JUPYTER_PORT': '8888', 'PYTORCH_HOME': '/opt/pytorch/pytorch', 'LD_LIBRARY_PATH': '/usr/local/lib/python3.10/dist-packages/torch/lib:/usr/local/lib/python3.10/dist-packages/torch_tensorrt/lib:/usr/local/cuda/compat/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64', 'NVIDIA_BUILD_ID': '91431255', 'OMPI_MCA_coll_hcoll_enable': '0', 'OPAL_PREFIX': '/opt/hpcx/ompi', 'CUDA_DRIVER_VERSION': '550.54.15', 'LC_ALL': 'C.UTF-8', 'TRANSFORMER_ENGINE_VERSION': '1.6', 'PYTORCH_BUILD_VERSION': '2.4.0a0+07cecf4', '_CUDA_COMPAT_PATH': '/usr/local/cuda/compat', 'CUDA_HOME': '/usr/local/cuda', 'CUDA_MODULE_LOADING': 'LAZY', 'NVIDIA_REQUIRE_JETPACK_HOST_MOUNTS': '', 'PATH': '/usr/local/lib/python3.10/dist-packages/torch_tensorrt/bin:/usr/local/mpi/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ucx/bin:/opt/tensorrt/bin', 'MOFED_VERSION': '5.4-rdmacore39.0', 'NVIDIA_PYTORCH_VERSION': '24.05', 'TRTOSS_VERSION': '24.05', 'TORCH_ALLOW_TF32_CUBLAS_OVERRIDE': '1', 'CUDA_LAUNCH_BLOCKING': '1'})
+Traceback (most recent call last):
+  File "/workspace/dist-training.py", line 280, in <module>
+environ({'NPP_VERSION': '12.2.5.30', 'SHELL': '/bin/bash', 'NVIDIA_VISIBLE_DEVICES': 'all', 'DALI_BUILD': '14636516', 'CUSOLVER_VERSION': '11.6.1.9', 'CUBLAS_VERSION': '12.4.5.8', 'HOSTNAME': 'd49bed19941b', 'NVIDIA_REQUIRE_CUDA': 'cuda>=9.0', 'CUFFT_VERSION': '11.2.1.3', 'CUDA_CACHE_DISABLE': '1', 'TENSORBOARD_PORT': '6006', 'TORCH_CUDA_ARCH_LIST': '5.2 6.0 6.1 7.0 7.2 7.5 8.0 8.6 8.7 9.0+PTX', 'NCCL_VERSION': '2.21.5', 'CUSPARSE_VERSION': '12.3.1.170', 'ENV': '/etc/shinit_v2', 'PWD': '/workspace', 'OPENUCX_VERSION': '1.17.0', 'NSIGHT_SYSTEMS_VERSION': '2024.2.1.106', 'NVIDIA_DRIVER_CAPABILITIES': 'compute,utility,video', 'POLYGRAPHY_VERSION': '0.49.10', 'UCC_CL_BASIC_TLS': '^sharp', 'TRT_VERSION': '10.0.1.6', 'NVIDIA_PRODUCT_NAME': 'PyTorch', 'container': 'podman', 'RDMACORE_VERSION': '39.0', 'NVIDIA_CPU_ONLY': '1', 'HOME': '/root', 'COCOAPI_VERSION': '2.0+nv0.8.0', 'CUDA_VERSION': '12.4.1.003', 'PYTORCH_VERSION': '2.4.0a0+07cecf4', 'CURAND_VERSION': '10.3.5.147', 'PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION': 'python', 'PYTORCH_BUILD_NUMBER': '0', 'PODMANHPC_MODULES_DIR': '/etc/podman_hpc/modules.d', 'USE_EXPERIMENTAL_CUDNN_V8_API': '1', 'CUTENSOR_VERSION': '2.0.1.2', 'PIP_DEFAULT_TIMEOUT': '100', 'NVFUSER_BUILD_VERSION': '0ff5802', 'HPCX_VERSION': '2.19', 'TORCH_CUDNN_V8_API_ENABLED': '1', 'NVM_DIR': '/usr/local/nvm', 'GDRCOPY_VERSION': '2.3.1-1', 'NVFUSER_VERSION': '0ff5802', 'OPENMPI_VERSION': '4.1.7', 'NVJPEG_VERSION': '12.3.1.117', 'LIBRARY_PATH': '/usr/local/cuda/lib64/stubs:', 'PYTHONIOENCODING': 'utf-8', 'SHLVL': '0', 'BASH_ENV': '/etc/bash.bashrc', 'CUDNN_VERSION': '9.1.0.70', 'NSIGHT_COMPUTE_VERSION': '2024.1.1.4', 'DALI_VERSION': '1.37.1', 'JUPYTER_PORT': '8888', 'PYTORCH_HOME': '/opt/pytorch/pytorch', 'LD_LIBRARY_PATH': '/usr/local/lib/python3.10/dist-packages/torch/lib:/usr/local/lib/python3.10/dist-packages/torch_tensorrt/lib:/usr/local/cuda/compat/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64', 'NVIDIA_BUILD_ID': '91431255', 'OMPI_MCA_coll_hcoll_enable': '0', 'OPAL_PREFIX': '/opt/hpcx/ompi', 'CUDA_DRIVER_VERSION': '550.54.15', 'TRANSFORMER_ENGINE_VERSION': '1.6', 'LC_ALL': 'C.UTF-8', 'PYTORCH_BUILD_VERSION': '2.4.0a0+07cecf4', '_CUDA_COMPAT_PATH': '/usr/local/cuda/compat', 'CUDA_HOME': '/usr/local/cuda', 'CUDA_MODULE_LOADING': 'LAZY', 'NVIDIA_REQUIRE_JETPACK_HOST_MOUNTS': '', 'PATH': '/usr/local/lib/python3.10/dist-packages/torch_tensorrt/bin:/usr/local/mpi/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ucx/bin:/opt/tensorrt/bin', 'MOFED_VERSION': '5.4-rdmacore39.0', 'NVIDIA_PYTORCH_VERSION': '24.05', 'TRTOSS_VERSION': '24.05', 'TORCH_ALLOW_TF32_CUBLAS_OVERRIDE': '1', 'CUDA_LAUNCH_BLOCKING': '1'})
+Traceback (most recent call last):
+  File "/workspace/dist-training.py", line 280, in <module>
+    main(args)
+  File "/workspace/dist-training.py", line 263, in main
+    main(args)
+  File "/workspace/dist-training.py", line 263, in main
+    ddp_setup()
+  File "/workspace/utils/misc.py", line 47, in ddp_setup
+    ddp_setup()
+  File "/workspace/utils/misc.py", line 47, in ddp_setup
+    WORLD_SIZE = int(os.environ['SLURM_NTASKS']) 
+  File "/usr/lib/python3.10/os.py", line 680, in __getitem__
+    WORLD_SIZE = int(os.environ['SLURM_NTASKS']) 
+  File "/usr/lib/python3.10/os.py", line 680, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'SLURM_NTASKS'
+    raise KeyError(key) from None
+KeyError: 'SLURM_NTASKS'
+environ({'NPP_VERSION': '12.2.5.30', 'SHELL': '/bin/bash', 'NVIDIA_VISIBLE_DEVICES': 'all', 'DALI_BUILD': '14636516', 'CUSOLVER_VERSION': '11.6.1.9', 'CUBLAS_VERSION': '12.4.5.8', 'HOSTNAME': '34a86ad164f1', 'CUFFT_VERSION': '11.2.1.3', 'NVIDIA_REQUIRE_CUDA': 'cuda>=9.0', 'CUDA_CACHE_DISABLE': '1', 'TENSORBOARD_PORT': '6006', 'TORCH_CUDA_ARCH_LIST': '5.2 6.0 6.1 7.0 7.2 7.5 8.0 8.6 8.7 9.0+PTX', 'NCCL_VERSION': '2.21.5', 'CUSPARSE_VERSION': '12.3.1.170', 'ENV': '/etc/shinit_v2', 'PWD': '/workspace', 'OPENUCX_VERSION': '1.17.0', 'NSIGHT_SYSTEMS_VERSION': '2024.2.1.106', 'NVIDIA_DRIVER_CAPABILITIES': 'compute,utility,video', 'POLYGRAPHY_VERSION': '0.49.10', 'UCC_CL_BASIC_TLS': '^sharp', 'TRT_VERSION': '10.0.1.6', 'NVIDIA_PRODUCT_NAME': 'PyTorch', 'container': 'podman', 'RDMACORE_VERSION': '39.0', 'NVIDIA_CPU_ONLY': '1', 'HOME': '/root', 'COCOAPI_VERSION': '2.0+nv0.8.0', 'CUDA_VERSION': '12.4.1.003', 'PYTORCH_VERSION': '2.4.0a0+07cecf4', 'CURAND_VERSION': '10.3.5.147', 'PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION': 'python', 'PYTORCH_BUILD_NUMBER': '0', 'PODMANHPC_MODULES_DIR': '/etc/podman_hpc/modules.d', 'USE_EXPERIMENTAL_CUDNN_V8_API': '1', 'CUTENSOR_VERSION': '2.0.1.2', 'PIP_DEFAULT_TIMEOUT': '100', 'NVFUSER_BUILD_VERSION': '0ff5802', 'HPCX_VERSION': '2.19', 'TORCH_CUDNN_V8_API_ENABLED': '1', 'NVM_DIR': '/usr/local/nvm', 'GDRCOPY_VERSION': '2.3.1-1', 'NVFUSER_VERSION': '0ff5802', 'OPENMPI_VERSION': '4.1.7', 'NVJPEG_VERSION': '12.3.1.117', 'LIBRARY_PATH': '/usr/local/cuda/lib64/stubs:', 'PYTHONIOENCODING': 'utf-8', 'SHLVL': '0', 'BASH_ENV': '/etc/bash.bashrc', 'CUDNN_VERSION': '9.1.0.70', 'NSIGHT_COMPUTE_VERSION': '2024.1.1.4', 'DALI_VERSION': '1.37.1', 'JUPYTER_PORT': '8888', 'PYTORCH_HOME': '/opt/pytorch/pytorch', 'LD_LIBRARY_PATH': '/usr/local/lib/python3.10/dist-packages/torch/lib:/usr/local/lib/python3.10/dist-packages/torch_tensorrt/lib:/usr/local/cuda/compat/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64', 'NVIDIA_BUILD_ID': '91431255', 'OMPI_MCA_coll_hcoll_enable': '0', 'OPAL_PREFIX': '/opt/hpcx/ompi', 'CUDA_DRIVER_VERSION': '550.54.15', 'TRANSFORMER_ENGINE_VERSION': '1.6', 'LC_ALL': 'C.UTF-8', 'PYTORCH_BUILD_VERSION': '2.4.0a0+07cecf4', '_CUDA_COMPAT_PATH': '/usr/local/cuda/compat', 'CUDA_HOME': '/usr/local/cuda', 'CUDA_MODULE_LOADING': 'LAZY', 'NVIDIA_REQUIRE_JETPACK_HOST_MOUNTS': '', 'PATH': '/usr/local/lib/python3.10/dist-packages/torch_tensorrt/bin:/usr/local/mpi/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ucx/bin:/opt/tensorrt/bin', 'MOFED_VERSION': '5.4-rdmacore39.0', 'NVIDIA_PYTORCH_VERSION': '24.05', 'TRTOSS_VERSION': '24.05', 'TORCH_ALLOW_TF32_CUBLAS_OVERRIDE': '1', 'CUDA_LAUNCH_BLOCKING': '1'})
+Traceback (most recent call last):
+  File "/workspace/dist-training.py", line 280, in <module>
+    main(args)
+  File "/workspace/dist-training.py", line 263, in main
+    ddp_setup()
+  File "/workspace/utils/misc.py", line 47, in ddp_setup
+    WORLD_SIZE = int(os.environ['SLURM_NTASKS']) 
+  File "/usr/lib/python3.10/os.py", line 680, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'SLURM_NTASKS'
+environ({'NPP_VERSION': '12.2.5.30', 'SHELL': '/bin/bash', 'NVIDIA_VISIBLE_DEVICES': 'all', 'DALI_BUILD': '14636516', 'CUSOLVER_VERSION': '11.6.1.9', 'CUBLAS_VERSION': '12.4.5.8', 'HOSTNAME': '1cd70e10e987', 'NVIDIA_REQUIRE_CUDA': 'cuda>=9.0', 'CUFFT_VERSION': '11.2.1.3', 'CUDA_CACHE_DISABLE': '1', 'TENSORBOARD_PORT': '6006', 'TORCH_CUDA_ARCH_LIST': '5.2 6.0 6.1 7.0 7.2 7.5 8.0 8.6 8.7 9.0+PTX', 'NCCL_VERSION': '2.21.5', 'CUSPARSE_VERSION': '12.3.1.170', 'ENV': '/etc/shinit_v2', 'PWD': '/workspace', 'OPENUCX_VERSION': '1.17.0', 'NSIGHT_SYSTEMS_VERSION': '2024.2.1.106', 'NVIDIA_DRIVER_CAPABILITIES': 'compute,utility,video', 'POLYGRAPHY_VERSION': '0.49.10', 'UCC_CL_BASIC_TLS': '^sharp', 'TRT_VERSION': '10.0.1.6', 'NVIDIA_PRODUCT_NAME': 'PyTorch', 'container': 'podman', 'RDMACORE_VERSION': '39.0', 'NVIDIA_CPU_ONLY': '1', 'HOME': '/root', 'COCOAPI_VERSION': '2.0+nv0.8.0', 'CUDA_VERSION': '12.4.1.003', 'PYTORCH_VERSION': '2.4.0a0+07cecf4', 'CURAND_VERSION': '10.3.5.147', 'PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION': 'python', 'PYTORCH_BUILD_NUMBER': '0', 'PODMANHPC_MODULES_DIR': '/etc/podman_hpc/modules.d', 'USE_EXPERIMENTAL_CUDNN_V8_API': '1', 'CUTENSOR_VERSION': '2.0.1.2', 'PIP_DEFAULT_TIMEOUT': '100', 'NVFUSER_BUILD_VERSION': '0ff5802', 'HPCX_VERSION': '2.19', 'NVM_DIR': '/usr/local/nvm', 'TORCH_CUDNN_V8_API_ENABLED': '1', 'GDRCOPY_VERSION': '2.3.1-1', 'NVFUSER_VERSION': '0ff5802', 'OPENMPI_VERSION': '4.1.7', 'NVJPEG_VERSION': '12.3.1.117', 'LIBRARY_PATH': '/usr/local/cuda/lib64/stubs:', 'PYTHONIOENCODING': 'utf-8', 'SHLVL': '0', 'BASH_ENV': '/etc/bash.bashrc', 'CUDNN_VERSION': '9.1.0.70', 'NSIGHT_COMPUTE_VERSION': '2024.1.1.4', 'DALI_VERSION': '1.37.1', 'JUPYTER_PORT': '8888', 'PYTORCH_HOME': '/opt/pytorch/pytorch', 'LD_LIBRARY_PATH': '/usr/local/lib/python3.10/dist-packages/torch/lib:/usr/local/lib/python3.10/dist-packages/torch_tensorrt/lib:/usr/local/cuda/compat/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64', 'NVIDIA_BUILD_ID': '91431255', 'OMPI_MCA_coll_hcoll_enable': '0', 'OPAL_PREFIX': '/opt/hpcx/ompi', 'CUDA_DRIVER_VERSION': '550.54.15', 'TRANSFORMER_ENGINE_VERSION': '1.6', 'LC_ALL': 'C.UTF-8', 'PYTORCH_BUILD_VERSION': '2.4.0a0+07cecf4', '_CUDA_COMPAT_PATH': '/usr/local/cuda/compat', 'CUDA_HOME': '/usr/local/cuda', 'CUDA_MODULE_LOADING': 'LAZY', 'NVIDIA_REQUIRE_JETPACK_HOST_MOUNTS': '', 'PATH': '/usr/local/lib/python3.10/dist-packages/torch_tensorrt/bin:/usr/local/mpi/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ucx/bin:/opt/tensorrt/bin', 'MOFED_VERSION': '5.4-rdmacore39.0', 'NVIDIA_PYTORCH_VERSION': '24.05', 'TRTOSS_VERSION': '24.05', 'TORCH_ALLOW_TF32_CUBLAS_OVERRIDE': '1', 'CUDA_LAUNCH_BLOCKING': '1'})
+Traceback (most recent call last):
+  File "/workspace/dist-training.py", line 280, in <module>
+    main(args)
+  File "/workspace/dist-training.py", line 263, in main
+    ddp_setup()
+  File "/workspace/utils/misc.py", line 47, in ddp_setup
+    WORLD_SIZE = int(os.environ['SLURM_NTASKS']) 
+  File "/usr/lib/python3.10/os.py", line 680, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'SLURM_NTASKS'
+srun: error: nid001036: tasks 0-1: Exited with exit code 1
+srun: Terminating StepId=29802707.0
+slurmstepd: error: *** STEP 29802707.0 ON nid001036 CANCELLED AT 2024-08-26T15:13:39 ***
+srun: error: nid001036: tasks 2-3: Exited with exit code 1
