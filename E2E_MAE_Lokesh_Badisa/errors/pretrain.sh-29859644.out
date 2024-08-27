@@ -1,0 +1,126 @@
+/usr/bin/python: can't open file '/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/python3': [Errno 2] No such file or directory
+/usr/bin/python: can't open file '/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/python3': [Errno 2] No such file or directory
+/usr/bin/python: can't open file '/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/python3': [Errno 2] No such file or directory
+/usr/bin/python: can't open file '/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/python3': [Errno 2] No such file or directory
+E0827 15:43:16.373000 140392594015360 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 2) local_rank: 0 (pid: 1649190) of binary: /usr/bin/python
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.4.0a0+07cecf4168.nv24.5', 'console_scripts', 'torchrun')())
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+python3 FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-08-27_15:43:16
+  host      : nid008696-hsn0
+  rank      : 0 (local_rank: 0)
+  exitcode  : 2 (pid: 1649190)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+E0827 15:43:16.396000 140497673806976 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 2) local_rank: 0 (pid: 1649192) of binary: /usr/bin/python
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.4.0a0+07cecf4168.nv24.5', 'console_scripts', 'torchrun')())
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+python3 FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-08-27_15:43:16
+  host      : nid008696-hsn0
+  rank      : 0 (local_rank: 0)
+  exitcode  : 2 (pid: 1649192)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+E0827 15:43:16.417000 140033185670272 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 2) local_rank: 0 (pid: 1649194) of binary: /usr/bin/python
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.4.0a0+07cecf4168.nv24.5', 'console_scripts', 'torchrun')())
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+python3 FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-08-27_15:43:16
+  host      : nid008696-hsn0
+  rank      : 0 (local_rank: 0)
+  exitcode  : 2 (pid: 1649194)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+E0827 15:43:16.531000 140692950262912 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 2) local_rank: 0 (pid: 1649197) of binary: /usr/bin/python
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.4.0a0+07cecf4168.nv24.5', 'console_scripts', 'torchrun')())
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+python3 FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-08-27_15:43:16
+  host      : nid008696-hsn0
+  rank      : 0 (local_rank: 0)
+  exitcode  : 2 (pid: 1649197)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: nid008696: tasks 0-3: Exited with exit code 1
+srun: Terminating StepId=29859644.0

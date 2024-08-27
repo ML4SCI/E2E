@@ -179,7 +179,8 @@ class Trainer:
                 self.optimizer.zero_grad()           
                 adjust_learning_rate(self.optimizer, batch / len(self.train_dataloader) + epoch, self.args)
             
-            data = data.to(self.global_rank)
+            
+            data = data.to(torch.device(f'cuda:{self.local_rank}'))
             data = self._extra_transform(data) 
             begin = time.time()
             loss += self._run_batch(data, (batch+1)%self.accum_iter==0)

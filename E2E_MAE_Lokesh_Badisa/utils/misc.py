@@ -47,9 +47,8 @@ def ddp_setup():
     WORLD_SIZE = int(os.environ['SLURM_NTASKS']) 
     GLOBAL_RANK = int(os.environ['SLURM_PROCID'])
     print(f'WORLD_SIZE: {WORLD_SIZE}, GLOBAL_RANK: {GLOBAL_RANK}')
-    sync_file = _get_sync_file()
-    init_process_group(backend="nccl",init_method=sync_file,
-                       world_size=WORLD_SIZE,rank=GLOBAL_RANK)
+    # sync_file = _get_sync_file()
+    init_process_group(backend="nccl")
 
 
 def get_transform(args, mode):
