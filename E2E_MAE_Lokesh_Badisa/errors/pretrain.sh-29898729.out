@@ -1,0 +1,66 @@
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank1]:     main(args)
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank1]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank1]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank1]:     return self._apply(convert)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank1]:     module._apply(fn)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank1]:     module._apply(fn)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank1]:     param_applied = fn(param)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank1]:     return t.to(
+[rank1]: RuntimeError: CUDA error: invalid device ordinal
+[rank1]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank3]:     main(args)
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank3]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank3]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank3]:     return self._apply(convert)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank3]:     module._apply(fn)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank3]:     module._apply(fn)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank3]:     param_applied = fn(param)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank3]:     return t.to(
+[rank3]: RuntimeError: CUDA error: invalid device ordinal
+[rank3]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank2]:     main(args)
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank2]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank2]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank2]:     return self._apply(convert)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank2]:     module._apply(fn)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank2]:     module._apply(fn)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank2]:     param_applied = fn(param)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank2]:     return t.to(
+[rank2]: RuntimeError: CUDA error: invalid device ordinal
+[rank2]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+srun: error: nid001148: tasks 1-2: Exited with exit code 1
+srun: Terminating StepId=29898729.0
+slurmstepd: error: *** STEP 29898729.0 ON nid001148 CANCELLED AT 2024-08-28T05:25:55 ***
+srun: error: nid001148: task 3: Exited with exit code 1
+srun: error: nid001148: task 0: Terminated
+srun: Force Terminated StepId=29898729.0

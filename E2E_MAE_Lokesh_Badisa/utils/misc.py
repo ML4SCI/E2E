@@ -1,5 +1,6 @@
 import numpy as np  
 import torch
+import subprocess
 import random
 import os
 from torch.distributed import init_process_group
@@ -47,8 +48,32 @@ def ddp_setup():
     WORLD_SIZE = int(os.environ['SLURM_NTASKS']) 
     GLOBAL_RANK = int(os.environ['SLURM_PROCID'])
     print(f'WORLD_SIZE: {WORLD_SIZE}, GLOBAL_RANK: {GLOBAL_RANK}')
-    # sync_file = _get_sync_file()
-    init_process_group(backend="nccl")
+    sync_file = _get_sync_file()
+    # os.environ['MASTER_ADDR'] = '127.0.0.1'  # Replace with the master node's IP address
+    # os.environ['MASTER_PORT'] = '29500' 
+    init_process_group(backend="nccl",init_method=sync_file,rank=GLOBAL_RANK,world_size=WORLD_SIZE)
+
+# def ddp_setup():
+#     WORLD_SIZE = int(os.environ['SLURM_NTASKS']) 
+#     GLOBAL_RANK = int(os.environ['SLURM_PROCID'])
+#     NODE_RANK = int(os.environ['SLURM_NODEID'])  # Get the node rank
+#     HOSTNAME = os.environ['HOSTNAME']  # Get the current node's hostname
+    
+#     # Expand SLURM_NODELIST using scontrol show hostname
+#     result = subprocess.run(['scontrol', 'show', 'hostname', os.environ['SLURM_NODELIST']], stdout=subprocess.PIPE)
+#     nodes = result.stdout.decode('utf-8').splitlines()
+    
+#     # The first node in the expanded list is the master node
+#     MASTER_NODE = nodes[0]
+    
+#     # Set MASTER_ADDR and MASTER_PORT environment variables
+#     os.environ['MASTER_ADDR'] = MASTER_NODE  # No need to resolve IP, just use the hostname
+#     os.environ['MASTER_PORT'] = '29500'
+    
+#     print(f'WORLD_SIZE: {WORLD_SIZE}, GLOBAL_RANK: {GLOBAL_RANK}, NODE_RANK: {NODE_RANK}, MASTER_ADDR: {MASTER_NODE}')
+    
+#     # Initialize the process group
+#     init_process_group(backend="nccl", init_method='env://', rank=GLOBAL_RANK, world_size=WORLD_SIZE)
 
 
 def get_transform(args, mode):

@@ -1,0 +1,376 @@
+Tue Aug 27 22:34:50 2024       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 525.105.17   Driver Version: 525.105.17   CUDA Version: 12.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A100-SXM...  On   | 00000000:03:00.0 Off |                    0 |
+| N/A   30C    P0    50W / 400W |      0MiB / 40960MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA A100-SXM...  On   | 00000000:41:00.0 Off |                    0 |
+| N/A   29C    P0    49W / 400W |      0MiB / 40960MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   2  NVIDIA A100-SXM...  On   | 00000000:82:00.0 Off |                    0 |
+| N/A   30C    P0    53W / 400W |      0MiB / 40960MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   3  NVIDIA A100-SXM...  On   | 00000000:C1:00.0 Off |                    0 |
+| N/A   30C    P0    53W / 400W |      0MiB / 40960MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+WORLD_SIZE: 1, GLOBAL_RANK: 0
+model initialized
+Data Loaded
+Dataloaders created
+Local Rank: 0
+Training starts
+Time taken for batch 0 is 8.231228351593018s
+Time taken for batch 1 is 0.36514925956726074s
+Time taken for batch 2 is 0.18400096893310547s
+Time taken for batch 3 is 0.18509864807128906s
+Time taken for batch 4 is 0.1906113624572754s
+Time taken for batch 5 is 0.18839669227600098s
+Time taken for batch 6 is 0.1851804256439209s
+Time taken for batch 7 is 0.18579936027526855s
+Time taken for batch 8 is 0.1877727508544922s
+Time taken for batch 9 is 0.18610739707946777s
+Time taken for batch 10 is 0.18396568298339844s
+Time taken for batch 11 is 0.18533682823181152s
+Time taken for batch 12 is 0.1854538917541504s
+Time taken for batch 13 is 0.18653512001037598s
+Time taken for batch 14 is 0.18655180931091309s
+Time taken for batch 15 is 0.18609142303466797s
+Time taken for batch 16 is 0.18604564666748047s
+Time taken for batch 17 is 0.18532991409301758s
+Time taken for batch 18 is 0.18598079681396484s
+Time taken for batch 19 is 0.18557095527648926s
+Time taken for batch 20 is 0.1852099895477295s
+Time taken for batch 21 is 0.1857151985168457s
+Time taken for batch 22 is 0.18662667274475098s
+Time taken for batch 23 is 0.18620824813842773s
+Time taken for batch 24 is 0.18606066703796387s
+Time taken for batch 25 is 0.18517732620239258s
+Time taken for batch 26 is 0.1850602626800537s
+Time taken for batch 27 is 0.18645167350769043s
+Time taken for batch 28 is 0.18622779846191406s
+Time taken for batch 29 is 0.18619513511657715s
+Time taken for batch 30 is 0.18610835075378418s
+Time taken for batch 31 is 0.18584012985229492s
+Time taken for batch 32 is 0.1859748363494873s
+Time taken for batch 33 is 0.18567752838134766s
+Time taken for batch 34 is 0.18505644798278809s
+Time taken for batch 35 is 0.18488693237304688s
+Time taken for batch 36 is 0.18569588661193848s
+Time taken for batch 37 is 0.1862013339996338s
+Time taken for batch 38 is 0.18651533126831055s
+Time taken for batch 39 is 0.18542957305908203s
+Time taken for batch 40 is 0.1851203441619873s
+Time taken for batch 41 is 0.18620991706848145s
+Time taken for batch 42 is 0.1853334903717041s
+Time taken for batch 43 is 0.18622255325317383s
+Time taken for batch 44 is 0.18601107597351074s
+Time taken for batch 45 is 0.1834087371826172s
+Time taken for batch 46 is 0.18262386322021484s
+Time taken for batch 47 is 0.1857314109802246s
+Time taken for batch 48 is 0.18697214126586914s
+Time taken for batch 49 is 0.18547940254211426s
+Time taken for batch 50 is 0.1864614486694336s
+Time taken for batch 51 is 0.18631815910339355s
+Time taken for batch 52 is 0.18576574325561523s
+Time taken for batch 53 is 0.18614506721496582s
+Time taken for batch 54 is 0.18603205680847168s
+Time taken for batch 55 is 0.18614935874938965s
+Time taken for batch 56 is 0.18452119827270508s
+Time taken for batch 57 is 0.1841580867767334s
+Time taken for batch 58 is 0.1862645149230957s
+Time taken for batch 59 is 0.18735313415527344s
+Time taken for batch 60 is 0.18658685684204102s
+Time taken for batch 61 is 0.1859135627746582s
+Time taken for batch 62 is 0.1850895881652832s
+Time taken for batch 63 is 0.18767642974853516s
+Time taken for batch 64 is 0.18828463554382324s
+Time taken for batch 65 is 0.18759632110595703s
+Time taken for batch 66 is 0.18540191650390625s
+Time taken for batch 67 is 0.1862468719482422s
+Time taken for batch 68 is 0.18630743026733398s
+Time taken for batch 69 is 0.18401789665222168s
+Time taken for batch 70 is 0.1854386329650879s
+Time taken for batch 71 is 0.18716669082641602s
+Time taken for batch 72 is 0.18779325485229492s
+Time taken for batch 73 is 0.18512344360351562s
+Time taken for batch 74 is 0.18405580520629883s
+Time taken for batch 75 is 0.1872563362121582s
+Time taken for batch 76 is 0.18659424781799316s
+Time taken for batch 77 is 0.18606233596801758s
+Time taken for batch 78 is 0.18505096435546875s
+Time taken for batch 79 is 0.18678569793701172s
+Time taken for batch 80 is 0.18919777870178223s
+Time taken for batch 81 is 0.18639230728149414s
+Time taken for batch 82 is 0.18522119522094727s
+Time taken for batch 83 is 0.18735146522521973s
+Time taken for batch 84 is 0.18706917762756348s
+Time taken for batch 85 is 0.18507790565490723s
+Time taken for batch 86 is 0.1868603229522705s
+Time taken for batch 87 is 0.18642687797546387s
+Time taken for batch 88 is 0.18740415573120117s
+Time taken for batch 89 is 0.18573808670043945s
+Time taken for batch 90 is 0.18524861335754395s
+Time taken for batch 91 is 0.18724751472473145s
+Time taken for batch 92 is 0.18718481063842773s
+Time taken for batch 93 is 0.18332505226135254s
+Time taken for batch 94 is 0.18422746658325195s
+Time taken for batch 95 is 0.18593311309814453s
+Time taken for batch 96 is 0.18707609176635742s
+Time taken for batch 97 is 0.18593668937683105s
+Time taken for batch 98 is 0.1854863166809082s
+Time taken for batch 99 is 0.18700551986694336s
+Time taken for batch 100 is 0.18731427192687988s
+Time taken for batch 101 is 0.1858985424041748s
+Time taken for batch 102 is 0.18594622611999512s
+Time taken for batch 103 is 0.18612027168273926s
+Time taken for batch 104 is 0.18644475936889648s
+Time taken for batch 105 is 0.18641376495361328s
+Time taken for batch 106 is 0.18548369407653809s
+Time taken for batch 107 is 0.1856677532196045s
+Time taken for batch 108 is 0.18984341621398926s
+Time taken for batch 109 is 0.18570613861083984s
+Time taken for batch 110 is 0.18598031997680664s
+Time taken for batch 111 is 0.18729186058044434s
+Time taken for batch 112 is 0.18684077262878418s
+Time taken for batch 113 is 0.18526744842529297s
+Time taken for batch 114 is 0.18537139892578125s
+Time taken for batch 115 is 0.18633317947387695s
+Time taken for batch 116 is 0.18414783477783203s
+Time taken for batch 117 is 0.18801355361938477s
+Time taken for batch 118 is 0.18428564071655273s
+Time taken for batch 119 is 0.18890118598937988s
+Time taken for batch 120 is 0.18790817260742188s
+Time taken for batch 121 is 0.18760204315185547s
+Time taken for batch 122 is 0.18626880645751953s
+Time taken for batch 123 is 0.1874239444732666s
+Time taken for batch 124 is 0.18738484382629395s
+Time taken for batch 125 is 0.18579387664794922s
+Time taken for batch 126 is 0.1868267059326172s
+Time taken for batch 127 is 0.1875927448272705s
+Time taken for batch 128 is 0.18739843368530273s
+Time taken for batch 129 is 0.18601369857788086s
+Time taken for batch 130 is 0.18584203720092773s
+Time taken for batch 131 is 0.1887052059173584s
+Time taken for batch 132 is 0.1872234344482422s
+Time taken for batch 133 is 0.18612003326416016s
+Time taken for batch 134 is 0.1854865550994873s
+Time taken for batch 135 is 0.18498611450195312s
+Time taken for batch 136 is 0.1901085376739502s
+Time taken for batch 137 is 0.1866002082824707s
+Time taken for batch 138 is 0.18607068061828613s
+Time taken for batch 139 is 0.18664240837097168s
+Time taken for batch 140 is 0.18921685218811035s
+Time taken for batch 141 is 0.18620562553405762s
+Time taken for batch 142 is 0.18584370613098145s
+Time taken for batch 143 is 0.18698978424072266s
+Time taken for batch 144 is 0.18785524368286133s
+Time taken for batch 145 is 0.18584084510803223s
+Time taken for batch 146 is 0.18520712852478027s
+Time taken for batch 147 is 0.1877880096435547s
+Time taken for batch 148 is 0.18905901908874512s
+Time taken for batch 149 is 0.18628549575805664s
+Time taken for batch 150 is 0.18592023849487305s
+Time taken for batch 151 is 0.18699049949645996s
+Time taken for batch 152 is 0.18724632263183594s
+Time taken for batch 153 is 0.18663454055786133s
+Time taken for batch 154 is 0.1859877109527588s
+Time taken for batch 155 is 0.18704700469970703s
+Time taken for batch 156 is 0.1862163543701172s
+Time taken for batch 157 is 0.1850292682647705s
+Time taken for batch 158 is 0.185347318649292s
+Time taken for batch 159 is 0.1878948211669922s
+Time taken for batch 160 is 0.18687677383422852s
+Time taken for batch 161 is 0.18593955039978027s
+Time taken for batch 162 is 0.18625807762145996s
+Time taken for batch 163 is 0.18707799911499023s
+Time taken for batch 164 is 0.18875980377197266s
+Time taken for batch 165 is 0.18633055686950684s
+Time taken for batch 166 is 0.18599343299865723s
+Time taken for batch 167 is 0.18697166442871094s
+Time taken for batch 168 is 0.1865849494934082s
+Time taken for batch 169 is 0.18657660484313965s
+Time taken for batch 170 is 0.18594980239868164s
+Time taken for batch 171 is 0.18558025360107422s
+Time taken for batch 172 is 0.18617868423461914s
+Time taken for batch 173 is 0.18650603294372559s
+Time taken for batch 174 is 0.18768644332885742s
+Time taken for batch 175 is 0.18993377685546875s
+Time taken for batch 176 is 0.18779397010803223s
+Time taken for batch 177 is 0.18613839149475098s
+Time taken for batch 178 is 0.18651223182678223s
+Time taken for batch 179 is 0.18521809577941895s
+Time taken for batch 180 is 0.18477964401245117s
+Time taken for batch 181 is 0.18586421012878418s
+Time taken for batch 182 is 0.18924164772033691s
+Time taken for batch 183 is 0.1869666576385498s
+Time taken for batch 184 is 0.18753314018249512s
+Time taken for batch 185 is 0.18536090850830078s
+Time taken for batch 186 is 0.18630075454711914s
+Time taken for batch 187 is 0.1863112449645996s
+Time taken for batch 188 is 0.18965983390808105s
+Time taken for batch 189 is 0.18547558784484863s
+Time taken for batch 190 is 0.18547296524047852s
+Time taken for batch 191 is 0.1863396167755127s
+Time taken for batch 192 is 0.18741846084594727s
+Time taken for batch 193 is 0.18611407279968262s
+Time taken for batch 194 is 0.18549370765686035s
+Time taken for batch 195 is 0.1871039867401123s
+Time taken for batch 196 is 0.18944811820983887s
+Time taken for batch 197 is 0.18565607070922852s
+Time taken for batch 198 is 0.18668103218078613s
+Time taken for batch 199 is 0.18775701522827148s
+Time taken for batch 200 is 0.18658947944641113s
+Time taken for batch 201 is 0.18526101112365723s
+Time taken for batch 202 is 0.18580985069274902s
+Time taken for batch 203 is 0.1879286766052246s
+Time taken for batch 204 is 0.18695068359375s
+Time taken for batch 205 is 0.18596768379211426s
+Time taken for batch 206 is 0.18615436553955078s
+Time taken for batch 207 is 0.18555450439453125s
+Time taken for batch 208 is 0.18415236473083496s
+Time taken for batch 209 is 0.18756556510925293s
+Time taken for batch 210 is 0.185744047164917s
+Time taken for batch 211 is 0.18671345710754395s
+Time taken for batch 212 is 0.18656611442565918s
+Time taken for batch 213 is 0.18920230865478516s
+Time taken for batch 214 is 0.18555116653442383s
+Time taken for batch 215 is 0.18677306175231934s
+Time taken for batch 216 is 0.18691229820251465s
+Time taken for batch 217 is 0.18698430061340332s
+Time taken for batch 218 is 0.1862626075744629s
+Time taken for batch 219 is 0.18572497367858887s
+Time taken for batch 220 is 0.18649530410766602s
+Time taken for batch 221 is 0.18643975257873535s
+Time taken for batch 222 is 0.18813776969909668s
+Time taken for batch 223 is 0.1885828971862793s
+Time taken for batch 224 is 0.1866464614868164s
+Time taken for batch 225 is 0.1860980987548828s
+Time taken for batch 226 is 0.18618297576904297s
+Time taken for batch 227 is 0.18663287162780762s
+Time taken for batch 228 is 0.1863417625427246s
+Time taken for batch 229 is 0.18814492225646973s
+Time taken for batch 230 is 0.1862339973449707s
+Time taken for batch 231 is 0.1878364086151123s
+Time taken for batch 232 is 0.18738317489624023s
+Time taken for batch 233 is 0.18546509742736816s
+Time taken for batch 234 is 0.18538761138916016s
+Time taken for batch 235 is 0.1879894733428955s
+Time taken for batch 236 is 0.1876358985900879s
+Time taken for batch 237 is 0.18538308143615723s
+Time taken for batch 238 is 0.18509125709533691s
+Time taken for batch 239 is 0.18471169471740723s
+Time taken for batch 240 is 0.1860644817352295s
+Time taken for batch 241 is 0.18642139434814453s
+Time taken for batch 242 is 0.1883258819580078s
+Time taken for batch 243 is 0.18784141540527344s
+Time taken for batch 244 is 0.18715643882751465s
+Time taken for batch 245 is 0.18480849266052246s
+Time taken for batch 246 is 0.18640947341918945s
+Time taken for batch 247 is 0.18718814849853516s
+Time taken for batch 248 is 0.18762493133544922s
+Time taken for batch 249 is 0.18513083457946777s
+Time taken for batch 250 is 0.185258150100708s
+Time taken for batch 251 is 0.18659377098083496s
+Time taken for batch 252 is 0.18573713302612305s
+Time taken for batch 253 is 0.1888902187347412s
+Time taken for batch 254 is 0.18572473526000977s
+Time taken for batch 255 is 0.18755006790161133s
+Time taken for batch 256 is 0.1877760887145996s
+Time taken for batch 257 is 0.18581891059875488s
+Time taken for batch 258 is 0.18601155281066895s
+Time taken for batch 259 is 0.18651533126831055s
+Time taken for batch 260 is 0.19059228897094727s
+Time taken for batch 261 is 0.18845558166503906s
+Time taken for batch 262 is 0.18581533432006836s
+Time taken for batch 263 is 0.18657660484313965s
+Time taken for batch 264 is 0.1882631778717041s
+Time taken for batch 265 is 0.18433833122253418s
+Time taken for batch 266 is 0.1842200756072998s
+Time taken for batch 267 is 0.18577909469604492s
+Time taken for batch 268 is 0.18971920013427734s
+Time taken for batch 269 is 0.1869518756866455s
+Time taken for batch 270 is 0.1862955093383789s
+Time taken for batch 271 is 0.18726730346679688s
+Time taken for batch 272 is 0.18793797492980957s
+Time taken for batch 273 is 0.187758207321167s
+Time taken for batch 274 is 0.18413186073303223s
+Time taken for batch 275 is 0.18696904182434082s
+Time taken for batch 276 is 0.18832874298095703s
+Time taken for batch 277 is 0.18807053565979004s
+Time taken for batch 278 is 0.18633651733398438s
+Time taken for batch 279 is 0.18568205833435059s
+Time taken for batch 280 is 0.18661117553710938s
+Time taken for batch 281 is 0.1850895881652832s
+Time taken for batch 282 is 0.1851644515991211s
+Time taken for batch 283 is 0.19028735160827637s
+Time taken for batch 284 is 0.18718242645263672s
+Time taken for batch 285 is 0.18783068656921387s
+Time taken for batch 286 is 0.1884477138519287s
+Time taken for batch 287 is 0.18735265731811523s
+Time taken for batch 288 is 0.18399715423583984s
+Time taken for batch 289 is 0.18704938888549805s
+Time taken for batch 290 is 0.18593430519104004s
+Time taken for batch 291 is 0.18788838386535645s
+Time taken for batch 292 is 0.1908128261566162s
+Time taken for batch 293 is 0.18665051460266113s
+Time taken for batch 294 is 0.18507623672485352s
+Time taken for batch 295 is 0.18764281272888184s
+Time taken for batch 296 is 0.18586349487304688s
+Time taken for batch 297 is 0.1840054988861084s
+Time taken for batch 298 is 0.18483257293701172s
+Time taken for batch 299 is 0.18789100646972656s
+Time taken for batch 300 is 0.18771934509277344s
+Time taken for batch 301 is 0.186248779296875s
+Time taken for batch 302 is 0.18831801414489746s
+Time taken for batch 303 is 0.18791484832763672s
+Time taken for batch 304 is 0.18933844566345215s
+Time taken for batch 305 is 0.19000768661499023s
+Time taken for batch 306 is 0.18826889991760254s
+Time taken for batch 307 is 0.18656492233276367s
+Time taken for batch 308 is 0.18883585929870605s
+Time taken for batch 309 is 0.18674039840698242s
+Time taken for batch 310 is 0.18636035919189453s
+Time taken for batch 311 is 0.18668007850646973s
+Time taken for batch 312 is 0.18919730186462402s
+Time taken for batch 313 is 0.1844172477722168s
+Time taken for batch 314 is 0.18506526947021484s
+Time taken for batch 315 is 0.18796110153198242s
+Time taken for batch 316 is 0.1891939640045166s
+Time taken for batch 317 is 0.18901872634887695s
+Time taken for batch 318 is 0.1879720687866211s
+Time taken for batch 319 is 0.1892096996307373s
+Time taken for batch 320 is 0.19003033638000488s
+Time taken for batch 321 is 0.18569087982177734s
+Time taken for batch 322 is 0.1839454174041748s
+Time taken for batch 323 is 0.18673133850097656s
+Time taken for batch 324 is 0.18781304359436035s
+Time taken for batch 325 is 0.18686127662658691s
+Time taken for batch 326 is 0.18597817420959473s
+Time taken for batch 327 is 0.18747639656066895s
+Time taken for batch 328 is 0.1905517578125s
+Time taken for batch 329 is 0.18861079216003418s
+Time taken for batch 330 is 0.18630433082580566s
+Time taken for batch 331 is 0.1857290267944336s
+Time taken for batch 332 is 0.18761467933654785s
+Time taken for batch 333 is 0.18642497062683105s
+Time taken for batch 334 is 0.18574786186218262s
+Time taken for batch 335 is 0.18545317649841309s
+Time taken for batch 336 is 0.18704795837402344s
+Time taken for batch 337 is 0.1902306079864502s

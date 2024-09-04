@@ -1,0 +1,520 @@
+W0827 16:27:28.754000 140227862787200 torch/distributed/run.py:757] 
+W0827 16:27:28.754000 140227862787200 torch/distributed/run.py:757] *****************************************
+W0827 16:27:28.754000 140227862787200 torch/distributed/run.py:757] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0827 16:27:28.754000 140227862787200 torch/distributed/run.py:757] *****************************************
+W0827 16:27:28.754000 140424520864896 torch/distributed/run.py:757] 
+W0827 16:27:28.754000 140424520864896 torch/distributed/run.py:757] *****************************************
+W0827 16:27:28.754000 140424520864896 torch/distributed/run.py:757] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0827 16:27:28.754000 140424520864896 torch/distributed/run.py:757] *****************************************
+W0827 16:27:28.754000 140566377899136 torch/distributed/run.py:757] 
+W0827 16:27:28.754000 140566377899136 torch/distributed/run.py:757] *****************************************
+W0827 16:27:28.754000 140566377899136 torch/distributed/run.py:757] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0827 16:27:28.754000 140566377899136 torch/distributed/run.py:757] *****************************************
+W0827 16:27:28.754000 140705116329088 torch/distributed/run.py:757] 
+W0827 16:27:28.754000 140705116329088 torch/distributed/run.py:757] *****************************************
+W0827 16:27:28.754000 140705116329088 torch/distributed/run.py:757] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0827 16:27:28.754000 140705116329088 torch/distributed/run.py:757] *****************************************
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank0]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank0]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank0]:     return self._apply(convert)
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank0]:     param_applied = fn(param)
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank0]:     return t.to(
+[rank0]: RuntimeError: CUDA error: invalid device ordinal
+[rank0]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank1]:     main(args)
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank1]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank1]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank1]:     return self._apply(convert)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank1]:     module._apply(fn)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank1]:     module._apply(fn)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank1]:     param_applied = fn(param)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank1]:     return t.to(
+[rank1]: RuntimeError: CUDA error: invalid device ordinal
+[rank1]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank3]:     main(args)
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank3]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank3]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank3]:     return self._apply(convert)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank3]:     module._apply(fn)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank3]:     module._apply(fn)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank3]:     param_applied = fn(param)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank3]:     return t.to(
+[rank3]: RuntimeError: CUDA error: invalid device ordinal
+[rank3]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank2]:     main(args)
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank2]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank2]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank2]:     return self._apply(convert)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank2]:     module._apply(fn)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank2]:     module._apply(fn)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank2]:     param_applied = fn(param)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank2]:     return t.to(
+[rank2]: RuntimeError: CUDA error: invalid device ordinal
+[rank2]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank3]:     main(args)
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank3]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank3]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank3]:     return self._apply(convert)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank3]:     module._apply(fn)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank3]:     module._apply(fn)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank3]:     param_applied = fn(param)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank3]:     return t.to(
+[rank3]: RuntimeError: CUDA error: invalid device ordinal
+[rank3]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank1]:     main(args)
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank1]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank1]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank1]:     return self._apply(convert)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank1]:     module._apply(fn)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank1]:     module._apply(fn)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank1]:     param_applied = fn(param)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank1]:     return t.to(
+[rank1]: RuntimeError: CUDA error: invalid device ordinal
+[rank1]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank2]:     main(args)
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank2]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank2]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank2]:     return self._apply(convert)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank2]:     module._apply(fn)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank2]:     module._apply(fn)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank2]:     param_applied = fn(param)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank2]:     return t.to(
+[rank2]: RuntimeError: CUDA error: invalid device ordinal
+[rank2]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank2]:     main(args)
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank2]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank2]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank2]:     return self._apply(convert)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank2]:     module._apply(fn)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank2]:     module._apply(fn)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank2]:     param_applied = fn(param)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank2]:     return t.to(
+[rank2]: RuntimeError: CUDA error: invalid device ordinal
+[rank2]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank0]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank0]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank0]:     return self._apply(convert)
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank0]:     param_applied = fn(param)
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank0]:     return t.to(
+[rank0]: RuntimeError: CUDA error: invalid device ordinal
+[rank0]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank3]:     main(args)
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank3]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank3]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank3]:     return self._apply(convert)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank3]:     module._apply(fn)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank3]:     module._apply(fn)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank3]:     param_applied = fn(param)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank3]:     return t.to(
+[rank3]: RuntimeError: CUDA error: invalid device ordinal
+[rank3]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank1]:     main(args)
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank1]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank1]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank1]:     return self._apply(convert)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank1]:     module._apply(fn)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank1]:     module._apply(fn)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank1]:     param_applied = fn(param)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank1]:     return t.to(
+[rank1]: RuntimeError: CUDA error: invalid device ordinal
+[rank1]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank0]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank0]:     self.model = model.to(f'cuda:{self.local_rank}')
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1173, in to
+[rank0]:     return self._apply(convert)
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank0]:     param_applied = fn(param)
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank0]:     return t.to(
+[rank0]: RuntimeError: CUDA error: invalid device ordinal
+[rank0]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank2]:     main(args)
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank2]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 114, in __init__
+[rank2]:     self.model = DDP(model, device_ids=[self.local_rank])
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 810, in __init__
+[rank2]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank2]:   File "/usr/local/lib/python3.10/dist-packages/torch/distributed/utils.py", line 269, in _verify_param_shape_across_processes
+[rank2]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank2]: torch.distributed.DistBackendError: NCCL error in: /opt/pytorch/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:2024, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.21.5
+[rank2]: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+[rank2]: Last error:
+[rank2]: Duplicate GPU detected : rank 2 and rank 0 both on CUDA device c1000
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank3]:     main(args)
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank3]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 114, in __init__
+[rank3]:     self.model = DDP(model, device_ids=[self.local_rank])
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 810, in __init__
+[rank3]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank3]:   File "/usr/local/lib/python3.10/dist-packages/torch/distributed/utils.py", line 269, in _verify_param_shape_across_processes
+[rank3]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank3]: torch.distributed.DistBackendError: NCCL error in: /opt/pytorch/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:2024, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.21.5
+[rank3]: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+[rank3]: Last error:
+[rank3]: Duplicate GPU detected : rank 3 and rank 0 both on CUDA device c1000
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank0]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 114, in __init__
+[rank0]:     self.model = DDP(model, device_ids=[self.local_rank])
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 810, in __init__
+[rank0]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank0]:   File "/usr/local/lib/python3.10/dist-packages/torch/distributed/utils.py", line 269, in _verify_param_shape_across_processes
+[rank0]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank0]: torch.distributed.DistBackendError: NCCL error in: /opt/pytorch/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:2024, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.21.5
+[rank0]: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+[rank0]: Last error:
+[rank0]: Duplicate GPU detected : rank 0 and rank 1 both on CUDA device c1000
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank1]:     main(args)
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 272, in main
+[rank1]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 114, in __init__
+[rank1]:     self.model = DDP(model, device_ids=[self.local_rank])
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/nn/parallel/distributed.py", line 810, in __init__
+[rank1]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank1]:   File "/usr/local/lib/python3.10/dist-packages/torch/distributed/utils.py", line 269, in _verify_param_shape_across_processes
+[rank1]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank1]: torch.distributed.DistBackendError: NCCL error in: /opt/pytorch/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:2024, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.21.5
+[rank1]: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+[rank1]: Last error:
+[rank1]: Duplicate GPU detected : rank 1 and rank 0 both on CUDA device c1000
+E0827 16:27:48.847000 140424520864896 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 1) local_rank: 0 (pid: 727267) of binary: /usr/bin/python
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.4.0a0+07cecf4168.nv24.5', 'console_scripts', 'torchrun')())
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+dist-training.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2024-08-27_16:27:48
+  host      : nid001528-hsn0
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 727268)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2024-08-27_16:27:48
+  host      : nid001528-hsn0
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 727269)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[3]:
+  time      : 2024-08-27_16:27:48
+  host      : nid001528-hsn0
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 727270)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-08-27_16:27:48
+  host      : nid001528-hsn0
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 727267)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+E0827 16:27:48.863000 140227862787200 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 1) local_rank: 0 (pid: 727272) of binary: /usr/bin/python
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.4.0a0+07cecf4168.nv24.5', 'console_scripts', 'torchrun')())
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+dist-training.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2024-08-27_16:27:48
+  host      : nid001528-hsn0
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 727273)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2024-08-27_16:27:48
+  host      : nid001528-hsn0
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 727274)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[3]:
+  time      : 2024-08-27_16:27:48
+  host      : nid001528-hsn0
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 727275)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-08-27_16:27:48
+  host      : nid001528-hsn0
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 727272)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+E0827 16:27:49.001000 140705116329088 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 1) local_rank: 0 (pid: 727277) of binary: /usr/bin/python
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.4.0a0+07cecf4168.nv24.5', 'console_scripts', 'torchrun')())
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+dist-training.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2024-08-27_16:27:49
+  host      : nid001528-hsn0
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 727278)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2024-08-27_16:27:49
+  host      : nid001528-hsn0
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 727279)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[3]:
+  time      : 2024-08-27_16:27:49
+  host      : nid001528-hsn0
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 727280)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-08-27_16:27:49
+  host      : nid001528-hsn0
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 727277)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+E0827 16:27:49.078000 140566377899136 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 1) local_rank: 0 (pid: 727290) of binary: /usr/bin/python
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.4.0a0+07cecf4168.nv24.5', 'console_scripts', 'torchrun')())
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+dist-training.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2024-08-27_16:27:49
+  host      : nid001528-hsn0
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 727291)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2024-08-27_16:27:49
+  host      : nid001528-hsn0
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 727292)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[3]:
+  time      : 2024-08-27_16:27:49
+  host      : nid001528-hsn0
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 727293)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-08-27_16:27:49
+  host      : nid001528-hsn0
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 727290)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: nid001528: tasks 1-2: Exited with exit code 1
+srun: Terminating StepId=29861251.0
+slurmstepd: error: *** STEP 29861251.0 ON nid001528 CANCELLED AT 2024-08-27T16:27:49 ***
+srun: error: nid001528: tasks 0,3: Exited with exit code 1

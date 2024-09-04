@@ -20,7 +20,6 @@ from utils.dataset import prepare_dataloader
 
 
 # Distributed training imports
-import torch.multiprocessing as mp
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.distributed import destroy_process_group, get_world_size
 import torch.distributed as dist    
@@ -35,9 +34,9 @@ def get_args_parser():
     parser.add_argument('--base_dir', type=str, default='./')
 
     # GPU Hyperparameters
-    parser.add_argument('--epochs', type=int, default=800)
-    parser.add_argument('--batch_size', type=int, default=64)
-    parser.add_argument('--blr', type=float, default=1.5e-4)
+    parser.add_argument('--epochs', type=int, default=100)
+    parser.add_argument('--batch_size', type=int, default=256)
+    parser.add_argument('--blr', type=float, default=2e-4)
     parser.add_argument('--lr', type=float)
     parser.add_argument('--min_lr', type=float, default=0.0)
     parser.add_argument('--accum_iter', type=int, default=1)
@@ -50,7 +49,7 @@ def get_args_parser():
     parser.set_defaults(norm_pix_loss=True)
     parser.add_argument('--optim', type=str, default='AdamW')
     parser.add_argument('--momentum', type=float, default=0.9)
-    parser.add_argument('--warmup_epochs', type=int, default=40)
+    parser.add_argument('--warmup_epochs', type=int, default=80)
     parser.add_argument('-cm', '--centre_masking',action='store_true')
     parser.add_argument('--rrc',action='store_true')
     parser.add_argument('--rhf',action='store_true')
@@ -109,9 +108,9 @@ class Trainer:
         self.local_rank = int(os.environ['SLURM_LOCALID'])
         self.global_rank = int(os.environ["SLURM_PROCID"])  
         
-        print(f"Local Rank: {self.local_rank}")
-        self.model = model.to(torch.cuda.current_device())
-        self.model = DDP(model, device_ids=[torch.cuda.current_device()])
+
+        self.model = model.to(f'cuda:{self.local_rank}')
+        self.model = DDP(model, device_ids=[torch.device(f'cuda:{self.local_rank}')])
         
         self.optimizer = optimizer
         
@@ -124,6 +123,9 @@ class Trainer:
         self.accum_iter = args.accum_iter
         self.global_min_loss = float("inf")
         self.transform = get_transform(args)
+
+        self.last_epoch_loss = float("inf")
+        self.current_epoch_loss = 0.
         
         if self.global_rank == 0:
             Path(self.base_dir).mkdir(parents=True, exist_ok=True)
@@ -131,15 +133,6 @@ class Trainer:
             mlflow.start_run(run_name=args.runname)
             mlflow.log_params(vars(args))   
 
-        
-
-        # self.model = DDP(self.model)
-
-        # param_groups = param_groups_weight_decay(self.model.module, args.weight_decay)
-        # if args.optim.lower() != 'sgd':
-        #     self.optimizer = optimizers_map[args.optim.lower()](param_groups, lr=args.lr, betas=(0.9, 0.95), weight_decay=args.weight_decay)
-        # else:
-        #     self.optimizer = optimizers_map[args.optim.lower()](param_groups, lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
 
         if Path(f"{self.base_dir}/snapshot.ckpt").exists():
             print("Loading snapshot")   
@@ -193,7 +186,7 @@ class Trainer:
         if loss < self.global_min_loss:
             self.global_min_loss = loss
             torch.save(self.model.module.state_dict(), f"{self.base_dir}/best.pt")
-        mlflow.log_metric('loss', loss, step=epoch)
+        mlflow.log_metric('train_loss', loss, step=epoch)
 
     def _save_snapshot(self, epoch):
         snapshot = {}
@@ -213,21 +206,51 @@ class Trainer:
             
             loss, dsize = self._run_epoch(epoch)
 
-            total_loss_tensor = torch.tensor(loss).to(self.global_rank)
-            total_dsize_tensor = torch.tensor(dsize).to(self.global_rank)
+            total_loss_tensor = torch.tensor(loss).to(f'cuda:{self.local_rank}')
+            total_dsize_tensor = torch.tensor(dsize).to(f'cuda:{self.local_rank}')
             dist.reduce(total_loss_tensor, dst=0, op=dist.ReduceOp.SUM)
             dist.reduce(total_dsize_tensor, dst=0, op=dist.ReduceOp.SUM)
 
-            if self.gpu_id == 0:
+            if self.global_rank == 0:
                 average_loss = total_loss_tensor.item() / total_dsize_tensor.item()
                 self._save_snapshot(epoch)
                 self._log(epoch, average_loss)
                 pbar.update(1)
-        if self.gpu_id == 0:    
+
+                self.current_epoch_loss = average_loss
+                if self.current_epoch_loss < self.last_epoch_loss:
+                    torch.save(self.model.module.state_dict(), f"{self.base_dir}/onegoodmodel.pt")
+                self.last_epoch_loss = self.current_epoch_loss
+
+            self.evaluate()
+
+        if self.global_rank == 0:    
             torch.save(self.model.module.state_dict(), f"{self.base_dir}/last.pt")
             Path(f"{self.base_dir}/snapshot.ckpt").unlink()
             mlflow.end_run()
-
+    
+    def evaluate(self):
+        val_loss = 0.
+        dsize = 0
+        self.model.eval()
+        with torch.no_grad():
+            for _, (data, _) in enumerate(self.valid_dataloader):
+                dsize += data.shape[0]
+                data = data.to(torch.device(f'cuda:{self.local_rank}'))
+                data = self._extra_transform(data)
+                loss,_,_ = self.model(data,mask_ratio=float(self.args.mask_ratio))
+                val_loss += loss.item()
+            total_loss_tensor = torch.tensor(loss).to(f'cuda:{self.local_rank}')
+            total_dsize_tensor = torch.tensor(dsize).to(f'cuda:{self.local_rank}')
+            dist.reduce(total_loss_tensor, dst=0, op=dist.ReduceOp.SUM)
+            dist.reduce(total_dsize_tensor, dst=0, op=dist.ReduceOp.SUM)
+            if self.global_rank == 0:
+                average_loss = total_loss_tensor.item() / total_dsize_tensor.item()
+                mlflow.log_metric('val_loss', average_loss)
+                print(f"Validation Loss: {average_loss}")
+                return average_loss
+                
+        
 
 def load_train_objs(args):
     if args.model.lower() == 'vitmae':
@@ -264,7 +287,6 @@ def main(args):
     ddp_setup()
     eff_batch_size = args.batch_size * get_world_size()
     args.lr = args.blr * eff_batch_size / 256
-    # world_size = torch.cuda.device_count()
     model, loss_scaler, optimizer = load_train_objs(args)
     print("model initialized")
     train_loader, val_loader = prepare_dataloader(args.data_dir, args.batch_size)
@@ -276,7 +298,7 @@ def main(args):
 
 
 if __name__ == "__main__":
-    os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
+
     args = get_args_parser()
       
     main(args)
