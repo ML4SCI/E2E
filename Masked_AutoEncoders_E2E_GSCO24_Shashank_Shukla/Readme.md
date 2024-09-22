@@ -94,3 +94,6 @@ srun torchrun --standalone --nproc_per_node=2 path-to-train-script \
 - Matplotlib
 
 Install these dependencies using pip or conda.
+
+## Acknowledgement
+I want to express my gratitude to my mentor, Eric Reinhardt, who has guided me throughout the project. Additionally, I thank Dr. Sergie Gleyzer and the entire ML4SCI team for providing constructive suggestions during the project review.
