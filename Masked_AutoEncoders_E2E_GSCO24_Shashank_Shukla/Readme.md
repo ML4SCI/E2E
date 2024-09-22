@@ -31,24 +31,24 @@ All models were trained on A100 GPUs using PyTorch with data in H5 format. The d
 
 ## Results
 
-### Visualising Image Reconstruction
-####                                           Original
+### **Visualizing Image Reconstruction**
+
+#### **Original**
 <p align="center">
-  <img src="https://github.com/Wodlfvllf/End-to-End-Deep-Learning-Project/blob/main/Specific%20Task%203d%20-%20Masked_Autoencoder/Original.jpg" width="700" title="hover text">
+  <img src="https://github.com/Wodlfvllf/End-to-End-Deep-Learning-Project/blob/main/Specific%20Task%203d%20-%20Masked_Autoencoder/Original.jpg" width="700" title="Original Image">
 </p>
 
-####                                          Reconstructed
+#### **Reconstructed**
 <p align="center">
-  <img src="https://github.com/Wodlfvllf/End-to-End-Deep-Learning-Project/blob/main/Specific%20Task%203d%20-%20Masked_Autoencoder/Reconstructed.jpg" width="700" title="hover text">
+  <img src="https://github.com/Wodlfvllf/End-to-End-Deep-Learning-Project/blob/main/Specific%20Task%203d%20-%20Masked_Autoencoder/Reconstructed.jpg" width="700" title="Reconstructed Image">
 </p>
 
-### Performance Table
+### **Performance Table**
 
-####                                           Linear Probing
+#### **Linear Probing**
 <p align="center">
-  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/LinearProbing%20Table.png" width="700" title="hover text">
-</p>       
-In Linear probing Base-Mae model achieved the highest accuracy of 0.9035 and 0.9747 AUC Score.
+  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/LinearProbing%20Table.png" width="700" title="Linear Probing Table">
+</p>    
 
 ####                                            FineTuning
 <p align="center">
