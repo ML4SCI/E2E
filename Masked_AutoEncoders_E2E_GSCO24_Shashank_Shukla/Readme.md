@@ -61,7 +61,7 @@ Both the Base MAE and Depthwise Convolution models demonstrated high parameter e
 
 ## Notebooks
 All the notebooks can be found here 
-- * [![Notebooks](https://github.com/Wodlfvllf/E2E/tree/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/Notebooks)
+- [Notebooks](https://github.com/Wodlfvllf/E2E/tree/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/Notebooks)
 
 ## Refer to this blog for details of the project.
 [Masked Auto-Encoders](https://medium.com/@shuklashashankshekhar863/masked-autoencoders-for-efficient-end-to-end-particle-reconstruction-and-compression-for-the-cms-fdd7b941a2bb)
