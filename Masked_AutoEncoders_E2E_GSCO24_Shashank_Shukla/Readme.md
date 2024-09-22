@@ -68,8 +68,8 @@ All the notebooks can be found here
 
 ### Example Script
 ```
-srun torchrun --standalone --nproc_per_node=1 path-to-train-script \
-                --epochs=1 \
+srun torchrun --standalone --nproc_per_node=2 path-to-train-script \
+                --epochs=100 \
                 --batch_size=256 \
                 --model_name="conv_mae" \
                 --learning_rate=0.00015 \
