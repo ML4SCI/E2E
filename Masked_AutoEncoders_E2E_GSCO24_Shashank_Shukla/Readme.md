@@ -18,13 +18,13 @@ In high-energy physics experiments like those at the CMS detector in the LHC, cl
 </p>
 
 ## Data Pre-processing
-ViTs are very sensitive to data pre-processing techniques. It has often been seen that even things like Image Interpolation Techniques, if not done properly, can adversely affect the performance of Transformers-based models. In our case, the data is directly sourced from CMS Open Data, and the outputs(pixel) can be arbitrarily large for a single detector(calorimeter) hence proper normalization techniques are employed.
-We employ the following steps to ensure that the smaples or our datapoints are properly normalised and free from outliers:
-* Zero suppression for any value under 10^-3.
-* Channel Wise Z-score Normalisation across batches of size 4096.
-* Channel Wise Max value clipping with clip value set equal to 500 times the standard deviation of the pixel values.
-* Sample wise Min Max scaling.
-Although the pre-processing is same for both the datasets but the input pipelines are vastly difference due to the training environment and computational challenges.
+The dataset, sourced from the CMS Open Data collection, consists of simulated particle collision data generated with Madgraph 2.6.6 and Pythia6 for parton showering. It includes around 4 million images (~2 million top quark jets and ~2 million non-top quark jets) with transverse momentum (pT) greater than 400 GeV. The sample contains approximately 4 million images (~2mil. signal, ~2mil. background). The images are obtained by cropping a window along ieta and iphi (indexed positions in the detector) around a candidate jet. Each image contains 8 distinct channels: the track transverse momentum, the longitudinal impact parameter, the transverse impact parameter, electron calorimeter energy deposition, hadronic calorimeter energy deposition, and barrel pixel layer energy deposition.
+
+The data is further pre-processed by the following: 
+1) pixel values less than 1e-3 are suppressed to 0;
+2) each channel is separately z-score normalized;
+3) each channel is clipped outside of 500 times the standard deviation of the pixel value;
+4) each channel is min-max scaled.
 
 ## Training
 All models were trained on A100 GPUs using PyTorch with data in H5 format. The dataset consisted of 3.9 million events, with 2 million used for pre-training, 1 million for fine-tuning and linear probing, and the remaining 800k events split equally between test and validation (400k each). Pre-training lasted 47 hours on two A100 GPUs over 80-100 epochs, while fine-tuning was done for 10 epochs using the AdamW optimizer with a learning rate of 1.5e-4.
@@ -53,8 +53,11 @@ All models were trained on A100 GPUs using PyTorch with data in H5 format. The d
 ####                                            FineTuning
 <p align="center">
   <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/Finetune.png" width="700" title="hover text">
-</p>      
-In Fine-tuning Base-Mae model achieved the highest accuracy of 0.9306 and 0.983 AUC Score while Depth
+</p>   
+
+The experimental results demonstrate that the Base MAE model outperformed ResNet-15 during fine-tuning. Specifically, the Base MAE achieved an accuracy of 0.9306 and an AUC-ROC score of 0.9830, compared to ResNet-15's AUC-ROC of 0.9824. The Depthwise Convolution MAE model also exhibited competitive performance, achieving a higher accuracy of 0.9376 but a slightly lower AUC-ROC score of 0.9816.
+
+Both the Base MAE and Depthwise Convolution models demonstrated high parameter efficiency during linear probing, each with only 385 trainable parameters. They achieved accuracy and AUC-ROC scores close to those of ResNet-15, showing that the MAE models captured high-quality representations during pre-training, requiring minimal retraining for classification tasks.
 
 ## Refer to this blog for details of the project.
 [Masked Auto-Encoders](https://medium.com/@shuklashashankshekhar863/masked-autoencoders-for-efficient-end-to-end-particle-reconstruction-and-compression-for-the-cms-fdd7b941a2bb)
