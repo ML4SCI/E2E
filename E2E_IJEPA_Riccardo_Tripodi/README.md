@@ -34,7 +34,7 @@ Those are the obtained results. All scores are ROC-AUC metric. To read more abou
 
 All the pre-trained models can be downloaded at the following google drive link:
 
-[Download models]()
+[Download models](https://drive.google.com/drive/folders/1A6RJH4_LITWHcAifkrmicsoVTFmslmvl)
 
 ## Playground
 You can pre-train a 'vit_base' encoder and finetune it on a binary classification task on colab using the following colab notebook:
