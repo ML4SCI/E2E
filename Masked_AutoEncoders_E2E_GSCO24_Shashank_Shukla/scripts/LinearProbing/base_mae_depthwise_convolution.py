@@ -95,8 +95,8 @@ class MaskedAutoencoderViT(nn.Module):
 
     def unpatchify(self, x):
         """
-        x: (N, L, patch_size**2 *3)
-        imgs: (N, 3, H, W)
+        x: (N, L, patch_size**2 *8)
+        imgs: (N, 8, H, W)
         """
         p = self.patch_embed.patch_size[0]
         h = w = int(x.shape[1]**.5)
@@ -135,9 +135,6 @@ class MaskedAutoencoderViT(nn.Module):
         return x_masked, mask, ids_restore
 
     def forward_encoder(self, x, mask_ratio):
-        # embed patches
-        # x = self.patch_embed(x)
-
         # add pos embed w/o cls token
         x = x + self.pos_embed[:, 1:, :]
 
@@ -216,9 +213,8 @@ class MaskedAutoencoderViT(nn.Module):
 
     def forward(self, imgs, mask_ratio=0.75):
         x = self._process_input(imgs)
-        # return x
         latent, mask, ids_restore = self.forward_encoder(x, mask_ratio)
-        pred = self.forward_decoder(latent, ids_restore)  # [N, L, p*p*3]
+        pred = self.forward_decoder(latent, ids_restore)  # [N, L, p*p*8]
         loss = self.forward_loss(imgs, pred, mask)
         return loss, pred, mask
 
