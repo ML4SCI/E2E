@@ -59,6 +59,10 @@ The experimental results demonstrate that the Base MAE model outperformed ResNet
 
 Both the Base MAE and Depthwise Convolution models demonstrated high parameter efficiency during linear probing, each with only 385 trainable parameters. They achieved accuracy and AUC-ROC scores close to those of ResNet-15, showing that the MAE models captured high-quality representations during pre-training, requiring minimal retraining for classification tasks.
 
+## Notebooks
+All the notebooks can be found here 
+- * [![Notebooks](https://github.com/Wodlfvllf/E2E/tree/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/Notebooks)
+
 ## Refer to this blog for details of the project.
 [Masked Auto-Encoders](https://medium.com/@shuklashashankshekhar863/masked-autoencoders-for-efficient-end-to-end-particle-reconstruction-and-compression-for-the-cms-fdd7b941a2bb)
 ## Dependencies
