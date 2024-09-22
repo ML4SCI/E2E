@@ -9,6 +9,17 @@ import torch
 _GLOBAL_SEED = 0
 logger = getLogger()
 
+def collate(data):
+    
+    jet = torch.cat([data[i][0] for i in range(len(data))], axis = 0) / 255
+    meta = torch.cat([data[i][1] for i in range(len(data))], axis = 0)
+
+    indexes = torch.randperm(jet.shape[0])
+    jet = jet[indexes]
+    meta = meta[indexes]
+    meta = meta[:,0]
+    return jet, meta
+
 
 class MaskCollator(object):
 
@@ -22,7 +33,9 @@ class MaskCollator(object):
         nenc=1,
         npred=2,
         min_keep=4,
-        allow_overlap=False
+        allow_overlap=False,
+        chunk_size=None,
+        is_iris=False
     ):
         super(MaskCollator, self).__init__()
         if not isinstance(input_size, tuple):
@@ -37,6 +50,8 @@ class MaskCollator(object):
         self.min_keep = min_keep  # minimum number of patches to keep
         self.allow_overlap = allow_overlap  # whether to allow overlap b/w enc and pred masks
         self._itr_counter = Value('i', -1)  # collator is shared across worker processes
+        self.chunk_size = chunk_size
+        self.is_iris = is_iris
 
     def step(self):
         i = self._itr_counter
@@ -111,9 +126,14 @@ class MaskCollator(object):
         # 4. sample several pred block locations for each image (w/o seed)
         # 5. return enc mask and pred mask
         '''
-        B = len(batch)
+        
+        if self.is_iris:
+            collated_batch = collate(batch)
+            B = len(batch)*self.chunk_size
+        else:
+            collated_batch = torch.utils.data.default_collate(batch)
+            B = len(batch)
 
-        collated_batch = torch.utils.data.default_collate(batch)
 
         seed = self.step()
         g = torch.Generator()

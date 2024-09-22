@@ -9,6 +9,7 @@ from logging import getLogger
 import torch
 import h5py
 from torch.utils.data import DataLoader
+from torch.utils.data import Subset
 
 _GLOBAL_SEED = 0
 logger = getLogger()
@@ -108,3 +109,83 @@ class GsocDataset3(torch.utils.data.Dataset):
 
     def __del__(self):
         self.h5_file.close()
+
+        
+def make_gsoc_dataset_iris(
+    batch_size,
+    split_size=None,
+    chunk_size=None,
+    collator=None,
+    pin_mem=True,
+    num_workers=8,
+    root_path=None,
+):
+    
+    # Instantiate the dataset
+    # mode can be 'train', 'test', or 'validation' depending on what you're doing
+    train_dataset = Dataset4(file_path=root_path, mode='train', chunk_size=chunk_size)
+    val_dataset = Dataset4(file_path=root_path, mode='validation', chunk_size=chunk_size)
+    
+    train_length = len(train_dataset)
+    val_length = len(val_dataset)
+    train_indices = list(range(int(train_length*split_size/100)))
+    val_indices = list(range(int(val_length*50/100)))
+
+    train_dataset = Subset(train_dataset, train_indices)
+    val_dataset = Subset(val_dataset, val_indices)
+
+    # Create the DataLoaders
+    train_data_loader = DataLoader(
+        train_dataset,
+        batch_size=batch_size,  # Number of chunks to load in each batch
+        shuffle=True,  # Shuffle the data between epochs
+        collate_fn=collator,  # Use the custom collate function
+        num_workers=num_workers  # Number of subprocesses to use for data loading
+    )
+    
+    # Create the DataLoader
+    val_data_loader = DataLoader(
+        val_dataset,
+        batch_size=batch_size,  # Number of chunks to load in each batch
+        shuffle=True,  # Shuffle the data between epochs
+        collate_fn=collator,  # Use the custom collate function
+        num_workers=num_workers  # Number of subprocesses to use for data loading
+    )
+    
+    logger.info('GSOC unsupervised data loaders created')
+
+    return train_dataset, train_data_loader, val_data_loader
+
+class Dataset4(torch.utils.data.Dataset):
+    """Dataset Class"""
+
+    def __init__(self, file_path,mode,chunk_size = 32):
+        """
+        Arguments:
+            file_path (string): Path to the HDF5 file
+            mode (string): "train", "test" or "validation" set to choose from.
+            chunk_size: The chunk size to read the data from.
+        """
+        self.file_path = file_path
+        self.mode = mode
+        self.chunk_size = chunk_size
+
+        with h5py.File(self.file_path, 'r') as f:
+            self.length = len(f[f"{self.mode}_jet"]) // self.chunk_size
+
+    def __len__(self):
+        return self.length
+
+    def open_hdf5(self):
+        self.file = h5py.File(self.file_path, 'r')
+
+    def __getitem__(self, idx: int):
+
+        if not hasattr(self, 'file'):
+            self.open_hdf5()
+
+        # Here idx is the chunk ID
+
+        imgs = torch.tensor(self.file[f'{self.mode}_jet'][idx*self.chunk_size:(idx+1)*self.chunk_size, ...].transpose(0,3,1,2))
+        labels = torch.tensor(self.file[f'{self.mode}_meta'][idx*self.chunk_size:(idx+1)*self.chunk_size, ...])
+        return imgs, labels
