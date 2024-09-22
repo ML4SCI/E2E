@@ -399,7 +399,6 @@ class MaskedAutoencoderConvViT(nn.Module):
 
     def forward(self, imgs, mask_ratio=0.75):
         imgs = torchvision.transforms.Resize((224, 224))(imgs)
-        print(imgs.shape)
         latent, mask, ids_restore = self.forward_encoder(imgs, mask_ratio)
         pred = self.forward_decoder(latent, ids_restore)  # [N, L, p*p*3]
         loss = self.forward_loss(imgs, pred, mask)
