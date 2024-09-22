@@ -29,7 +29,7 @@
 
 ### Comparison of With and Without Pretrained Vision Transformer Model
 <p align="center">
-  <img src="https://github.com/Wodlfvllf/E2E/blob/Masked_autoencoders_Shashank/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/Performance_table.png" width="700" title="hover text">
+  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/Linear%20Probing%20Table.png" width="700" title="hover text">
 </p>                         
 Both models are fine-tuned on learning rate of 1.e-5 using AdamW optimizer.
 
