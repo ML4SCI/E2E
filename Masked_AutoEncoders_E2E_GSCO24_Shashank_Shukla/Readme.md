@@ -9,7 +9,7 @@ This work is a part of the Google Summer of Code (GSoC) 2024 program under the M
 3. Fine-tune the model at a lower learning rate on the provided labeled dataset and compare results with those of a model trained from scratch.
 
 <p align="center">
-  <img src="https://github.com/Wodlfvllf/End-to-End-Deep-Learning-Project/blob/main/Specific%20Task%203d%20-%20Masked_Autoencoder/MAE.png" width="700" title="hover text">
+  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/MAE%20(1).jpg" width="700" title="hover text">
 </p>
 
 ### Implementation
@@ -30,13 +30,14 @@ This work is a part of the Google Summer of Code (GSoC) 2024 program under the M
 </p>
 
 ### Comparison of Different Masked AutoEncoder Architectures
-##                                           Linear Probing
+
+####                                           Linear Probing
 <p align="center">
   <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/LinearProbing%20Table.png" width="700" title="hover text">
 </p>       
 In Linear probing Base-Mae model achieved the highest accuracy of 0.8958 and 0.9747 AUC Score.
 
-##                                            FineTuning
+####                                            FineTuning
 <p align="center">
   <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/Finetune.png" width="700" title="hover text">
 </p>      
