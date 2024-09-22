@@ -1,5 +1,6 @@
 from util import *
 from data import *
+import torchvision
 def get_2d_sincos_pos_embed(embed_dim, grid_size, cls_token=False):
     """
     grid_size: int of the grid height and width
@@ -397,6 +398,8 @@ class MaskedAutoencoderConvViT(nn.Module):
         return loss
 
     def forward(self, imgs, mask_ratio=0.75):
+        imgs = torchvision.transforms.Resize((224, 224))(imgs)
+        print(imgs.shape)
         latent, mask, ids_restore = self.forward_encoder(imgs, mask_ratio)
         pred = self.forward_decoder(latent, ids_restore)  # [N, L, p*p*3]
         loss = self.forward_loss(imgs, pred, mask)
@@ -404,9 +407,28 @@ class MaskedAutoencoderConvViT(nn.Module):
         return loss, pred, unpatchified_img
 
 
-def convmae_convvit_base_patch16_dec512d8b(**kwargs):
+def convmae_convvit_base_patch16_dec512d8b(img_size=125, 
+                                           patch_size=4, 
+                                           in_chans=8, 
+                                           embed_dim=128, 
+                                           depth=16, 
+                                           num_heads=8,
+                                           decoder_embed_dim=128, 
+                                           decoder_depth=8, 
+                                           decoder_num_heads=8, 
+                                           mlp_ratio=4, 
+                                           norm_layer=partial(nn.LayerNorm, eps=1e-6)):
     model = MaskedAutoencoderConvViT(
-        img_size=[224, 56, 28], patch_size=[4, 2, 2], embed_dim=[64, 128, 256], depth=[2, 2, 16], num_heads=8,
-        decoder_embed_dim=256, decoder_depth=8, decoder_num_heads=8, in_chans=8,
-        mlp_ratio=[4, 4, 4], norm_layer=partial(nn.LayerNorm, eps=1e-6), **kwargs)
+            img_size=[224, 56, 28], 
+            patch_size=[patch_size, patch_size//2, patch_size//2], 
+            embed_dim=[embed_dim, embed_dim*2, embed_dim*4], 
+            depth=[2, 2, depth], 
+            num_heads=num_heads,
+            decoder_embed_dim=decoder_embed_dim, 
+            decoder_depth=decoder_depth, 
+            decoder_num_heads=decoder_num_heads, 
+            in_chans=8,
+            mlp_ratio=[4, 4, 4], 
+            norm_layer=partial(nn.LayerNorm, eps=1e-6))
+    
     return model

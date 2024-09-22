@@ -36,6 +36,7 @@ from timm.models.resnet import resnet26d, resnet50d
 from timm.models.registry import register_model
 import torch
 import torch.nn as nn
+import functools
 
 from functools import partial
 from timm.models.vision_transformer import PatchEmbed, Block

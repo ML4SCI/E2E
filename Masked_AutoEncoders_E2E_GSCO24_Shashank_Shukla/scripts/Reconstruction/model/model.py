@@ -43,7 +43,7 @@ def get_model(args):
                            mlp_ratio=args.mlp_ratio)
 
     elif args.model_name == "conv_mae":
-        model = mae_vit(img_size=args.img_size, 
+        model = convmae_convvit_base_patch16_dec512d8b(img_size=args.img_size, 
                            patch_size=args.patch_size, 
                            in_chans=args.in_chans, 
                            embed_dim=args.embed_dim, 
@@ -52,7 +52,6 @@ def get_model(args):
                            decoder_embed_dim=args.decoder_embed_dim, 
                            decoder_depth=args.decoder_depth, 
                            decoder_num_heads=args.decoder_num_heads, 
-                           k_factor = args.k_factor,
                            mlp_ratio=args.mlp_ratio)
 
     elif args.model_name == "cross_vit":

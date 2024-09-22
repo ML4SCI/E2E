@@ -1,3 +1,14 @@
+
+import os
+import torch
+import torch.nn as nn
+import torch.multiprocessing as mp
+import torch.distributed as dist
+from torch.nn.parallel import DistributedDataParallel as DDP
+from skopt import gp_minimize
+from skopt.space import Real, Integer, Categorical
+from skopt.utils import use_named_args
+import argparse
 from util import *
 from data import *
 from model import get_model
@@ -138,7 +149,7 @@ class Trainer:
         #--------------------------------------------------------------#
         #Wrap the mode in Distributed Data Parallel
         if torch.distributed.get_world_size() > 1:
-            self.model = DDP(self.linear_model, device_ids=[self.gpu_id], find_unused_parameters=True)
+            self.model = DDP(self.linear_model, device_ids=[self.gpu_id])
         else:
             self.model = self.linear_model
 
@@ -303,8 +314,11 @@ class Trainer:
         #--------------------------------------------------------------#
 
     def train(self, max_epochs: int):
+        max_auc = 0
         for epoch in (range(max_epochs)):
             self._run_epoch(epoch)
+            max_auc = max(max_auc, np.mean(self.val_auc_roc))
+            
             if self.gpu_id == 0 and epoch % self.save_every == 0:
                 self._save_checkpoint(epoch, 
                                       np.mean(self.loss), 
@@ -322,6 +336,8 @@ class Trainer:
                 
         with open(f'{self.logs_PATH}performance_metrics.json', "w") as outfile: 
             json.dump(self.performance_characteristics, outfile)
+            
+        return max_auc
 #---------------------------------------------------------------------------------------------------------------------------------------#
 #--------------------------------------------------Initialisation-----------------------------------------------------------------------#
 #---------------------------------------------------------------------------------------------------------------------------------------#
@@ -404,32 +420,68 @@ def prepare_dataloader(train_dataset: Dataset, valid_dataset: Dataset, batch_siz
     
     return train_dataloader, valid_dataloader
 
-#---------------------------------------------------------------------------------------------------------------------------------------#
-#--------------------------------------------------Spwaning function--------------------------------------------------------------------#
-#---------------------------------------------------------------------------------------------------------------------------------------#
-def main(world_size: int, args):
+# DDP setup and cleanup functions remain the same
+def ddp_setup():
+    init_process_group(backend="nccl")
+    torch.cuda.set_device(int(os.environ["LOCAL_RANK"]))
     
-    # Setup the Distributed Data Parallel
-    ddp_setup()
-    
-    # Load dataset, model and corresponding optimizer
-    train_dataset, valid_dataset, model = load_train_objs(args)
-    
-    # Prepare the dataloader
-    train_dataloader, valid_dataloader = prepare_dataloader(train_dataset, valid_dataset, args.batch_size, args.train_samples)
-    
-    # Initialize the Trainer Class
-    trainer = Trainer(model, train_dataloader,  valid_dataloader, args.save_every, args)
-    
-    #Start Training
-    trainer.train(args.epochs)
-    
-    #Kill the process
-    destroy_process_group()
+def destroy_process_group():
+    dist.destroy_process_group()
 
-#---------------------------------------------------------------------------------------------------------------------------------------#
-#--------------------------------------------------Arguments----------------------------------------------------------------------------#
-#---------------------------------------------------------------------------------------------------------------------------------------#
+# The model training function needs to be modified to accept hyperparameters
+def train_model_with_hyperparams(world_size, hyperparams):
+    global args
+    ddp_setup()
+    print(hyperparams)
+    # Apply hyperparameters
+    args.learning_rate = hyperparams['learning_rate']
+    args.weight_decay = hyperparams['weight_decay']
+    
+    # Load dataset, model, and corresponding optimizer
+    train_dataset, valid_dataset, model = load_train_objs(args)
+
+    # Prepare data loaders
+    train_dataloader, valid_dataloader = prepare_dataloader(train_dataset, valid_dataset, args.batch_size, args.train_samples)
+
+    # Initialize Trainer and train the model
+    trainer = Trainer(model, train_dataloader, valid_dataloader, args.save_every, args)
+    val_auc_score = trainer.train(args.epochs)  # Assume this returns validation loss
+
+    destroy_process_group()
+    
+    return val_auc_score
+
+# Define the search space
+search_space = [
+    Real(1e-5, 1e-2, name='learning_rate'),
+    Real(1e-6, 1e-2, name='weight_decay'),
+]
+
+# Objective function for Bayesian optimization
+@use_named_args(search_space)
+def objective(**params):
+    world_size = torch.cuda.device_count()
+    print(params)
+    # Train model with the given hyperparameters and return validation loss
+    val_auc_score = train_model_with_hyperparams(world_size, params)
+
+    # Return the validation loss for skopt to minimize (e.g., -AUC score for maximization)
+    return 1-val_auc_score  # Minimize the negative AUC score (or maximize AUC)
+
+# Main function to perform Bayesian optimization using skopt
+def bayesian_optimization():
+    global args
+    # Run Bayesian optimization
+    result = gp_minimize(objective, search_space, n_calls=10, random_state=42)
+
+    # Print best hyperparameters
+    print(f"Best hyperparameters: {result.x}")
+    print(f"Best validation accuracy: {1 - result.fun}")
+    
+    with open(f'{args.model_name}params.txt', 'a') as f:
+        f.write(f'Best Hyperparameters : {result.x},  Val auc: {1 - result.fun}\n')
+
+
 def get_args_parser():
     parser = argparse.ArgumentParser('Masked Autoencoder ViT', add_help=False)
 
@@ -469,18 +521,13 @@ def get_args_parser():
     parser.add_argument('--num_classes', default=1, type=int, help='Type of classification problem to be solved')
     parser.add_argument('--unfreeze', default=False, type=bool, help='Linear Probing or finetuning')
     parser.add_argument('--mode', default="mean", type=str, help='Mean pooling or max pooling before linear layer')
+    parser.add_argument('--weight_decay', default=0.00005, type=float, help='weight_decay')
     return parser
 
-#---------------------------------------------------------------------------------------------------------------------------------------#
-#--------------------------------------------------Start Training-----------------------------------------------------------------------#
-#---------------------------------------------------------------------------------------------------------------------------------------#
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('MAE ViT Training and Testing', parents=[get_args_parser()])
+    global args
     args = parser.parse_args()
-
-    with open(f'logs.txt', 'a') as f:
-        f.write(f'Torch version --  {torch.__version__}\n')
-            
-    world_size = torch.cuda.device_count()
-    # mp.spawn(main, args=(world_size, args), nprocs=world_size)
-    main(world_size, args)
+    
+    # Perform Bayesian optimization
+    bayesian_optimization()
