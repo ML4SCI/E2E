@@ -3,7 +3,7 @@ This project implements a Masked Autoencoder (MAE) using Vision Transformers (Vi
 
 This work is a part of the Google Summer of Code (GSoC) 2024 program under the Machine Learning for Science (ML4SCI) initiative.
 <p align="center">
-  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/gsoc.png" width="700" title="hover text">
+  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/gsoc1.png" width="700" title="hover text">
 </p>
 
 ### Tasks
