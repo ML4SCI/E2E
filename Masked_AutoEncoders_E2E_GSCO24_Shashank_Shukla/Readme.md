@@ -1,4 +1,6 @@
-# Masked Auto-Encoder for Efficient End-to-End Particle Reconstruction and Compression
+<h1 align="center">
+Masked Auto-Encoder for Efficient End-to-End Particle Reconstruction and Compression</br>
+</h1>
 
 This work is a part of the Google Summer of Code (GSoC) 2024 program under the Machine Learning for Science (ML4SCI) initiative.
 <p align="center">
