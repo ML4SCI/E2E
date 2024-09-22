@@ -76,8 +76,6 @@ All the notebooks can be found here
 #SBATCH --cpus-per-task=64
 #SBATCH -q debug            # Queue (e.g., regular or debug)
 #SBATCH -J base_mae_pretrain_job     # Job name
-#SBATCH --mail-user=shuklashashankshekhar863@gmail.com  # Email notifications
-#SBATCH --mail-type=ALL     # Notifications on job state
 #SBATCH -t 00:29:00         # Max runtime
 
 export HDF5_USE_FILE_LOCKING=FALSE
@@ -96,7 +94,7 @@ srun torchrun --standalone --nproc_per_node=1 path-to-train-script \
                 --num_heads=8 \
                 --decoder_embed_dim=256 \
                 --decoder_depth=8 \
-                --data_path='/pscratch/sd/s/ssshukla/Boosted_Top.h5' \
+                --data_path='path-to-dataset' \
                 --warmup=3
 ```
 
