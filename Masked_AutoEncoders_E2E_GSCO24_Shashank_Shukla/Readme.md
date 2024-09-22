@@ -4,7 +4,7 @@ Masked Auto-Encoder for Efficient End-to-End Particle Reconstruction and Compres
 
 This work is a part of the Google Summer of Code (GSoC) 2024 program under the Machine Learning for Science (ML4SCI) initiative.
 <p align="center">
-  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/gsoc1.png" width="700" title="hover text">
+  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/images/gsoc1.png" width="700" title="hover text">
 </p>
 
 ## Abstract
@@ -14,7 +14,7 @@ This project implements a Masked Autoencoder (MAE) using Vision Transformers (Vi
 In high-energy physics experiments like those at the CMS detector in the LHC, classifying particle collisions is essential for studying fundamental forces and searching for phenomena beyond the Standard Model. Traditional methods, such as particle flow algorithms, have been used for event classification, but machine learning (ML) approaches like end-to-end reconstruction have recently shown promise. Image representations with CNNs and Vision Transformers (ViTs) have been employed to capture complex patterns in data. Using Masked Image Modeling (MIM) with masked autoencoders, this study leverages self-supervised learning to classify quark jet images more efficiently, reducing the reliance on labeled datasets.
 
 <p align="center">
-  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/MAE%20(1).jpg" width="700" title="hover text">
+  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/images/MAE%20(1).jpg" width="700" title="hover text">
 </p>
 
 ## Data Pre-processing
@@ -47,12 +47,12 @@ All models were trained on A100 GPUs using PyTorch with data in H5 format. The d
 
 #### **Linear Probing**
 <p align="center">
-  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/LinearProbing%20Table.png" width="700" title="Linear Probing Table">
+  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/images/LinearProbing%20Table.png" width="700" title="Linear Probing Table">
 </p>    
 
 ####                                            FineTuning
 <p align="center">
-  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/Finetune.png" width="700" title="hover text">
+  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/images/Finetune.png" width="700" title="hover text">
 </p>   
 
 The experimental results demonstrate that the Base MAE model outperformed ResNet-15 during fine-tuning. Specifically, the Base MAE achieved an accuracy of 0.9306 and an AUC-ROC score of 0.9830, compared to ResNet-15's AUC-ROC of 0.9824. The Depthwise Convolution MAE model also exhibited competitive performance, achieving a higher accuracy of 0.9376 but a slightly lower AUC-ROC score of 0.9816.
