@@ -315,14 +315,10 @@ class Encoder(nn.Module):
 
         # NOTE: was before branch token section, move to here to assure all branch token are before layer norm
         xs = [self.norm[i](x) for i, x in enumerate(xs)]
-        # out = [x[:, 0] for x in xs]
 
         return xs, masks, ids_to_restore
 
     def forward(self, x):
-        # outputs, masks, ids_restore = self.forward_features(x)
-        # ce_logits = [self.head[i](x) for i, x in enumerate(xs)]
-        # ce_logits = torch.mean(torch.stack(ce_logits, dim=0), dim=0)
         return self.forward_features(x)
     
 #---------------------------------------------------------------------------------------------------------------------------------------#
@@ -458,8 +454,6 @@ class BaseMaskedAutoencoderViT(nn.Module):
     def initialize_weights(self):
         # initialization
         # initialize (and freeze) pos_embed by sin-cos embedding
-        # pos_embed = get_2d_sincos_pos_embed(self.pos_embed.shape[-1], int(self.patch_embed.num_patches**.5), cls_token=True)
-        # self.pos_embed.data.copy_(torch.from_numpy(pos_embed).float().unsqueeze(0))
 
         decoder_pos_embed_1 = get_2d_sincos_pos_embed(self.decoder_pos_embed_1.shape[-1], int(self.patch_embed_1.num_patches**.5), cls_token=True)
         self.decoder_pos_embed_1.data.copy_(torch.from_numpy(decoder_pos_embed_1).float().unsqueeze(0))
@@ -474,10 +468,6 @@ class BaseMaskedAutoencoderViT(nn.Module):
         # initialize patch_embed like nn.Linear (instead of nn.Conv2d)
         w_2 = self.patch_embed_2.proj.weight.data
         torch.nn.init.xavier_uniform_(w_2.view([w_2.shape[0], -1]))
-
-        # timm's trunc_normal_(std=.02) is effectively normal_(std=0.02) as cutoff is too big (2.)
-        # torch.nn.init.normal_(self.cls_token, std=.02)
-        # torch.nn.init.normal_(self.mask_token, std=.02)
 
         # initialize nn.Linear and nn.LayerNorm
         self.apply(self._init_weights)
@@ -494,8 +484,8 @@ class BaseMaskedAutoencoderViT(nn.Module):
 
     def patchify(self, imgs, patch_size):
         """
-        imgs: (N, 3, H, W)
-        x: (N, L, patch_size**2 *3)
+        imgs: (N, 8, H, W)
+        x: (N, L, patch_size**2 *8)
         """
         p = patch_size
         assert imgs.shape[2] == imgs.shape[3] and imgs.shape[2] % p == 0
@@ -508,8 +498,8 @@ class BaseMaskedAutoencoderViT(nn.Module):
 
     def unpatchify(self, x):
         """
-        x: (N, L, patch_size**2 *3)
-        imgs: (N, 3, H, W)
+        x: (N, L, patch_size**2*8)
+        imgs: (N, 8, H, W)
         """
         p = self.patch_embed.patch_size[0]
         h = w = int(x.shape[1]**.5)
