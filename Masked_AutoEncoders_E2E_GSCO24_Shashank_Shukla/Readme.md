@@ -66,23 +66,8 @@ All the notebooks can be found here
 
 ## Run python scripts in DDP
 
-### Example Bash Script
-```bash
-#!/bin/bash
-#SBATCH -N 1                # Number of nodes
-#SBATCH -n 1                # Number of tasks
-#SBATCH -G 1                # Request 2 GPUs
-#SBATCH -C gpu&hbm80g       # Ensure we get GPU nodes
-#SBATCH --cpus-per-task=64
-#SBATCH -q debug            # Queue (e.g., regular or debug)
-#SBATCH -J base_mae_pretrain_job     # Job name
-#SBATCH -t 00:29:00         # Max runtime
-
-export HDF5_USE_FILE_LOCKING=FALSE
-
-module load pytorch/2.1.0-cu12
-nvidia-smi
-
+### Example Script
+```
 srun torchrun --standalone --nproc_per_node=1 path-to-train-script \
                 --epochs=1 \
                 --batch_size=256 \
@@ -96,11 +81,6 @@ srun torchrun --standalone --nproc_per_node=1 path-to-train-script \
                 --decoder_depth=8 \
                 --data_path='path-to-dataset' \
                 --warmup=3
-```
-
-### Run the Script
-```
-sbatch path-to-script
 ```
 
 ## Refer to this blog for details of the project.
