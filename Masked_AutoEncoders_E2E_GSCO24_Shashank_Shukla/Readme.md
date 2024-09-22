@@ -27,11 +27,16 @@
   <img src="https://github.com/Wodlfvllf/End-to-End-Deep-Learning-Project/blob/main/Specific%20Task%203d%20-%20Masked_Autoencoder/Reconstructed.jpg" width="700" title="hover text">
 </p>
 
-### Comparison of With and Without Pretrained Vision Transformer Model
+### Comparison of Different Masked AutoEncoder Architectures
+##                                            Linear Probing
 <p align="center">
   <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/Linear%20Probing%20Table.png" width="700" title="hover text">
-</p>                         
-Both models are fine-tuned on learning rate of 1.e-5 using AdamW optimizer.
+</p>       
+
+##                                            FineTuning
+<p align="center">
+  <img src="https://github.com/Wodlfvllf/E2E/blob/main/Masked_AutoEncoders_E2E_GSCO24_Shashank_Shukla/Finetuning%20Table.png" width="700" title="hover text">
+</p>      
 
 ## Refer to this blog for details of the project.
 [Masked Auto-Encoders](https://medium.com/@shuklashashankshekhar863/masked-autoencoders-for-efficient-end-to-end-particle-reconstruction-and-compression-for-the-cms-fdd7b941a2bb)
