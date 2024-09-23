@@ -5,11 +5,14 @@ from einops import rearrange
 from torch.utils.data import DataLoader
 from torchvision import transforms
 from model import ViTMAE
+# from baselines.models import vit, resnet
+from baselines.utils import modelmap
 from timm.optim.optim_factory import param_groups_weight_decay
 
 # Miscellanous imports
-import time
+import numpy as np
 import mlflow
+from sklearn import metrics
 from pathlib import Path   
 from argparse import ArgumentParser 
 import configs.model_cfg as cfg
@@ -25,6 +28,7 @@ from torch.distributed import destroy_process_group, get_world_size
 import torch.distributed as dist    
 import os
 
+
 def get_args_parser():
     
     parser = ArgumentParser()
@@ -32,29 +36,31 @@ def get_args_parser():
     parser.add_argument('--model', type=str, default='vitmae')
     parser.add_argument('--data_dir', type=str, default='/global/cfs/cdirs/m4392/ACAT_Backup/Data/QG/Quark_Gluon.h5')
     parser.add_argument('--base_dir', type=str, default='./')
+    parser.add_argument('--weights', type=str, default=None)
 
     # GPU Hyperparameters
     parser.add_argument('--epochs', type=int, default=100)
-    parser.add_argument('--batch_size', type=int, default=256)
-    parser.add_argument('--blr', type=float, default=2e-4)
+    parser.add_argument('--batch_size', type=int, default=1024)
+    parser.add_argument('--blr', type=float, default=1e-5)
     parser.add_argument('--lr', type=float)
     parser.add_argument('--min_lr', type=float, default=0.0)
     parser.add_argument('--accum_iter', type=int, default=1)
 
     # Training Hyperparameters
     parser.add_argument('--seed', type=int, default=0)
-    parser.add_argument('--mask_ratio', type=str, default=0.75)
-    parser.add_argument('--norm_pix_loss', action='store_true') 
-    parser.add_argument('--weight_decay', type=float, default=0.05)
-    parser.set_defaults(norm_pix_loss=True)
+    # parser.add_argument('--mask_ratio', type=str, default=0.75)
+    # parser.add_argument('--norm_pix_loss', action='store_true') 
+    parser.add_argument('--weight_decay', type=float, default=0.0)
+    # parser.set_defaults(norm_pix_loss=True)
     parser.add_argument('--optim', type=str, default='AdamW')
     parser.add_argument('--momentum', type=float, default=0.9)
-    parser.add_argument('--warmup_epochs', type=int, default=30)
+    parser.add_argument('--warmup_epochs', type=int, default=10)
     parser.add_argument('-cm', '--centre_masking',action='store_true')
     parser.add_argument('--rrc',action='store_true')
     parser.add_argument('--rhf',action='store_true')
 
     # Model Hyperparameters
+    # This set only works for ViTMAE
     parser.add_argument('--config', type=str)
     parser.add_argument('--patch_size', type=int, default=5)
     parser.add_argument('--patch_embed', type=str, default='conv', choices=['conv', 'depthwise'])
@@ -76,7 +82,7 @@ def get_args_parser():
         setattr(args, arg, True)
 
     if args.base_dir == './':
-        args.base_dir = f'./Pretraining/{args.model}/{args.runname}' 
+        args.base_dir = f'./Sup-Training/{args.model}/{args.runname}' 
 
     return args
 
@@ -94,13 +100,13 @@ def get_transform(args):
 
     return transforms.Compose(list_of_transforms)
 
-
 class Trainer:
     def __init__(
         self,
         model: torch.nn.Module,
         train_dataloader: DataLoader,
         valid_dataloader: DataLoader,
+        test_dataloader: DataLoader,
         loss_scaler: torch.cuda.amp.GradScaler,
         optimizer: torch.optim.Optimizer,   
         args: dict
@@ -116,6 +122,7 @@ class Trainer:
         
         self.train_dataloader = train_dataloader
         self.valid_dataloader = valid_dataloader
+        self.test_dataloader = test_dataloader
         self.loss_scaler = loss_scaler  
         self.base_dir = args.base_dir
         self.epochs_run = 0
@@ -123,16 +130,20 @@ class Trainer:
         self.accum_iter = args.accum_iter
         self.global_min_loss = float("inf")
         self.transform = get_transform(args)
+        self.criterion = nn.BCEWithLogitsLoss()
 
         self.last_epoch_loss = float("inf")
         self.current_epoch_loss = 0.
         
         if self.global_rank == 0:
             Path(self.base_dir).mkdir(parents=True, exist_ok=True)
-            mlflow.set_experiment('Pretraining')
+            mlflow.set_experiment('Supervised-Training')
             mlflow.start_run(run_name=args.runname)
             mlflow.log_params(vars(args))   
 
+        if args.weights is not None:
+            print("Loading weights")
+            self.model.module.load_state_dict(torch.load(args.weights))
 
         if Path(f"{self.base_dir}/snapshot.ckpt").exists():
             print("Loading snapshot")   
@@ -155,9 +166,13 @@ class Trainer:
         self.loss_scaler.load_state_dict(snapshot["SCALER_STATE"])
         print(f"Resuming training from snapshot at Epoch {self.epochs_run}")
 
-    def _run_batch(self, data, update_grad):        
+    def _run_batch(self, data, labels, update_grad):        
         with torch.cuda.amp.autocast():
-            loss,_,_ = self.model(data,mask_ratio=float(self.args.mask_ratio))
+            pred = self.model(data)
+        flabels = torch.zeros_like(pred)
+        flabels[torch.arange(pred.size(0)), labels] = 1
+        flabels = flabels.to(torch.device(f'cuda:{self.local_rank}'))
+        loss = self.criterion(pred, flabels)
         loss /= self.accum_iter
         self.loss_scaler(loss, self.optimizer, update_grad)
         return loss.item()
@@ -167,22 +182,23 @@ class Trainer:
         dsize = 0
         self.model.train()  
         iterator = tqdm(self.train_dataloader) if self.global_rank == 0 else self.train_dataloader
-        for batch, (data, _) in enumerate(iterator):
+        for batch, (data, labels) in enumerate(iterator):
             if batch % self.accum_iter == 0:     
                 self.optimizer.zero_grad()           
                 adjust_learning_rate(self.optimizer, batch / len(self.train_dataloader) + epoch, self.args)
             
             
             data = data.to(torch.device(f'cuda:{self.local_rank}'))
+            labels = labels.long().to(torch.device(f'cuda:{self.local_rank}'))
             data = self._extra_transform(data) 
-            loss += self._run_batch(data, (batch+1)%self.accum_iter==0)
+            loss += self._run_batch(data, labels, (batch+1)%self.accum_iter==0)
             dsize += data.shape[0]
         return loss, dsize
 
     def _log(self, epoch, loss):
         if loss < self.global_min_loss:
             self.global_min_loss = loss
-            torch.save(self.model.module.state_dict(), f"{self.base_dir}/best.pt")
+            torch.save(self.model.module.state_dict(), f"{self.base_dir}/best_trainloss.pt")
         mlflow.log_metric('train_loss', loss, step=epoch)
 
     def _save_snapshot(self, epoch):
@@ -214,40 +230,83 @@ class Trainer:
                 self._log(epoch, average_loss)
                 pbar.update(1)
 
-                self.current_epoch_loss = average_loss
-                if self.current_epoch_loss < self.last_epoch_loss:
-                    torch.save(self.model.module.state_dict(), f"{self.base_dir}/onegoodmodel.pt")
-                self.last_epoch_loss = self.current_epoch_loss
-
-            avg_loss = self.evaluate(epoch)
-            # if torch.isnan(torch.Tensor(avg_loss)):
-            #     break
+            self.evaluate(epoch,'val')
+        
+        self.evaluate(max_epochs,'test')
 
         if self.global_rank == 0:    
             torch.save(self.model.module.state_dict(), f"{self.base_dir}/last.pt")
             Path(f"{self.base_dir}/snapshot.ckpt").unlink()
             mlflow.end_run()
     
-    def evaluate(self,epoch):
-        val_loss = 0.
+    def evaluate(self,epoch,type='val'):
+        curr_loss = 0.
         dsize = 0
+        data_loader = self.valid_dataloader if type == 'val' else self.test_dataloader
         self.model.eval()
+        fpreds, flabels = [], []
         with torch.no_grad():
-            for _, (data, _) in enumerate(self.valid_dataloader):
+            for _, (data, labels) in enumerate(data_loader):
                 dsize += data.shape[0]
                 data = data.to(torch.device(f'cuda:{self.local_rank}'))
+                labels = labels.long().to(torch.device(f'cuda:{self.local_rank}'))
                 data = self._extra_transform(data)
-                loss,_,_ = self.model(data,mask_ratio=float(self.args.mask_ratio))
-                val_loss += loss.item()
-            total_loss_tensor = torch.tensor(val_loss).to(f'cuda:{self.local_rank}')
+                pred = self.model(data)
+                new_labels = torch.zeros_like(pred)
+                new_labels[torch.arange(pred.size(0)), labels] = 1
+                loss = self.criterion(pred, new_labels)
+                curr_loss += loss.item()
+                fpreds.append(pred.softmax(dim=1))
+                flabels.append(labels)
+
+            fpreds = torch.cat(fpreds, dim=0)
+            flabels = torch.cat(flabels, dim=0)
+            
+            # Prepare tensors for all_gather
+            gathered_fpreds = [torch.zeros_like(fpreds) for _ in range(dist.get_world_size())]
+            gathered_flabels = [torch.zeros_like(flabels) for _ in range(dist.get_world_size())]
+            
+            # Concatenate across GPUs
+            dist.all_gather(gathered_fpreds, fpreds)
+            dist.all_gather(gathered_flabels, flabels)
+            
+            # Flatten the gathered lists
+            fpreds = torch.cat(gathered_fpreds, dim=0)
+            flabels = torch.cat(gathered_flabels, dim=0)
+
+            
+            # Aggregate Loss
+            total_loss_tensor = torch.tensor(curr_loss).to(f'cuda:{self.local_rank}')
             total_dsize_tensor = torch.tensor(dsize).to(f'cuda:{self.local_rank}')
             dist.reduce(total_loss_tensor, dst=0, op=dist.ReduceOp.SUM)
             dist.reduce(total_dsize_tensor, dst=0, op=dist.ReduceOp.SUM)
-            average_loss = total_loss_tensor.item() / total_dsize_tensor.item()
-            if self.global_rank == 0:                
-                mlflow.log_metric('val_loss', average_loss, step=epoch)
-                print(f"Validation Loss: {average_loss}")
-            return average_loss
+
+            if self.global_rank == 0:
+                average_loss = total_loss_tensor.item() / total_dsize_tensor.item()
+                mlflow.log_metric(f'{type}_loss', average_loss, step=epoch)
+                print(f"{type} Loss: {average_loss}")
+
+                #Calculate accuracy
+                acc = torch.sum(torch.argmax(fpreds, dim=1) == flabels).item() / flabels.shape[0]
+                mlflow.log_metric(f'{type}_accuracy', acc, step=epoch)
+                print(f"{type} Accuracy: {acc}")
+
+                #Calculate AUC
+                flabels = flabels.cpu().numpy()
+                fpreds = fpreds.max(1)[0].cpu().numpy()                
+                # try:
+                #     fpr, tpr, _ = metrics.roc_curve(flabels, fpreds, pos_label=1)
+                # except:
+                #     #Compute number of NaNs in fpreds
+                #     print(f"Number of NaNs in predictions: {torch.isnan(fpreds).sum()}")
+                if np.isnan(fpreds).sum() > 0:
+                    print(f"Number of NaNs in predictions: {np.isnan(fpreds).sum()}")
+                else:
+                    fpr, tpr, _ = metrics.roc_curve(flabels, fpreds, pos_label=1)
+                auc = metrics.auc(fpr, tpr)
+                mlflow.log_metric(f'{type}_auc', auc, step=epoch)
+                print(f"{type} AUC: {auc}")
+                
                 
         
 
@@ -271,6 +330,9 @@ def load_train_objs(args):
             if not k_factor.is_integer():
                 list_of_layers.append(nn.Conv2d(in_channels=model.in_chans*k_factor, out_channels=args.encoder_embed_dim, kernel_size=1))
             model.patch_embed.proj = nn.Sequential(*list_of_layers)
+    else:
+        model = modelmap[args.model](3 if Path(args.data_dir).parent.stem == 'QG' else 8)
+    
     loss_scaler = NativeScaler()
     param_groups = param_groups_weight_decay(model, args.weight_decay)
     if args.optim.lower() != 'sgd':
@@ -288,7 +350,7 @@ def main(args):
     args.lr = args.blr * eff_batch_size / 256
     model, loss_scaler, optimizer = load_train_objs(args)
     train_loader, val_loader, test_loader = prepare_dataloader(args.data_dir, args.batch_size)
-    trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+    trainer = Trainer(model, train_loader, val_loader, test_loader, loss_scaler, optimizer, args)
     trainer.train(args.epochs)
     destroy_process_group()
 

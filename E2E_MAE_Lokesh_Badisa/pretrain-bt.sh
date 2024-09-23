@@ -12,12 +12,10 @@
 #SBATCH --error=errors/%x-%j.out
 
 
-module load python
-conda activate lokesh
-
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 export CUDA_LAUNCH_BLOCKING=1
 export TORCH_DISTRIBUTED_DEBUG=INFO
 export TORCH_USE_CUDA_DSA=1
-srun --export=ALL shifter python3 dist-training.py --runname vit_base_chalandi_qg --config base\
- --epochs 100 --warmup_epochs 15 --blr 1e-5
+srun --export=ALL shifter python3 dist-training.py --runname vit_base_bt_noaug --config base \
+ --data_dir /global/cfs/cdirs/m4392/ACAT_Backup/Data/Top/Boosted_Top.h5 --blr 1e-4\
+    --epochs 100 --warmup_epochs 10

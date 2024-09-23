@@ -86,11 +86,12 @@ class H5Dataset(Dataset):
         assert partition in ['train', 'validation', 'test'],\
               "Partition must be one of 'train', 'validation', or 'test'"
         self.file_path = file_path
-        self.data = h5py.File(file_path, 'r')[f'{partition}_jet']  
-        self.labels = h5py.File(file_path, 'r')[f'{partition}_meta']
+        self.data = h5py.File(file_path, 'r')[f'{partition}_jet']          
         if Path(file_path).parent.stem == 'QG':
+            self.labels = h5py.File(file_path, 'r')[f'{partition}_meta'][:,-1]
             self.neglect = np.array(QUARK_GLUON_NEGLECT)
         else:
+            self.labels = h5py.File(file_path, 'r')[f'{partition}_meta'][:,0]
             self.neglect = np.array(BOOSTED_TOP_NEGLECT)
 
     def __len__(self):
@@ -98,6 +99,7 @@ class H5Dataset(Dataset):
 
     def __getitem__(self, idx):
         idx = idx + bisect_left(self.neglect, idx)
+        self.data[idx][self.data[idx] < 1e-3] = 0
         return self.data[idx], self.labels[idx]
 
 class ChunkedDistributedSampler(Sampler):
@@ -179,6 +181,7 @@ class RegressionDataset(Dataset):
 def prepare_dataloader(data_dir: str, batch_size: int):
     trainset = H5Dataset(data_dir, 'train')
     valset = H5Dataset(data_dir, 'validation')
+    testset = H5Dataset(data_dir, 'test')
     print("Data Loaded")
     WORLD_SIZE = int(os.environ['SLURM_NTASKS'])
     GLOBAL_RANK = int(os.environ['SLURM_PROCID'])
@@ -202,4 +205,12 @@ def prepare_dataloader(data_dir: str, batch_size: int):
         sampler=DistributedSampler(valset, num_replicas=WORLD_SIZE, rank=GLOBAL_RANK, shuffle=False)
         # sampler = DistributedSampler(valset)
     )
-    return train_loader, val_loader
+    test_loader = DataLoader(
+        testset,
+        batch_size=512,
+        pin_memory=True,
+        shuffle=False,
+        num_workers=4,
+        sampler=DistributedSampler(testset, num_replicas=WORLD_SIZE, rank=GLOBAL_RANK, shuffle=False)
+    )
+    return train_loader, val_loader, test_loader
