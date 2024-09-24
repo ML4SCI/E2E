@@ -1,0 +1,22 @@
+data:
+  batch_size: 8
+  chunk_size: 32
+  img_size: 126
+  num_classes: 1
+  num_workers: 2
+  patch_size: 14
+  pin_mem: true
+  root_path: # Data path
+logging:
+  folder: # Logging folder
+  write_tag: probing_ijepa
+meta:
+  model_name: vit_base
+  num_unfreeze_layers: 3
+  pretrained_path: # Path to pre-trained checkpoint
+  use_batch_norm: false
+  use_hidden_layer: false
+optimization:
+  final_lr: 1.0e-06
+  num_epochs: 25
+  start_lr: 0.001

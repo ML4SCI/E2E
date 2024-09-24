@@ -9,6 +9,7 @@ from src.models.barlow_twins import BarlowTwins
 from src.utils.schedulers import (
     WarmupCosineSchedule,
     CosineWDSchedule)
+
 from src.utils.optimizers import LARS
 from src.utils.tensors import trunc_normal_
 
@@ -146,6 +147,7 @@ def init_barlow_model(
 def init_opt(
     encoder,
     predictor,
+    lr_scheduler,
     iterations_per_epoch,
     start_lr,
     ref_lr,
@@ -179,13 +181,17 @@ def init_opt(
 
     logger.info('Using AdamW')
     optimizer = torch.optim.AdamW(param_groups)
-    scheduler = WarmupCosineSchedule(
-        optimizer,
-        warmup_steps=int(warmup*iterations_per_epoch),
-        start_lr=start_lr,
-        ref_lr=ref_lr,
-        final_lr=final_lr,
-        T_max=int(ipe_scale*num_epochs*iterations_per_epoch))
+    if lr_scheduler == 'cosine':
+        scheduler = WarmupCosineSchedule(
+            optimizer,
+            warmup_steps=int(warmup*iterations_per_epoch),
+            start_lr=start_lr,
+            ref_lr=ref_lr,
+            final_lr=final_lr,
+            T_max=int(ipe_scale*num_epochs*iterations_per_epoch))
+    else:
+        gamma = (start_lr / final_lr) ** (1 / iterations_per_epoch*num_epochs)
+        scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=gamma)
     wd_scheduler = CosineWDSchedule(
         optimizer,
         ref_wd=wd,
