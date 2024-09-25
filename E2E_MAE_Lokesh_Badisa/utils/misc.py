@@ -3,6 +3,7 @@ import torch
 import subprocess
 import random
 import os
+import torch.distributed as dist
 from torch.distributed import init_process_group
 from pathlib import Path
 from torchvision import transforms
@@ -49,31 +50,15 @@ def ddp_setup():
     GLOBAL_RANK = int(os.environ['SLURM_PROCID'])
     print(f'WORLD_SIZE: {WORLD_SIZE}, GLOBAL_RANK: {GLOBAL_RANK}')
     sync_file = _get_sync_file()
-    # os.environ['MASTER_ADDR'] = '127.0.0.1'  # Replace with the master node's IP address
-    # os.environ['MASTER_PORT'] = '29500' 
     init_process_group(backend="nccl",init_method=sync_file,rank=GLOBAL_RANK,world_size=WORLD_SIZE)
 
-# def ddp_setup():
-#     WORLD_SIZE = int(os.environ['SLURM_NTASKS']) 
-#     GLOBAL_RANK = int(os.environ['SLURM_PROCID'])
-#     NODE_RANK = int(os.environ['SLURM_NODEID'])  # Get the node rank
-#     HOSTNAME = os.environ['HOSTNAME']  # Get the current node's hostname
-    
-#     # Expand SLURM_NODELIST using scontrol show hostname
-#     result = subprocess.run(['scontrol', 'show', 'hostname', os.environ['SLURM_NODELIST']], stdout=subprocess.PIPE)
-#     nodes = result.stdout.decode('utf-8').splitlines()
-    
-#     # The first node in the expanded list is the master node
-#     MASTER_NODE = nodes[0]
-    
-#     # Set MASTER_ADDR and MASTER_PORT environment variables
-#     os.environ['MASTER_ADDR'] = MASTER_NODE  # No need to resolve IP, just use the hostname
-#     os.environ['MASTER_PORT'] = '29500'
-    
-#     print(f'WORLD_SIZE: {WORLD_SIZE}, GLOBAL_RANK: {GLOBAL_RANK}, NODE_RANK: {NODE_RANK}, MASTER_ADDR: {MASTER_NODE}')
-    
-#     # Initialize the process group
-#     init_process_group(backend="nccl", init_method='env://', rank=GLOBAL_RANK, world_size=WORLD_SIZE)
+def ddp_setup_single_node(args):
+    """ Setup for single-node multi-GPU training """
+    args.local_rank = int(os.environ.get('LOCAL_RANK', 0))  # Default to 0 if LOCAL_RANK isn't set.
+    torch.cuda.set_device(args.local_rank)
+    dist.init_process_group(backend='nccl', init_method='env://')
+    args.world_size = dist.get_world_size()
+    args.global_rank = dist.get_rank()
 
 
 def get_transform(args, mode):

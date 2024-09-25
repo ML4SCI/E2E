@@ -47,6 +47,7 @@ def get_args_parser():
     parser.add_argument('--accum_iter', type=int, default=1)
 
     # Training Hyperparameters
+    parser.add_argument('--lp', action='store_true')
     parser.add_argument('--seed', type=int, default=0)
     # parser.add_argument('--mask_ratio', type=str, default=0.75)
     # parser.add_argument('--norm_pix_loss', action='store_true') 
@@ -78,8 +79,8 @@ def get_args_parser():
         for key in eval(f'cfg.{args.config}'):
             exec(f'args.{key} = cfg.{args.config}[\'{key}\']')
     
-    for arg in ['norm_pix_loss']:
-        setattr(args, arg, True)
+    # for arg in ['norm_pix_loss']:
+    #     setattr(args, arg, True)
 
     if args.base_dir == './':
         args.base_dir = f'./Sup-Training/{args.model}/{args.runname}' 
@@ -88,10 +89,10 @@ def get_args_parser():
 
 def get_transform(args):
     list_of_transforms = []
-    if args.rrc:
-        list_of_transforms.append(transforms.RandomResizedCrop(125, scale=(0.2, 1.0), interpolation=3))
-    if args.rhf:
-        list_of_transforms.append(transforms.RandomHorizontalFlip())
+    # if args.rrc:
+    #     list_of_transforms.append(transforms.RandomResizedCrop(125, scale=(0.2, 1.0), interpolation=3))
+    # if args.rhf:
+    #     list_of_transforms.append(transforms.RandomHorizontalFlip())
     
     if Path(args.data_dir).parent.stem == 'QG':
         list_of_transforms.append(transforms.Normalize(mean=QUARK_GLUON_MEAN, std=QUARK_GLUON_STD))
@@ -107,7 +108,7 @@ class Trainer:
         train_dataloader: DataLoader,
         valid_dataloader: DataLoader,
         test_dataloader: DataLoader,
-        loss_scaler: torch.cuda.amp.GradScaler,
+        # loss_scaler: torch.cuda.amp.GradScaler,
         optimizer: torch.optim.Optimizer,   
         args: dict
     ) -> None:
@@ -116,6 +117,16 @@ class Trainer:
         
 
         self.model = model.to(f'cuda:{self.local_rank}')
+        if args.lp:
+            # Trainable params are only in model.head or model.fc
+            for param in self.model.parameters():
+                param.requires_grad = False
+            if hasattr(self.model, 'head'):
+                for param in self.model.head.parameters():
+                    param.requires_grad = True
+            if hasattr(self.model, 'fc'):
+                for param in self.model.fc.parameters():
+                    param.requires_grad = True
         self.model = DDP(model, device_ids=[torch.device(f'cuda:{self.local_rank}')])
         
         self.optimizer = optimizer
@@ -123,13 +134,13 @@ class Trainer:
         self.train_dataloader = train_dataloader
         self.valid_dataloader = valid_dataloader
         self.test_dataloader = test_dataloader
-        self.loss_scaler = loss_scaler  
+        # self.loss_scaler = loss_scaler  
         self.base_dir = args.base_dir
         self.epochs_run = 0
         self.args = args
         self.accum_iter = args.accum_iter
         self.global_min_loss = float("inf")
-        self.transform = get_transform(args)
+        # self.transform = get_transform(args)
         self.criterion = nn.BCEWithLogitsLoss()
 
         self.last_epoch_loss = float("inf")
@@ -143,7 +154,7 @@ class Trainer:
 
         if args.weights is not None:
             print("Loading weights")
-            self.model.module.load_state_dict(torch.load(args.weights))
+            self.model.module.load_state_dict(torch.load(args.weights),strict=False)
 
         if Path(f"{self.base_dir}/snapshot.ckpt").exists():
             print("Loading snapshot")   
@@ -154,7 +165,7 @@ class Trainer:
         # max = torch.max(data.view(data.size(0),-1), dim=1)[0]
         # data = (data - min.view(-1, 1, 1, 1)) / (max.view(-1, 1, 1, 1) - min.view(-1, 1, 1, 1)) 
         data = rearrange(data, 'b h w c-> b c h w')
-        data = self.transform(data)
+        # data = self.transform(data)
         return data        
 
     def _load_snapshot(self):
@@ -163,7 +174,7 @@ class Trainer:
         self.epochs_run = snapshot["EPOCHS_RUN"]
         self.global_min_loss = snapshot["GLOBAL_MIN_LOSS"]
         self.optimizer.load_state_dict(snapshot["OPTIMIZER_STATE"])
-        self.loss_scaler.load_state_dict(snapshot["SCALER_STATE"])
+        # self.loss_scaler.load_state_dict(snapshot["SCALER_STATE"])
         print(f"Resuming training from snapshot at Epoch {self.epochs_run}")
 
     def _run_batch(self, data, labels, update_grad):        
@@ -174,7 +185,10 @@ class Trainer:
         flabels = flabels.to(torch.device(f'cuda:{self.local_rank}'))
         loss = self.criterion(pred, flabels)
         loss /= self.accum_iter
-        self.loss_scaler(loss, self.optimizer, update_grad)
+        # self.loss_scaler(loss, self.optimizer, update_grad)
+        loss.backward()
+        if update_grad:
+            self.optimizer.step()
         return loss.item()
 
     def _run_epoch(self, epoch):
@@ -207,7 +221,7 @@ class Trainer:
         snapshot["EPOCHS_RUN"] = epoch
         snapshot["GLOBAL_MIN_LOSS"] = self.global_min_loss
         snapshot["OPTIMIZER_STATE"] = self.optimizer.state_dict()
-        snapshot["SCALER_STATE"] = self.loss_scaler.state_dict()
+        # snapshot["SCALER_STATE"] = self.loss_scaler.state_dict()
         torch.save(snapshot, f"{self.base_dir}/snapshot.ckpt")
         print(f"Epoch {epoch} | Training snapshot saved at {self.base_dir}/snapshot.ckpt")
 
@@ -294,20 +308,14 @@ class Trainer:
                 #Calculate AUC
                 flabels = flabels.cpu().numpy()
                 fpreds = fpreds.max(1)[0].cpu().numpy()                
-                # try:
-                #     fpr, tpr, _ = metrics.roc_curve(flabels, fpreds, pos_label=1)
-                # except:
-                #     #Compute number of NaNs in fpreds
-                #     print(f"Number of NaNs in predictions: {torch.isnan(fpreds).sum()}")
-                if np.isnan(fpreds).sum() > 0:
-                    print(f"Number of NaNs in predictions: {np.isnan(fpreds).sum()}")
-                else:
+                try:
                     fpr, tpr, _ = metrics.roc_curve(flabels, fpreds, pos_label=1)
-                auc = metrics.auc(fpr, tpr)
-                mlflow.log_metric(f'{type}_auc', auc, step=epoch)
-                print(f"{type} AUC: {auc}")
-                
-                
+                    auc = metrics.auc(fpr, tpr)
+                    mlflow.log_metric(f'{type}_auc', auc, step=epoch)
+                    print(f"{type} AUC: {auc}")
+                except:
+                    print(f"Number of NaNs in predictions: {torch.isnan(fpreds).sum()}")
+                   
         
 
 def load_train_objs(args):
@@ -333,13 +341,14 @@ def load_train_objs(args):
     else:
         model = modelmap[args.model](3 if Path(args.data_dir).parent.stem == 'QG' else 8)
     
-    loss_scaler = NativeScaler()
+    # loss_scaler = NativeScaler()
     param_groups = param_groups_weight_decay(model, args.weight_decay)
     if args.optim.lower() != 'sgd':
         optimizer = optimizers_map[args.optim.lower()](param_groups, lr=args.lr, betas=(0.9, 0.95), weight_decay=args.weight_decay)
     else:
         optimizer = optimizers_map[args.optim.lower()](param_groups, lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
-    return model, loss_scaler, optimizer
+    # return model, loss_scaler, optimizer
+    return model, optimizer
 
 
 def main(args):
@@ -348,9 +357,10 @@ def main(args):
     ddp_setup()
     eff_batch_size = args.batch_size * get_world_size()
     args.lr = args.blr * eff_batch_size / 256
-    model, loss_scaler, optimizer = load_train_objs(args)
+    # model, loss_scaler, optimizer = load_train_objs(args)
+    model, optimizer = load_train_objs(args)
     train_loader, val_loader, test_loader = prepare_dataloader(args.data_dir, args.batch_size)
-    trainer = Trainer(model, train_loader, val_loader, test_loader, loss_scaler, optimizer, args)
+    trainer = Trainer(model, train_loader, val_loader, test_loader, optimizer, args)
     trainer.train(args.epochs)
     destroy_process_group()
 
