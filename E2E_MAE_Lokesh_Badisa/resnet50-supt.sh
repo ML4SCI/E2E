@@ -3,7 +3,7 @@
 #SBATCH -C gpu
 #SBATCH -N 1
 #SBATCH -q regular
-#SBATCH -t 12:00:00
+#SBATCH -t 48:00:00
 #SBATCH --ntasks-per-node=4
 #SBATCH --gpus-per-node=4
 #SBATCH --cpus-per-gpu 16

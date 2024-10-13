@@ -3,7 +3,7 @@
 #ViT configs
 small = {
 'patch_size': 5,
-'embed_dim': 384,
+'encoder_embed_dim': 384,
 'encoder_depth': 12,
 'encoder_heads': 6,
 'decoder_embed_dim': 512,
@@ -14,7 +14,7 @@ small = {
 
 base = {
 'patch_size': 5,
-'embed_dim': 768,
+'encoder_embed_dim': 768,
 'encoder_depth': 12,
 'encoder_heads': 12,
 'decoder_embed_dim': 512,
@@ -25,7 +25,7 @@ base = {
 
 large = {
 'patch_size': 5,
-'embed_dim': 1024,
+'encoder_embed_dim': 1024,
 'encoder_depth': 24,
 'encoder_heads': 16,
 'decoder_embed_dim': 512,
@@ -36,7 +36,7 @@ large = {
 
 huge = {
 'patch_size': 5,
-'embed_dim': 1280,
+'encoder_embed_dim': 1280,
 'encoder_depth': 32,
 'encoder_heads': 16,
 'decoder_embed_dim': 512,

@@ -5,7 +5,6 @@ from einops import rearrange
 from torch.utils.data import DataLoader
 from torchvision import transforms
 from model import ViTMAE
-# from baselines.models import vit, resnet
 from baselines.utils import modelmap
 from timm.optim.optim_factory import param_groups_weight_decay
 
@@ -177,13 +176,11 @@ class Trainer:
         # self.loss_scaler.load_state_dict(snapshot["SCALER_STATE"])
         print(f"Resuming training from snapshot at Epoch {self.epochs_run}")
 
-    def _run_batch(self, data, labels, update_grad):        
-        with torch.cuda.amp.autocast():
-            pred = self.model(data)
-        flabels = torch.zeros_like(pred)
-        flabels[torch.arange(pred.size(0)), labels] = 1
+    def _run_batch(self, data, labels, update_grad):                
+        pred = self.model(data)
+        flabels = labels
         flabels = flabels.to(torch.device(f'cuda:{self.local_rank}'))
-        loss = self.criterion(pred, flabels)
+        loss = self.criterion(pred.squeeze(), flabels)
         loss /= self.accum_iter
         # self.loss_scaler(loss, self.optimizer, update_grad)
         loss.backward()
@@ -192,7 +189,7 @@ class Trainer:
         return loss.item()
 
     def _run_epoch(self, epoch):
-        loss = 0.
+        loss = float(0.)
         dsize = 0
         self.model.train()  
         iterator = tqdm(self.train_dataloader) if self.global_rank == 0 else self.train_dataloader
@@ -270,7 +267,7 @@ class Trainer:
                 new_labels[torch.arange(pred.size(0)), labels] = 1
                 loss = self.criterion(pred, new_labels)
                 curr_loss += loss.item()
-                fpreds.append(pred.softmax(dim=1))
+                fpreds.append(torch.sigmoid(pred))
                 flabels.append(labels)
 
             fpreds = torch.cat(fpreds, dim=0)
@@ -327,7 +324,7 @@ def load_train_objs(args):
                     encoder_heads=args.encoder_heads,
                     decoder_heads=args.decoder_heads,
                     norm_pix_loss=args.norm_pix_loss,
-                    in_chans=3 if Path(args.data_dir).parent.stem == 'QG' else 8
+                    in_chans=3 #if Path(args.data_dir).parent.stem == 'QG' else 8
                     )  
         if args.patch_embed == 'depthwise':
             k_factor = args.encoder_embed_dim / model.in_chans
@@ -339,7 +336,7 @@ def load_train_objs(args):
                 list_of_layers.append(nn.Conv2d(in_channels=model.in_chans*k_factor, out_channels=args.encoder_embed_dim, kernel_size=1))
             model.patch_embed.proj = nn.Sequential(*list_of_layers)
     else:
-        model = modelmap[args.model](3 if Path(args.data_dir).parent.stem == 'QG' else 8)
+        model = modelmap[args.model](3) #if Path(args.data_dir).parent.stem == 'QG' else 8)
     
     # loss_scaler = NativeScaler()
     param_groups = param_groups_weight_decay(model, args.weight_decay)

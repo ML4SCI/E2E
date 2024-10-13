@@ -3,19 +3,19 @@ from timm.models.crossvit import CrossVit
 
 
 def vit_tiny(channels: int, **kwargs) -> VisionTransformer:
-    model = VisionTransformer(patch_size=5, embed_dim=192, depth=12, num_heads=3, num_classes=2, in_chans=channels, img_size=125, **kwargs)
+    model = VisionTransformer(patch_size=5, embed_dim=192, depth=12, num_heads=3, num_classes=1, in_chans=channels, img_size=125, **kwargs)
     return model
 
 def vit_small(channels: int, **kwargs) -> VisionTransformer:
-    model = VisionTransformer(patch_size=5, embed_dim=384, depth=12, num_heads=6, num_classes=2, in_chans=channels, img_size=125, **kwargs)
+    model = VisionTransformer(patch_size=5, embed_dim=384, depth=12, num_heads=6, num_classes=1, in_chans=channels, img_size=125, **kwargs)
     return model
 
 def vit_base(channels: int, **kwargs) -> VisionTransformer:
-    model = VisionTransformer(patch_size=5, embed_dim=768, depth=12, num_heads=12, num_classes=2, in_chans=channels, img_size=125, **kwargs)   
+    model = VisionTransformer(patch_size=5, embed_dim=768, depth=12, num_heads=12, num_classes=1, in_chans=channels, img_size=125, **kwargs)   
     return model
 
 def vit_large(channels: int, **kwargs) -> VisionTransformer:
-    model = VisionTransformer(patch_size=5, embed_dim=1024, depth=24, num_heads=16, num_classes=2, in_chans=channels, img_size=125, **kwargs)
+    model = VisionTransformer(patch_size=5, embed_dim=1024, depth=24, num_heads=16, num_classes=1, in_chans=channels, img_size=125, **kwargs)
     return model
 
 def crossvit_tiny(channels: int,**kwargs):
