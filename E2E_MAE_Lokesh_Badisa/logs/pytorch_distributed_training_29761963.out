@@ -1,0 +1,184 @@
+
+
+=============
+== PyTorch ==
+
+=============
+== PyTorch ==
+
+=============
+== PyTorch ==
+=============
+== PyTorch ==
+=============
+=============
+=============
+=============
+
+NVIDIA Release 24.05 (build 91431255)
+PyTorch Version 2.4.0a0+07cecf4
+
+NVIDIA Release 24.05 (build 91431255)
+PyTorch Version 2.4.0a0+07cecf4
+
+NVIDIA Release 24.05 (build 91431255)
+PyTorch Version 2.4.0a0+07cecf4
+
+NVIDIA Release 24.05 (build 91431255)
+PyTorch Version 2.4.0a0+07cecf4
+Container image Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Container image Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Container image Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Container image Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+
+
+
+Traceback (most recent call last):
+  File "/workspace/dist-training.py", line 19, in <module>
+Traceback (most recent call last):
+  File "/workspace/dist-training.py", line 19, in <module>
+    from utils.dataset import prepare_dataloader
+  File "/workspace/utils/dataset.py", line 2, in <module>
+    from utils.dataset import prepare_dataloader
+  File "/workspace/utils/dataset.py", line 2, in <module>
+    import h5py
+  File "/usr/local/lib/python3.10/dist-packages/h5py/__init__.py", line 45, in <module>
+    import h5py
+  File "/usr/local/lib/python3.10/dist-packages/h5py/__init__.py", line 45, in <module>
+    from ._conv import register_converters as _register_converters, \
+  File "h5py/_conv.pyx", line 1, in init h5py._conv
+    from ._conv import register_converters as _register_converters, \
+  File "h5py/_conv.pyx", line 1, in init h5py._conv
+  File "h5py/h5r.pyx", line 1, in init h5py.h5r
+  File "h5py/h5r.pyx", line 1, in init h5py.h5r
+  File "h5py/h5p.pyx", line 1, in init h5py.h5p
+  File "h5py/h5p.pyx", line 1, in init h5py.h5p
+  File "h5py/h5t.pyx", line 235, in init h5py.h5t
+  File "h5py/h5t.pyx", line 235, in init h5py.h5t
+  File "h5py/h5t.pyx", line 80, in h5py.h5t.lockid
+  File "h5py/h5t.pyx", line 80, in h5py.h5t.lockid
+  File "h5py/h5t.pyx", line 49, in h5py.h5t.typewrap
+  File "h5py/h5t.pyx", line 49, in h5py.h5t.typewrap
+ValueError: Not a datatype (not a datatype)
+ValueError: Not a datatype (not a datatype)
+Traceback (most recent call last):
+  File "/workspace/dist-training.py", line 19, in <module>
+Traceback (most recent call last):
+  File "/workspace/dist-training.py", line 19, in <module>
+    from utils.dataset import prepare_dataloader
+  File "/workspace/utils/dataset.py", line 2, in <module>
+    from utils.dataset import prepare_dataloader
+  File "/workspace/utils/dataset.py", line 2, in <module>
+    import h5py
+  File "/usr/local/lib/python3.10/dist-packages/h5py/__init__.py", line 45, in <module>
+    import h5py
+  File "/usr/local/lib/python3.10/dist-packages/h5py/__init__.py", line 45, in <module>
+    from ._conv import register_converters as _register_converters, \
+  File "h5py/_conv.pyx", line 1, in init h5py._conv
+    from ._conv import register_converters as _register_converters, \
+  File "h5py/_conv.pyx", line 1, in init h5py._conv
+  File "h5py/h5r.pyx", line 1, in init h5py.h5r
+  File "h5py/h5r.pyx", line 1, in init h5py.h5r
+  File "h5py/h5p.pyx", line 1, in init h5py.h5p
+  File "h5py/h5p.pyx", line 1, in init h5py.h5p
+  File "h5py/h5t.pyx", line 235, in init h5py.h5t
+  File "h5py/h5t.pyx", line 235, in init h5py.h5t
+  File "h5py/h5t.pyx", line 80, in h5py.h5t.lockid
+  File "h5py/h5t.pyx", line 80, in h5py.h5t.lockid
+  File "h5py/h5t.pyx", line 49, in h5py.h5t.typewrap
+  File "h5py/h5t.pyx", line 49, in h5py.h5t.typewrap
+ValueError: Not a datatype (not a datatype)
+ValueError: Not a datatype (not a datatype)
+srun: error: nid008284: tasks 1-2: Exited with exit code 1
+srun: Terminating StepId=29761963.0
+slurmstepd: error: *** STEP 29761963.0 ON nid008284 CANCELLED AT 2024-08-25T17:14:23 ***
+srun: error: nid008284: tasks 0,3: Exited with exit code 1

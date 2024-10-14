@@ -1,0 +1,41 @@
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 66, in ddp_setup
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 66, in ddp_setup
+    MASTER_ADDR = socket.gethostbyname(MASTER_NODE)
+socket.gaierror: [Errno -2] Name or service not known
+    MASTER_ADDR = socket.gethostbyname(MASTER_NODE)
+socket.gaierror: [Errno -2] Name or service not known
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 66, in ddp_setup
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 66, in ddp_setup
+    MASTER_ADDR = socket.gethostbyname(MASTER_NODE)
+socket.gaierror: [Errno -2] Name or service not known
+    MASTER_ADDR = socket.gethostbyname(MASTER_NODE)
+socket.gaierror: [Errno -2] Name or service not known
+srun: error: nid008312: tasks 0-1: Exited with exit code 1
+srun: Terminating StepId=29900126.0
+srun: error: nid008313: tasks 5,7: Exited with exit code 1
+slurmstepd: error: *** STEP 29900126.0 ON nid008312 CANCELLED AT 2024-08-28T06:04:23 ***
+srun: error: nid008312: task 2: Terminated
+srun: error: nid008313: task 4: Terminated
+srun: error: nid008313: task 6: Terminated
+srun: error: nid008312: task 3: Terminated
+srun: Force Terminated StepId=29900126.0

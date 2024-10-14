@@ -1,0 +1,111 @@
+Node IP: 128.55.68.119
+W0807 08:42:23.759000 139665508490112 torch/distributed/run.py:757] 
+W0807 08:42:23.759000 139665508490112 torch/distributed/run.py:757] *****************************************
+W0807 08:42:23.759000 139665508490112 torch/distributed/run.py:757] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0807 08:42:23.759000 139665508490112 torch/distributed/run.py:757] *****************************************
+I0807 08:42:23.760000 139665508490112 torch/distributed/launcher/api.py:188] Starting elastic_operator with launch configs:
+I0807 08:42:23.760000 139665508490112 torch/distributed/launcher/api.py:188]   entrypoint       :  
+I0807 08:42:23.760000 139665508490112 torch/distributed/launcher/api.py:188]   min_nodes        : 1
+I0807 08:42:23.760000 139665508490112 torch/distributed/launcher/api.py:188]   max_nodes        : 1
+I0807 08:42:23.760000 139665508490112 torch/distributed/launcher/api.py:188]   nproc_per_node   : 4
+I0807 08:42:23.760000 139665508490112 torch/distributed/launcher/api.py:188]   run_id           : 31045
+I0807 08:42:23.760000 139665508490112 torch/distributed/launcher/api.py:188]   rdzv_backend     : c10d
+I0807 08:42:23.760000 139665508490112 torch/distributed/launcher/api.py:188]   rdzv_endpoint    : 128.55.68.119:29500
+I0807 08:42:23.760000 139665508490112 torch/distributed/launcher/api.py:188]   rdzv_configs     : {'timeout': 900}
+I0807 08:42:23.760000 139665508490112 torch/distributed/launcher/api.py:188]   max_restarts     : 0
+I0807 08:42:23.760000 139665508490112 torch/distributed/launcher/api.py:188]   monitor_interval : 5
+I0807 08:42:23.760000 139665508490112 torch/distributed/launcher/api.py:188]   log_dir          : /tmp/torchelastic_m9sk7skt
+I0807 08:42:23.760000 139665508490112 torch/distributed/launcher/api.py:188]   metrics_cfg      : {}
+I0807 08:42:23.760000 139665508490112 torch/distributed/launcher/api.py:188] 
+I0807 08:42:23.789000 139665508490112 torch/distributed/elastic/agent/server/api.py:866] [default] starting workers for entrypoint: python3.10
+I0807 08:42:23.789000 139665508490112 torch/distributed/elastic/agent/server/api.py:699] [default] Rendezvous'ing worker group
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/agent/server/api.py:568] [default] Rendezvous complete for workers. Result:
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/agent/server/api.py:568]   restart_count=0
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/agent/server/api.py:568]   master_addr=nid003824-hsn0
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/agent/server/api.py:568]   master_port=40279
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/agent/server/api.py:568]   group_rank=0
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/agent/server/api.py:568]   group_world_size=1
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/agent/server/api.py:568]   local_ranks=[0, 1, 2, 3]
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/agent/server/api.py:568]   role_ranks=[0, 1, 2, 3]
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/agent/server/api.py:568]   global_ranks=[0, 1, 2, 3]
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/agent/server/api.py:568]   role_world_sizes=[4, 4, 4, 4]
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/agent/server/api.py:568]   global_world_sizes=[4, 4, 4, 4]
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/agent/server/api.py:568] 
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/agent/server/api.py:707] [default] Starting worker group
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/agent/server/local_elastic_agent.py:168] Environment variable 'TORCHELASTIC_ENABLE_FILE_TIMER' not found. Do not start FileTimerServer.
+I0807 08:42:25.038000 139665508490112 torch/distributed/elastic/multiprocessing/api.py:263] log directory set to: /tmp/torchelastic_m9sk7skt/31045_psxd4f11
+I0807 08:42:25.039000 139665508490112 torch/distributed/elastic/multiprocessing/api.py:358] Setting worker0 reply file to: /tmp/torchelastic_m9sk7skt/31045_psxd4f11/attempt_0/0/error.json
+I0807 08:42:25.039000 139665508490112 torch/distributed/elastic/multiprocessing/api.py:358] Setting worker1 reply file to: /tmp/torchelastic_m9sk7skt/31045_psxd4f11/attempt_0/1/error.json
+I0807 08:42:25.039000 139665508490112 torch/distributed/elastic/multiprocessing/api.py:358] Setting worker2 reply file to: /tmp/torchelastic_m9sk7skt/31045_psxd4f11/attempt_0/2/error.json
+I0807 08:42:25.039000 139665508490112 torch/distributed/elastic/multiprocessing/api.py:358] Setting worker3 reply file to: /tmp/torchelastic_m9sk7skt/31045_psxd4f11/attempt_0/3/error.json
+/global/homes/l/lokeshb/.conda/envs/lokesh/bin/python3.10: can't open file '/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/ ': [Errno 2] No such file or directory
+/global/homes/l/lokeshb/.conda/envs/lokesh/bin/python3.10: can't open file '/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/ ': [Errno 2] No such file or directory
+/global/homes/l/lokeshb/.conda/envs/lokesh/bin/python3.10: can't open file '/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/ ': [Errno 2] No such file or directory
+/global/homes/l/lokeshb/.conda/envs/lokesh/bin/python3.10: can't open file '/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/ ': [Errno 2] No such file or directory
+E0807 08:42:30.052000 139665508490112 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 2) local_rank: 0 (pid: 2238839) of binary: /global/homes/l/lokeshb/.conda/envs/lokesh/bin/python3.10
+I0807 08:42:31.439000 139665508490112 torch/distributed/elastic/multiprocessing/errors/__init__.py:360] ('local_rank %s FAILED with no error file. Decorate your entrypoint fn with @record for traceback info. See: https://pytorch.org/docs/stable/elastic/errors.html', 0)
+Traceback (most recent call last):
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+  FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2024-08-07_08:42:30
+  host      : nid003824-hsn0
+  rank      : 1 (local_rank: 1)
+  exitcode  : 2 (pid: 2238840)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2024-08-07_08:42:30
+  host      : nid003824-hsn0
+  rank      : 2 (local_rank: 2)
+  exitcode  : 2 (pid: 2238841)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[3]:
+  time      : 2024-08-07_08:42:30
+  host      : nid003824-hsn0
+  rank      : 3 (local_rank: 3)
+  exitcode  : 2 (pid: 2238842)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-08-07_08:42:30
+  host      : nid003824-hsn0
+  rank      : 0 (local_rank: 0)
+  exitcode  : 2 (pid: 2238839)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: nid003824: task 0: Exited with exit code 1
+srun: Terminating StepId=29146638.1
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 281, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 266, in main
+[rank0]:     ddp_setup()
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 52, in ddp_setup
+[rank0]:     init_process_group(backend="nccl",rank=GLOBAL_RANK,world_size=WORLD_SIZE)
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 75, in wrapper
+[rank0]:     return func(*args, **kwargs)
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 89, in wrapper
+[rank0]:     func_return = func(*args, **kwargs)
+[rank0]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py", line 1257, in init_process_group
+[rank0]:     raise ValueError("trying to initialize the default process group twice!")
+[rank0]: ValueError: trying to initialize the default process group twice!

@@ -1,0 +1,157 @@
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 274, in main
+[rank0]:     trainer.train(args.epochs)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 214, in train
+[rank0]:     loss, dsize = self._run_epoch(epoch)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 183, in _run_epoch
+[rank0]:     data = data.to(self.local_rank)
+[rank0]: RuntimeError: CUDA error: invalid device ordinal
+[rank0]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 274, in main
+[rank0]:     trainer.train(args.epochs)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 214, in train
+[rank0]:     loss, dsize = self._run_epoch(epoch)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 183, in _run_epoch
+[rank0]:     data = data.to(self.local_rank)
+[rank0]: RuntimeError: CUDA error: invalid device ordinal
+[rank0]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 274, in main
+[rank0]:     trainer.train(args.epochs)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 214, in train
+[rank0]:     loss, dsize = self._run_epoch(epoch)
+[rank0]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 183, in _run_epoch
+[rank0]:     data = data.to(self.local_rank)
+[rank0]: RuntimeError: CUDA error: invalid device ordinal
+[rank0]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+  0%|          | 0/1 [00:00<?, ?it/s]
+E0827 16:03:50.862000 139919887750272 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 1) local_rank: 0 (pid: 364569) of binary: /usr/bin/python
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.4.0a0+07cecf4168.nv24.5', 'console_scripts', 'torchrun')())
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+dist-training.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-08-27_16:03:50
+  host      : nid001405-hsn0
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 364569)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+E0827 16:03:50.902000 140370119939200 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 1) local_rank: 0 (pid: 364571) of binary: /usr/bin/python
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.4.0a0+07cecf4168.nv24.5', 'console_scripts', 'torchrun')())
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+dist-training.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-08-27_16:03:50
+  host      : nid001405-hsn0
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 364571)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+E0827 16:03:51.123000 139662601438336 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 1) local_rank: 0 (pid: 364575) of binary: /usr/bin/python
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.4.0a0+07cecf4168.nv24.5', 'console_scripts', 'torchrun')())
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 879, in main
+srun: error: nid001405: tasks 2-3: Exited with exit code 1
+srun: Terminating StepId=29860585.0
+    run(args)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+dist-training.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-08-27_16:03:51
+  host      : nid001405-hsn0
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 364575)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+  0%|          | 0/3102 [00:00<?, ?it/s][Aslurmstepd: error: *** STEP 29860585.0 ON nid001405 CANCELLED AT 2024-08-27T16:03:51 ***
+W0827 16:03:51.258000 140115983250560 torch/distributed/elastic/agent/server/api.py:741] Received Signals.SIGTERM death signal, shutting down workers
+W0827 16:03:51.259000 140115983250560 torch/distributed/elastic/multiprocessing/api.py:851] Sending process 364573 closing signal SIGTERM
+srun: error: nid001405: task 1: Terminated
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.4.0a0+07cecf4168.nv24.5', 'console_scripts', 'torchrun')())
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/launcher/api.py", line 254, in launch_agent
+    result = agent.run()
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/metrics/api.py", line 123, in wrapper
+    result = f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/agent/server/api.py", line 733, in run
+    result = self._invoke_run(role)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/agent/server/api.py", line 876, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/elastic/multiprocessing/api.py", line 76, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 364452 got signal: 15
+srun: error: nid001405: task 0: Exited with exit code 1
+srun: Force Terminated StepId=29860585.0

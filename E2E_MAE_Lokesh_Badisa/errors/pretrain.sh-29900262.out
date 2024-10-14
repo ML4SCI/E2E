@@ -1,0 +1,118 @@
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 63, in ddp_setup
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+    result = subprocess.run(['scontrol', 'show', 'hostname', os.environ['SLURM_NODELIST']], stdout=subprocess.PIPE)
+  File "/usr/lib/python3.10/subprocess.py", line 503, in run
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 63, in ddp_setup
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+    result = subprocess.run(['scontrol', 'show', 'hostname', os.environ['SLURM_NODELIST']], stdout=subprocess.PIPE)
+  File "/usr/lib/python3.10/subprocess.py", line 503, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'scontrol'
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 63, in ddp_setup
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'scontrol'
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+    result = subprocess.run(['scontrol', 'show', 'hostname', os.environ['SLURM_NODELIST']], stdout=subprocess.PIPE)
+  File "/usr/lib/python3.10/subprocess.py", line 503, in run
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 63, in ddp_setup
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'scontrol'
+    result = subprocess.run(['scontrol', 'show', 'hostname', os.environ['SLURM_NODELIST']], stdout=subprocess.PIPE)
+  File "/usr/lib/python3.10/subprocess.py", line 503, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'scontrol'
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 63, in ddp_setup
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 63, in ddp_setup
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+    result = subprocess.run(['scontrol', 'show', 'hostname', os.environ['SLURM_NODELIST']], stdout=subprocess.PIPE)
+  File "/usr/lib/python3.10/subprocess.py", line 503, in run
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'scontrol'
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 63, in ddp_setup
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 63, in ddp_setup
+    result = subprocess.run(['scontrol', 'show', 'hostname', os.environ['SLURM_NODELIST']], stdout=subprocess.PIPE)
+  File "/usr/lib/python3.10/subprocess.py", line 503, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'scontrol'
+    result = subprocess.run(['scontrol', 'show', 'hostname', os.environ['SLURM_NODELIST']], stdout=subprocess.PIPE)
+  File "/usr/lib/python3.10/subprocess.py", line 503, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'scontrol'
+    result = subprocess.run(['scontrol', 'show', 'hostname', os.environ['SLURM_NODELIST']], stdout=subprocess.PIPE)
+  File "/usr/lib/python3.10/subprocess.py", line 503, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'scontrol'
+srun: error: nid008313: tasks 4,7: Exited with exit code 1
+srun: Terminating StepId=29900262.0
+srun: error: nid008312: tasks 0,2-3: Exited with exit code 1
+slurmstepd: error: *** STEP 29900262.0 ON nid008312 CANCELLED AT 2024-08-28T06:07:35 ***
+srun: error: nid008312: task 1: Exited with exit code 1
+srun: error: nid008313: tasks 5-6: Exited with exit code 1

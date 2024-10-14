@@ -10,11 +10,11 @@ import numpy as np
 import random
 from einops import rearrange
 from torchvision import transforms
-from models.resnet import *
-from models.inception import *
-from models.efficientnet import *
-from models.vit import *    
-from models.groupvit import *
+from baselines.models.resnet import *
+from baselines.models.inception import *
+from baselines.models.efficientnet import *
+from baselines.models.vit import *    
+from baselines.models.groupvit import *
 
 transform = transforms.Normalize(mean=[0.07848097, 0.08429243, 0.05751758, 0.12098689, 1.2899013 ,
        1.1099757 , 1.15771   , 1.1159292 ], std=[ 3.0687237,  3.2782698,  2.9819856,  3.2468746, 13.511705 ,

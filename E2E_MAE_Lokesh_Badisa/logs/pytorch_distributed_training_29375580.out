@@ -1,0 +1,72 @@
+WORLD_SIZE: 4, GLOBAL_RANK: 3
+Local Rank: 3
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 278, in <module>
+[rank3]:     main(args)
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 269, in main
+[rank3]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank3]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank3]:     self.model = model.to(torch.device(f"cuda:{self.local_rank}"))
+[rank3]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1173, in to
+[rank3]:     return self._apply(convert)
+[rank3]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank3]:     module._apply(fn)
+[rank3]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank3]:     module._apply(fn)
+[rank3]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank3]:     param_applied = fn(param)
+[rank3]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank3]:     return t.to(
+[rank3]: RuntimeError: CUDA error: invalid device ordinal
+[rank3]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+WORLD_SIZE: 4, GLOBAL_RANK: 1
+Local Rank: 1
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 278, in <module>
+[rank1]:     main(args)
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 269, in main
+[rank1]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank1]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank1]:     self.model = model.to(torch.device(f"cuda:{self.local_rank}"))
+[rank1]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1173, in to
+[rank1]:     return self._apply(convert)
+[rank1]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank1]:     module._apply(fn)
+[rank1]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank1]:     module._apply(fn)
+[rank1]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank1]:     param_applied = fn(param)
+[rank1]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank1]:     return t.to(
+[rank1]: RuntimeError: CUDA error: invalid device ordinal
+[rank1]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+WORLD_SIZE: 4, GLOBAL_RANK: 2
+Local Rank: 2
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 278, in <module>
+[rank2]:     main(args)
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 269, in main
+[rank2]:     trainer = Trainer(model, train_loader, val_loader, loss_scaler, optimizer, args)
+[rank2]:   File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 113, in __init__
+[rank2]:     self.model = model.to(torch.device(f"cuda:{self.local_rank}"))
+[rank2]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1173, in to
+[rank2]:     return self._apply(convert)
+[rank2]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank2]:     module._apply(fn)
+[rank2]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 779, in _apply
+[rank2]:     module._apply(fn)
+[rank2]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 804, in _apply
+[rank2]:     param_applied = fn(param)
+[rank2]:   File "/global/homes/l/lokeshb/.conda/envs/lokesh/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1159, in convert
+[rank2]:     return t.to(
+[rank2]: RuntimeError: CUDA error: invalid device ordinal
+[rank2]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+srun: error: nid008293: tasks 1,3: Exited with exit code 1
+srun: Terminating StepId=29375580.0
+slurmstepd: error: *** STEP 29375580.0 ON nid008293 CANCELLED AT 2024-08-14T12:34:25 ***
+srun: error: nid008293: task 2: Exited with exit code 1
+srun: error: nid008293: task 0: Terminated
+srun: Force Terminated StepId=29375580.0

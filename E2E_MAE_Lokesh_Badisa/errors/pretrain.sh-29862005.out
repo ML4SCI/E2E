@@ -1,0 +1,76 @@
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 51, in ddp_setup
+    init_process_group(backend="nccl",init_method='env://')
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/c10d_logger.py", line 77, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/c10d_logger.py", line 91, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/distributed_c10d.py", line 1308, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/rendezvous.py", line 234, in _env_rendezvous_handler
+    rank = int(_get_env_or_raise("RANK"))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/rendezvous.py", line 219, in _get_env_or_raise
+    raise _env_error(env_var)
+ValueError: Error initializing torch.distributed using env:// rendezvous: environment variable RANK expected, but not set
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 51, in ddp_setup
+    init_process_group(backend="nccl",init_method='env://')
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/c10d_logger.py", line 77, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/c10d_logger.py", line 91, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/distributed_c10d.py", line 1308, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/rendezvous.py", line 234, in _env_rendezvous_handler
+    rank = int(_get_env_or_raise("RANK"))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/rendezvous.py", line 219, in _get_env_or_raise
+    raise _env_error(env_var)
+ValueError: Error initializing torch.distributed using env:// rendezvous: environment variable RANK expected, but not set
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 51, in ddp_setup
+    init_process_group(backend="nccl",init_method='env://')
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/c10d_logger.py", line 77, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/c10d_logger.py", line 91, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/distributed_c10d.py", line 1308, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/rendezvous.py", line 234, in _env_rendezvous_handler
+    rank = int(_get_env_or_raise("RANK"))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/rendezvous.py", line 219, in _get_env_or_raise
+    raise _env_error(env_var)
+ValueError: Error initializing torch.distributed using env:// rendezvous: environment variable RANK expected, but not set
+Traceback (most recent call last):
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 282, in <module>
+    main(args)
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/dist-training.py", line 264, in main
+    ddp_setup()
+  File "/global/u1/l/lokeshb/E2E/E2E_MAE_Lokesh_Badisa/utils/misc.py", line 51, in ddp_setup
+    init_process_group(backend="nccl",init_method='env://')
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/c10d_logger.py", line 77, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/c10d_logger.py", line 91, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/distributed_c10d.py", line 1308, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/rendezvous.py", line 234, in _env_rendezvous_handler
+    rank = int(_get_env_or_raise("RANK"))
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/rendezvous.py", line 219, in _get_env_or_raise
+    raise _env_error(env_var)
+ValueError: Error initializing torch.distributed using env:// rendezvous: environment variable RANK expected, but not set
+srun: error: nid008596: tasks 0,2: Exited with exit code 1
+srun: Terminating StepId=29862005.0
+slurmstepd: error: *** STEP 29862005.0 ON nid008596 CANCELLED AT 2024-08-27T16:44:45 ***
+srun: error: nid008596: tasks 1,3: Exited with exit code 1

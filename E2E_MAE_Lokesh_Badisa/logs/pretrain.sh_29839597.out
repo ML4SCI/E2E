@@ -1,0 +1,52 @@
+Mon Aug 26 22:52:04 2024       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 525.105.17   Driver Version: 525.105.17   CUDA Version: 12.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A100-SXM...  On   | 00000000:03:00.0 Off |                    0 |
+| N/A   33C    P0    51W / 400W |      0MiB / 40960MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA A100-SXM...  On   | 00000000:41:00.0 Off |                    0 |
+| N/A   28C    P0    48W / 400W |      0MiB / 40960MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   2  NVIDIA A100-SXM...  On   | 00000000:82:00.0 Off |                    0 |
+| N/A   32C    P0    51W / 400W |      0MiB / 40960MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   3  NVIDIA A100-SXM...  On   | 00000000:C1:00.0 Off |                    0 |
+| N/A   30C    P0    50W / 400W |      0MiB / 40960MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+WORLD_SIZE: 4, GLOBAL_RANK: 0
+WORLD_SIZE: 4, GLOBAL_RANK: 3
+WORLD_SIZE: 4, GLOBAL_RANK: 1
+WORLD_SIZE: 4, GLOBAL_RANK: 2
+model initialized
+model initialized
+model initialized
+Data Loaded
+Data Loaded
+Dataloaders created
+Local Rank: 3
+Data Loaded
+Dataloaders created
+Local Rank: 1
+Dataloaders created
+Local Rank: 0
+model initialized
+Data Loaded
+Dataloaders created
+Local Rank: 2

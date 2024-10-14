@@ -12,9 +12,10 @@ def conv1x1(in_planes: int, out_planes: int, stride: int = 1) -> nn.Conv2d:
 class ResNet(nn.Module):
     def __init__(
         self,
+        inchans: int,
         block: Type[Union[BasicBlock, Bottleneck]],
         layers: List[int],
-        num_classes: int = 2,
+        num_classes: int = 1,
         zero_init_residual: bool = False,
         groups: int = 1,
         width_per_group: int = 64,
@@ -39,7 +40,7 @@ class ResNet(nn.Module):
             )
         self.groups = groups
         self.base_width = width_per_group
-        self.conv1 = nn.Conv2d(8, self.inplanes, kernel_size=7, stride=2, padding=3, bias=False)
+        self.conv1 = nn.Conv2d(inchans, self.inplanes, kernel_size=7, stride=2, padding=3, bias=False)
         self.bn1 = norm_layer(self.inplanes)
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
@@ -131,27 +132,28 @@ class ResNet(nn.Module):
 
 
 def _resnet(
+    inchans: int,
     block: Type[Union[BasicBlock, Bottleneck]],
     layers: List[int],
     **kwargs: Any,
 ) -> ResNet:
 
-    model = ResNet(block, layers, **kwargs)
+    model = ResNet(inchans, block, layers, **kwargs)
 
     return model
 
 
-def resnet18() -> ResNet:
-    return _resnet(BasicBlock, [2, 2, 2, 2])
+def resnet18(inchans) -> ResNet:
+    return _resnet(inchans, BasicBlock, [2, 2, 2, 2])
 
-def resnet34():
-    return _resnet(BasicBlock, [3, 4, 6, 3])
+def resnet34(inchans):
+    return _resnet(inchans, BasicBlock, [3, 4, 6, 3])
 
-def resnet50():
-    return _resnet(Bottleneck, [3, 4, 6, 3])
+def resnet50(inchans):
+    return _resnet(inchans, Bottleneck, [3, 4, 6, 3])
 
-def resnet101():
-    return _resnet(Bottleneck, [3, 4, 23, 3])
+def resnet101(inchans,):
+    return _resnet(inchans, Bottleneck, [3, 4, 23, 3])
 
-def resnet152():
-    return _resnet(Bottleneck, [3, 8, 36, 3])
+def resnet152(inchans):
+    return _resnet(inchans, Bottleneck, [3, 8, 36, 3])

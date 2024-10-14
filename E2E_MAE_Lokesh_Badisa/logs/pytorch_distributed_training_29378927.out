@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "dist-training.py", line 2, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+srun: error: nid001109: task 0: Exited with exit code 1
+srun: Terminating StepId=29378927.0

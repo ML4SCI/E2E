@@ -1,0 +1,112 @@
+Tue Aug 27 09:20:34 2024       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 525.105.17   Driver Version: 525.105.17   CUDA Version: 12.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A100-SXM...  On   | 00000000:03:00.0 Off |                    0 |
+| N/A   30C    P0    49W / 400W |      0MiB / 40960MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA A100-SXM...  On   | 00000000:41:00.0 Off |                    0 |
+| N/A   28C    P0    49W / 400W |      0MiB / 40960MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   2  NVIDIA A100-SXM...  On   | 00000000:82:00.0 Off |                    0 |
+| N/A   29C    P0    51W / 400W |      0MiB / 40960MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   3  NVIDIA A100-SXM...  On   | 00000000:C1:00.0 Off |                    0 |
+| N/A   29C    P0    50W / 400W |      0MiB / 40960MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+WORLD_SIZE: 4, GLOBAL_RANK: 0
+WORLD_SIZE: 4, GLOBAL_RANK: 1
+WORLD_SIZE: 4, GLOBAL_RANK: 0
+WORLD_SIZE: 4, GLOBAL_RANK: 2
+WORLD_SIZE: 4, GLOBAL_RANK: 3
+WORLD_SIZE: 4, GLOBAL_RANK: 3
+WORLD_SIZE: 4, GLOBAL_RANK: 1
+WORLD_SIZE: 4, GLOBAL_RANK: 2
+WORLD_SIZE: 4, GLOBAL_RANK: 1
+WORLD_SIZE: 4, GLOBAL_RANK: 2
+WORLD_SIZE: 4, GLOBAL_RANK: 3
+WORLD_SIZE: 4, GLOBAL_RANK: 2
+WORLD_SIZE: 4, GLOBAL_RANK: 3
+WORLD_SIZE: 4, GLOBAL_RANK: 0
+WORLD_SIZE: 4, GLOBAL_RANK: 0
+WORLD_SIZE: 4, GLOBAL_RANK: 1
+model initialized
+model initialized
+model initialized
+model initialized
+Data Loaded
+Data Loaded
+Data Loaded
+Data Loaded
+Dataloaders created
+Local Rank: 3
+Dataloaders created
+Local Rank: 2
+Dataloaders created
+Local Rank: 0
+Dataloaders created
+Local Rank: 2
+model initialized
+Data Loaded
+Dataloaders created
+Local Rank: 0
+model initialized
+model initialized
+model initialized
+Data Loaded
+Dataloaders created
+Local Rank: 0
+Data Loaded
+Dataloaders created
+Local Rank: 0
+Data Loaded
+Dataloaders created
+Local Rank: 1
+model initialized
+model initialized
+Data Loaded
+Dataloaders created
+Local Rank: 2
+Data Loaded
+Dataloaders created
+Local Rank: 2
+model initialized
+Data Loaded
+Dataloaders created
+Local Rank: 3
+model initialized
+model initialized
+model initialized
+model initialized
+Data Loaded
+Dataloaders created
+Local Rank: 3
+Data Loaded
+Dataloaders created
+Local Rank: 1
+Data Loaded
+Dataloaders created
+Local Rank: 1
+Data Loaded
+Dataloaders created
+Local Rank: 1
+model initialized
+Data Loaded
+Dataloaders created
+Local Rank: 3
